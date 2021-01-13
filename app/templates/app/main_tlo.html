@@ -9,330 +9,351 @@
 </head>
 
 
-<body>
+<body style="background-color: #F0F0F0;">
 
     <header>
-        <a href="{% url 'panel' %}">
-            <img src="{% static '/app/css/images/korepder_logo.png' %}" height="80%px"  style="display: inline-block; margin: 10px; margin-left: 20px;" >
+        <div class="row">
+        <div class="col-3">
+        <a href="{% url 'index' %}">
+            <img src="{% static '/app/css/images/korepder_logo.png' %}" height="100%px"  style="display: inline-block; margin: 5px; margin-left: -7px;" >
         </a>
-
-    <nav style="float: right;">    
-        <div class="top_menu" >
-            <ol id="menu">
-                <li><i class="fas fa-globe-europe" style="font-size: 35px; margin-top: 8px;"></i>
-                  <ul>
-                    <li><a href="#">Zmień język</a></li>
-                  </ul>
-                </li>
-            
-                <li><i class="fas fa-cog" style="font-size: 35px; margin-top: 8px;"></i>
-                  <ul>
-                    <li><a href="#">Przejdź w tryb nocny</a></li>
-                    <li><a href="#">Ustawienia strony</a></li>
-                  </ul>
-                </li>
-            
-                <li><i class="fas fa-user" style="font-size: 35px; margin-top: 8px;"></i>
-                  <ul>
-                    <li><a href="{% url 'panel' %}">Profil użytkownika</a></li>
-                    <li><a href="#">Ustawienia konta</a></li>
-                    <li><a href="#">Informacje</a></li>
-                    <li><a href="#">Kontakt</a></li>
-                    <li></li>
-                  </ul>
-                </li>
-              </ol> 
         </div>
-    </nav>
-</header>
-
-    <nav style="display: inline-block;">
-    <section id="pmd-main" style="width: 250px;">
-        <!-- Left sidebar -->
-
-
-        <aside id="basicSidebar" class="pmd-sidebar bg-light pmd-z-depth" role="navigation" style="border:2px; height: 100%;margin-top: 30px; border-top-right-radius:1%;">
-            <ul class="nav flex-column pmd-sidebar-nav">
-
-                <p style="text-align: center; padding: 10px;">KOREPDER</p>
-
-                <li class="nav-item pmd-user-info">
-                    <a data-toggle="collapse" href="#collapseExample" class="nav-link btn-user media align-items-center">
-                        <img class="mr-3" src="https://pro.propeller.in/assets/images/avatar-icon-40x40.png" width="40" height="40" alt="avatar">
-                        <div class="media-body">
-                            User
-                        </div>
-                        <i class="fas fa-caret-down" style="color: rgb(44, 168, 44);"></i>
-                    </a>
-                    <ul class="collapse" id="collapseExample" data-parent="#basicSidebar">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                <a href="{% url 'logout' %}"><span class="media-body">Logout</span></a>
-                            </a>
+        <div class="col-9">
+            <nav style="float: right;">
+                 <div class="top_menu" >
+                    <ol id="menu">
+                        <li><i class="fas fa-globe-europe" style="font-size: 35px; margin-top: 8px; opacity: 0%;"></i></li>
+                        <li><i class="fas fa-cog" style="font-size: 35px; margin-top: 8px; opacity: 0%;"></i></li>
+                
+                        <li><i class="fas fa-globe-europe" style="font-size: 35px; margin-top: 8px;"></i>
+                            <ul>
+                                <li><a href="#">Zmień język</a></li>
+                                <li></li>
+                            </ul>
                         </li>
-                    </ul>
-                </li><br>
+                    </ol>
+                 </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="row">
+        <!-- Lewa stopka-->
+        
+        <div class="pull-left" style="width: 250px; height: 100vh;">
+
+            <div class="card shadow-lg" style="height: 100vh;">
+                
+                <div class="accordion" id="lewaCzesc">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#lOne" aria-expanded="true" aria-controls="lOne">
+                                    <img class="mr-3" src="https://pro.propeller.in/assets/images/avatar-icon-40x40.png" width="40" height="40" alt="avatar">
+                                    User Name
+                                    <i class="fas fa-caret-down" style="color: rgb(44, 168, 44);"></i>
+                                </button>
+                            </h2>
+                        </div>
+                        
+                        <div id="lOne" class="collapse" aria-labelledby="headingOne" data-parent="#lewaCzesc">
+                            <div class="card">
+                                <div class="card" id="headingTwo">
+                                    <div class="card-body">
+                                        <h2 class="mb-0">
+                                                <button class="btn btn-block text-left" 
+                                                type="button" data-toggle="collapse" data-target="#lTwo" aria-expanded="true" aria-controls="lTwo">
+                                                <a href="{% url 'panel' %}"><span class="media-body">Panel użytkownika</span></a>
+                                                <i class="fas fa-caret-down" style="color: rgb(44, 168, 44);"></i></button>
+                                            
+                                            <div id="lTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#headingTwo" style="font-size: 14px;">
+                                                <div class="card-body">
+                                                    <a href="{% url 'panel_podglad' %}"><span class="media-body">Podgląd profilu</span></a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <a href="{% url 'panel' %}"><span class="media-body">Edytuj profil</span></a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <a href="{% url 'logout' %}"><span class="media-body">Edytuj dane osobowe</span></a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <a href="{% url 'logout' %}"><span class="media-body">Edytuj dane osobowe</span></a>
+                                                </div>
+                                            </div>
+                                        </h2>   
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <a href="{% url 'panel' %}"><span class="media-body">Ustawienia</span></a>
+                            </div>
+                            <div class="card-body">
+                                <a href="{% url 'panel' %}"><span class="media-body">Kontakt</span></a>
+                            </div>
+                            <div class="card-body">
+                                <a href="{% url 'logout' %}"><span class="media-body">Logout</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <li class="nav-item" style="margin-left: 10px;">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-dice" style="color: rgb(44, 168, 44);"></i>
+                            <span class="media-body">Chybił-trafił</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" style="margin-left: 10px;">
+                            <i class="fas fa-clipboard-list" style="color: rgb(44, 168, 44);"></i>
+                            <span class="media-body">Szukaj korepetytorów</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"style="margin-left: 10px;">
+                            <i class="fas fa-user-friends" style="color: rgb(44, 168, 44);"></i>
+                            <span class="media-body">Lista korepetytorów</span>
+                        </a>
+                    </li>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Central content-->
+        <div class="col-8 col-md-4 col-sm-2 mx-auto">
+
+            <div class="card shadow-lg p-5 mb-5" style="margin-top: 80px; height: 80vh;">
+                <div class="card-body">
+
+                    {% block content %}
+                    {% endblock content %}
+                  
+                  
+                  
+                </div>
+            </div>
+        </div>
+
+        <!-- Prawa stopka-->
+        <div class="pull-right" style="width: 250px; height: 100vh;">
+            <div class="card shadow-lg" style="height: 100vh;">
+                <div class="accordion" id="prawaCzesc">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#rOne" aria-expanded="true" aria-controls="rOne">
+                                    <img class="mr-3" src="https://pro.propeller.in/assets/images/avatar-icon-40x40.png" width="40" height="40" alt="avatar">
+                                    Lojtek Watek
+                                    <i class="fas fa-caret-down" style="color: rgb(44, 168, 44);"></i>
+                                </button>
+                            </h2>
+                        </div>
+              
+                        <div id="rOne" class="collapse" aria-labelledby="headingOne" data-parent="#prawaCzesc">
+                            <div class="card-body">
+                                TEKST
+                                <button type="button" class="btn btn-primary" onclick="showMess()">CHAT ON</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#rTwo" aria-expanded="false" aria-controls="rTwo">
+                                    <img class="mr-3" src="https://pro.propeller.in/assets/images/avatar-icon-40x40.png" width="40" height="40" alt="avatar">
+                                    Lojtek Watek
+                                    <i class="fas fa-caret-down" style="color: rgb(44, 168, 44);"></i>
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="rTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#prawaCzesc">
+                            <div class="card-body">
+                                TEKST
+                                <button type="button" class="btn btn-primary" onclick="showMess()">CHAT ON</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h2 class="mb-0">
+                                <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#rThree" aria-expanded="false" aria-controls="rThree">
+                                    <img class="mr-3" src="https://pro.propeller.in/assets/images/avatar-icon-40x40.png" width="40" height="40" alt="avatar">
+                                    Lojtek Watek
+                                    <i class="fas fa-caret-down" style="color: rgb(44, 168, 44);"></i>
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="rThree" class="collapse" aria-labelledby="headingThree" data-parent="#prawaCzesc">
+                            <div class="card-body">
+                                Mamian Dosiński
+                                <button type="button" class="btn btn-primary" onclick="showMess()">CHAT ON</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Div Wiadomości-->
+    <div class="row" style="position: fixed; bottom: 20px; right: 250px;">
+
+
+        <div class="card shadow " id="chat1" style="margin-right: 30px; height: 350px; width: 270px; display: none;  border-radius: 25px ">
             
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-dice" style="color: rgb(44, 168, 44);"></i>
-                        <span class="media-body">Chybił-trafił</span>
-                    </a>
-                </li>
+
+            <div class="stopka shadow" style="height: 50px; background: rgb(9,105,0); background: linear-gradient(90deg, rgba(9,105,0,1) 0%, rgba(150,219,126,1) 48%, rgba(166,237,139,1) 70%, rgba(219,255,180,1) 100%); border-radius: 25px 25px 0px 0px;">
+                <div class="row">
+                    <div class="col-9"></div>
+                    <div class="col-3" style="margin-top: 17px;">
+                        <i class="fas fa-times" type="button" onclick="hideMess(1)"></i>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-body" style="height: 240px;">
+
+
+                CHAT1
+
+
+               
                 
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">
-                        <i class="fas fa-clipboard-list" style="color: rgb(44, 168, 44);"></i>
-                        <span class="media-body">Szukaj korepetytorów</span>
-                    </a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-user-friends" style="color: rgb(44, 168, 44);"></i>
-                        <span class="media-body">Lista korepetytorów</span>
-                    </a>
-                </li>
-            </ul>
-        </aside>
-        <div class="pmd-sidebar-overlay"></div>
-    </section>
-</nav>
-        
-<main style="display: inline-block; background-color: rgb(248, 246, 246); text-align: center; border:2px; padding: 10px; width: 73%;height:100%;border-top-left-radius:1%;
-border-top-right-radius:1%;">
-{% block content %}
-{% endblock content %}
-</main>
+            </div>
+            <div class="opcjeChat" style="position: fixed;bottom: 20px; height: 70px; width: 268px; border-radius: 0px 0px 25px 25px;">
+                <hr/>
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-8">
+                        <input type="text" style="border-radius: 25px; border: 1px solid rgb(35, 151, 40); padding: 20px;  width: 170px; height: 10px; outline: none; margin-top: -11px;">
+                    </div>
+                    <div class="col-2">
+                        <i class="far fa-paper-plane" type="button" style="color: green;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow" id="chat2" style="margin-right: 30px; height: 350px; width: 270px; display: none; border-radius: 25px  ">
+
+            <div class="stopka shadow" style="height: 50px; background: rgb(9,105,0); background: linear-gradient(90deg, rgba(9,105,0,1) 0%, rgba(150,219,126,1) 48%, rgba(166,237,139,1) 70%, rgba(219,255,180,1) 100%); border-radius: 25px 25px 0px 0px;">
+                <div class="row">
+                    <div class="col-9"></div>
+                    <div class="col-3" style="margin-top: 17px;">
+                        <i class="fas fa-times" type="button" onclick="hideMess(2)"></i>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-body">
+                CHAT2
+            </div>
+
+            <div class="opcjeChat" style="position: fixed;bottom: 20px; height: 70px; width: 268px; border-radius: 0px 0px 25px 25px;">
+                <hr/>
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-8">
+                        <input type="text" style="border-radius: 25px; border: 1px solid rgb(35, 151, 40); padding: 20px;  width: 170px; height: 10px; outline: none; margin-top: -11px;">
+                    </div>
+                    <div class="col-2">
+                        <i class="far fa-paper-plane" type="button" style="color: green;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card shadow" id="chat3" style="margin-right: 30px; height: 350px; width: 270px; display: none; border-radius: 25px ">
+
+            <div class="stopka shadow" style="height: 50px; background: rgb(9,105,0); background: linear-gradient(90deg, rgba(9,105,0,1) 0%, rgba(150,219,126,1) 48%, rgba(166,237,139,1) 70%, rgba(219,255,180,1) 100%); border-radius: 25px 25px 0px 0px;">
+                <div class="row">
+                    <div class="col-9"></div>
+                    <div class="col-3" style="margin-top: 17px;">
+                        <i class="fas fa-times" type="button" onclick="hideMess(3)"></i>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="card-body">
+                CHAT3
+            </div>
+
+            <div class="opcjeChat" style="position: fixed;bottom: 20px; height: 70px; width: 268px; border-radius: 0px 0px 25px 25px;">
+                <hr/>
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-8">
+                        <input type="text" style="border-radius: 25px; border: 1px solid rgb(35, 151, 40); padding: 20px;  width: 170px; height: 10px; outline: none; margin-top: -11px;">
+                    </div>
+                    <div class="col-2">
+                        <i class="far fa-paper-plane" type="button" style="color: green;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
-
-
-                <!-- Right Sidebar -->
-        <aside id="basicSidebar" class="pmd-sidebar bg-light pmd-z-depth" role="navigation" style=" border:2px; float: right; margin-top: 30px; border-top-left-radius:1%;height: 100%; width: 245px;">
-                    <ul class="nav flex-column pmd-sidebar-nav">
-                        <p style="text-align: center; padding: 10px;">Chat</p>
-                    </ul>
-        
-                    <li class="nav-item pmd-user-info">
-                        <a  href="#collapseExample" data-toggle="collapse" class="nav-link btn-user media align-items-center">
-                            <img class="mr-3" src="https://pro.propeller.in/assets/images/avatar-icon-40x40.png" width="40" height="40" alt="avatar">
-                            <div class="media-body">
-                                User
-                            </div>
-                            <i class="fas fa-caret-down" style="color: rgb(44, 168, 44);"></i>
-                        </a>
-
-                        <ul class="collapse" id="collapseExample" data-parent="#basicSidebar">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Rozpocznij chat</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Usuń</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Zgłoś</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item pmd-user-info">
-                        <a data-toggle="collapse" href="#collapseExample" class="nav-link btn-user media align-items-center">
-                            <img class="mr-3" src="https://pro.propeller.in/assets/images/avatar-icon-40x40.png" width="40" height="40" alt="avatar">
-                            <div class="media-body">
-                                User
-                            </div>
-                            <i class="fas fa-caret-down" style="color: rgb(44, 168, 44);"></i>
-                        </a>
-
-                        <ul class="collapse" id="collapseExample" data-parent="#basicSidebar">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Rozpocznij chat</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Usuń</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Zgłoś</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item pmd-user-info">
-                        <a data-toggle="collapse" href="#collapseExample" class="nav-link btn-user media align-items-center">
-                            <img class="mr-3" src="https://pro.propeller.in/assets/images/avatar-icon-40x40.png" width="40" height="40" alt="avatar">
-                            <div class="media-body">
-                                User
-                            </div>
-                            <i class="fas fa-caret-down" style="color: rgb(44, 168, 44);"></i>
-                        </a>
-
-                        <ul class="collapse" id="collapseExample" data-parent="#basicSidebar">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Rozpocznij chat</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Usuń</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Zgłoś</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item pmd-user-info">
-                        <a data-toggle="collapse" href="#collapseExample" class="nav-link btn-user media align-items-center">
-                            <img class="mr-3" src="https://pro.propeller.in/assets/images/avatar-icon-40x40.png" width="40" height="40" alt="avatar">
-                            <div class="media-body">
-                                User
-                            </div>
-                            <i class="fas fa-caret-down" style="color: rgb(44, 168, 44);"></i>
-                        </a>
-
-                        <ul class="collapse" id="collapseExample" data-parent="#basicSidebar">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Rozpocznij chat</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Usuń</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Zgłoś</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item pmd-user-info">
-                        <a data-toggle="collapse" href="#collapseExample" class="nav-link btn-user media align-items-center">
-                            <img class="mr-3" src="https://pro.propeller.in/assets/images/avatar-icon-40x40.png" width="40" height="40" alt="avatar">
-                            <div class="media-body">
-                                User
-                            </div>
-                            <i class="fas fa-caret-down" style="color: rgb(44, 168, 44);"></i>
-                        </a>
-
-                        <ul class="collapse" id="collapseExample" data-parent="#basicSidebar">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Rozpocznij chat</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Usuń</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Zgłoś</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item pmd-user-info">
-                        <a data-toggle="collapse" href="#collapseExample" class="nav-link btn-user media align-items-center">
-                            <img class="mr-3" src="https://pro.propeller.in/assets/images/avatar-icon-40x40.png" width="40" height="40" alt="avatar">
-                            <div class="media-body">
-                                User
-                            </div>
-                            <i class="fas fa-caret-down" style="color: rgb(44, 168, 44);"></i>
-                        </a>
-
-                        <ul class="collapse" id="collapseExample" data-parent="#basicSidebar">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Rozpocznij chat</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Usuń</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Zgłoś</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item pmd-user-info">
-                        <a data-toggle="collapse" href="#collapseExample" class="nav-link btn-user media align-items-center">
-                            <img class="mr-3" src="https://pro.propeller.in/assets/images/avatar-icon-40x40.png" width="40" height="40" alt="avatar">
-                            <div class="media-body">
-                                User
-                            </div>
-                            <i class="fas fa-caret-down" style="color: rgb(44, 168, 44);"></i>
-                        </a>
-
-                        <ul class="collapse" id="collapseExample" data-parent="#basicSidebar">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Rozpocznij chat</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Usuń</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-out-alt" style="color: rgb(44, 168, 44);"></i>
-                                    <span class="media-body">Zgłoś</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </aside>
-
-
-
 
 
     <script src="https://kit.fontawesome.com/75f758938c.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    
+    <script>
+
+        function showMess() {
+
+            if(document.getElementById('chat1').style.display == "block" && document.getElementById('chat2').style.display == "block" && document.getElementById('chat3').style.display == "none" ){
+            document.getElementById('chat3').style.display = "block"
+            }
+
+
+
+            if(document.getElementById('chat1').style.display == "block" && document.getElementById('chat2').style.display == "none" ){
+            document.getElementById('chat2').style.display = "block"
+            }
+
+            
+
+            if(document.getElementById('chat1').style.display == "none"){
+            document.getElementById('chat1').style.display = "block";
+            }
+        }
+
+
+
+        function hideMess(x) {
+            document.getElementById('chat' + x).style.display = "none";
+
+        }
+
+
+
+
+</script>
 </body>
 </html>

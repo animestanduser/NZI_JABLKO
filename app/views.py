@@ -29,7 +29,13 @@ def panel(request):
     return render(request, 'app/panel.html',)
 
 def base(request):
-    return redirect('base')
+    return redirect('base',)
+
+def index(request):
+    return render(request, 'app/index.html',)
+
+def panel_podglad(request):
+    return render(request, 'app/panel_podglad.html',)
 
 def signup(request):
     if request.method == 'POST':

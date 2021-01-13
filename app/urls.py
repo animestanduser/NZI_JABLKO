@@ -32,4 +32,8 @@ urlpatterns = [
     path('panel/', views.panel, name='panel'),
 
     path('main_tlo/', views.main_tlo, name='main_tlo'),
+
+    path('index/', views.index, name='index'),
+
+    path('panel_podglad/', views.panel_podglad, name='panel_podglad'),
 ]
