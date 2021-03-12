@@ -13,10 +13,19 @@ from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib import messages
-
-
-from .forms import SignupForm
-
+from django import forms
+from .forms import SignupForm 
+from django.views import generic
+from django.contrib.auth.forms import UserChangeForm
+from django.http import HttpResponseRedirect
+from .models import Profile
+from .forms import UserEditForm, ProfileEditForm
+from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
+from django.utils.decorators import method_decorator
+from django.views.generic import TemplateView
+from django.shortcuts import render
+from .models import displayusername
 
 
 def main_tlo(request):
@@ -28,14 +37,35 @@ def start(request):
 def panel(request):
     return render(request, 'app/panel.html',)
 
+def personal_information_edit(request):
+    return render(request, 'app/personal_information_edit.html',)
+
 def base(request):
     return redirect('base',)
 
 def index(request):
     return render(request, 'app/index.html',)
 
+def find_page(request):
+    return render(request, 'app/find_page.html',)
+
+def teachers_list(request):
+    return render(request, 'app/teachers_list.html',)
+
+def random_teacher(request):
+    return render(request, 'app/random_teacher.html',)    
+
 def panel_podglad(request):
     return render(request, 'app/panel_podglad.html',)
+
+def profile_edit(request):
+    return render(request, 'app/profile_edit.html',)
+
+def pokazpanel(request):
+    return render(request, 'app/edit.html')
+
+def pokazliste(request):
+    return render(request, 'app/account_list.html')
 
 def signup(request):
     if request.method == 'POST':
@@ -44,6 +74,7 @@ def signup(request):
             user = form.save(commit=False)
             user.is_active = False
             user.save()
+            profile = Profile.objects.create(user=new_user)
             current_site = get_current_site(request)
             mail_subject = 'Aktywuj swoje konto na Korepder'
             message = render_to_string('registration/acc_active_email.html', {
@@ -80,10 +111,6 @@ def activate(request, uidb64, token, backend='django.contrib.auth.backends.Model
 
 
 
-
-
-
-
 def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
@@ -100,3 +127,21 @@ def change_password(request):
     })
 
 
+@login_required
+def edit(request):
+    if request.method == 'POST':
+
+        user_form = UserEditForm(instance=request.user, data=request.POST)
+        profile_form = ProfileEditForm(instance=request.user.profile, data=request.POST, files=request.FILES)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+    else:
+        user_form = UserEditForm(instance=request.user)
+        profile_form = ProfileEditForm(instance=request.user.profile)
+    return render(request, 'app/edit.html', {'user_form': user_form, 'profile_form': profile_form})
+
+def showlist(request):
+    displaynames=User.objects.all()
+    return render(request, 'account_list.html',{"displayusername":displaynames})

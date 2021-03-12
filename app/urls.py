@@ -1,7 +1,10 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static 
+from django.conf import settings
 
 urlpatterns = [
 
@@ -17,6 +20,7 @@ urlpatterns = [
         views.activate, name='activate'),
 
     url(r'^password_change/$', views.change_password, name='change_password'),
+    
 
 
     url(r'^accounts/reset_password/$', auth_views.PasswordResetView.as_view(template_name = "registration/reset_password.html"),name ='reset_password'),
@@ -29,6 +33,7 @@ urlpatterns = [
  
     path('reset/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(template_name = "registration/password_reset_form.html"), name ='password_reset_confirm'),
     
+    
     path('panel/', views.panel, name='panel'),
 
     path('main_tlo/', views.main_tlo, name='main_tlo'),
@@ -36,4 +41,20 @@ urlpatterns = [
     path('index/', views.index, name='index'),
 
     path('panel_podglad/', views.panel_podglad, name='panel_podglad'),
+
+    path('profile_edit/', views.profile_edit, name='profile_edit'),
+
+    path('find_page/', views.find_page, name='find_page'),
+
+    path('teachers_list/', views.teachers_list, name='teachers_list'),
+
+    path('random_teacher/', views.random_teacher, name='random_teacher'),
+
+    path('personal_information_edit/', views.personal_information_edit, name='personal_information_edit'),
+
+    path('edit/', views.edit, name='edit'),
+
+    path('account_list/', views.showlist)
 ]
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
