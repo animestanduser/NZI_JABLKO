@@ -1,0 +1,16 @@
+{% extends 'app/main_tlo.html' %} 
+
+
+{% block content %}
+
+<div>
+
+    <form method="POST" enctype="multipart/form-data">
+        <ul>
+        {% for result in displayusername %}
+        <li class="user">{{ result.username }}</li>
+        {% endfor %}
+        </ul>
+    </form>
+</div>
+{% endblock %}

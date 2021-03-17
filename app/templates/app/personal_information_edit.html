@@ -1,0 +1,40 @@
+{% extends 'app/main_tlo.html' %} 
+
+
+{% block content %}
+
+<div>
+
+    <div class="media">
+        <img class="rounder-circle account-img" src="{{user.profile.image.url}}" height="130px" width="130px">
+    </div>
+
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <legend class="border-bottom mb-4">Dane wyszukiwania</legend>
+        
+        <form method="post" enctype="multipart/form-data">
+        <ul class="list-group list-group-flush" style="height: 400px; overflow-x:hidden; float:left">
+            <li class="list-group-item">
+                <div class="textbox">
+                    Przedmiot:
+                    {{ profile_form.przedmiot }}
+                </div>
+                <div class="textbox">
+                    Miejscowość:
+                    {{ profile_form.miejscowosc }}
+                </div>
+                <div class="textbox">
+                    Uczeń/nauczyciel:
+                    {{ profile_form.affinity }}
+                </div>
+                
+            {% csrf_token %}
+        
+            <p><input type="submit" value="Zapisz zmiany"></p>
+        </li>
+        </ul>
+        </form>
+</div>
+{% endblock %}
