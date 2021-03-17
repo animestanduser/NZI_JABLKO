@@ -19,35 +19,13 @@
             <ul class="list-group list-group-flush" style="height: 400px; overflow-x:hidden; float:left">
                 <li class="list-group-item">
                     <div class="textbox">
-                        Imię:
-                        {{ user_form.first_name }}
+                        {{ user_form.as_p }}
                     </div>
                     <div class="textbox">
-                        Nazwisko:
-                        {{ user_form.last_name }}
-                    </div>
-                    <div class="textbox">
-                        Opis:
-                        {{ profile_form.opis }}
-                    </div>
-                    <div class="textbox">
-                        Zmień avatar:
-                        {{ profile_form.image }}
-                    </div>
-                    <div class="textbox">
-                        Przedmiot:
-                        {{ profile_form.przedmiot }}
-                    </div>
-                    <div class="textbox">
-                        Miejscowość:
-                        {{ profile_form.miejscowosc }}
-                    </div>
-                    <div class="textbox">
-                        Uczeń/nauczyciel:
-                        {{ profile_form.affinity }}
+                        {{ profile_form.as_p }}
                     </div>
                 {% csrf_token %}
-            
+                    
                 <p><input type="submit" value="Zapisz zmiany"></p>
             </li>
             </ul>

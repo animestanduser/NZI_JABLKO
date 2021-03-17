@@ -81,7 +81,7 @@
                                                     <a href="{% url 'edit_view' %}"><span class="media-body">Edytuj profil</span></a>
                                                 </div>
                                                 <div class="card-body">
-                                                    <a href="{% url 'personal_information_edit' %}"><span class="media-body">Edytuj dane osobowe</span></a>
+                                                    <a href="{% url 'personal_information_edit_link' %}"><span class="media-body">Edytuj ustawienia wyszukiwania</span></a>
                                                 </div>
                                             </div>
                                         </h2>   
@@ -120,12 +120,7 @@
                             <span class="media-body">Lista korepetytorów</span>
                         </a>
                     </a>
-                    <a class="nav-item">
-                        <a class="nav-link" href="{% url 'chats' %}" style="margin-left: 2px;">
-                            <i class="fab fa-facebook-messenger" style="color: rgb(44, 168, 44);"></i>
-                            <span class="media-body">Wiadomości</span>
-                        </a>
-                    </a>
+
                     {% else %}
 
                     <a class="nav-item">
@@ -135,12 +130,6 @@
                         </a>
                     </a>
 
-                    <a class="nav-item">
-                        <a class="nav-link" href="{% url 'chats' %}" style="margin-left: 2px;">
-                            <i class="fab fa-facebook-messenger" style="color: rgb(44, 168, 44);"></i>
-                            <span class="media-body">Wiadomości</span>
-                        </a>
-                    </a>
                     {% endif %}
                     
                 </div>
@@ -168,8 +157,10 @@
             <div class="card shadow-lg" style="height: 100vh;">
                 
 
+            
 
                 {% for user in users %}
+                
                 <div class="accordion" id="prawaCzesc">
                     <div class="card">
                         <div class="card-header" id="headingOne">

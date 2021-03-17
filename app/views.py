@@ -19,7 +19,7 @@ from django.views import generic
 from django.contrib.auth.forms import UserChangeForm
 from django.http import HttpResponseRedirect
 from .models import Profile
-from .forms import UserEditForm, ProfileEditForm
+from .forms import UserEditForm, ProfileEditForm, ProfileOptionsForm
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from django.utils.decorators import method_decorator
@@ -39,6 +39,8 @@ def main_tlo(request):
         return render(request, 'app/main_tlo.html',
                       {'users': User.objects.exclude(username=request.user.username)})
 
+
+
     
 
 def start(request):
@@ -47,8 +49,10 @@ def start(request):
 def panel(request):
     return render(request, 'app/panel.html',)
 
-def personal_information_edit(request):
-    return render(request, 'app/personal_information_edit.html',)
+def personal_information_edit_link(request):
+    if request.method == "GET":
+            return render(request, 'app/personal_information_edit.html', {'users': User.objects.exclude(username=request.user.username)})
+    
 
 def base(request):
     return redirect('base',)
@@ -61,13 +65,16 @@ def find_page(request):
     return render(request, 'app/find_page.html',)
 
 def teachers_list(request):
-    return render(request, 'app/teachers_list.html',)
+    if request.method == "GET":
+            return render(request, 'app/teachers_list.html', {'users': User.objects.exclude(username=request.user.username)})
 
 def random_teacher(request):
-    return render(request, 'app/random_teacher.html',)    
+    if request.method == "GET":
+            return render(request, 'app/random_teacher.html', {'users': User.objects.exclude(username=request.user.username)})
 
 def panel_podglad(request):
-    return render(request, 'app/panel_podglad.html',)
+    if request.method == "GET":
+            return render(request, 'app/panel_podglad.html', {'users': User.objects.exclude(username=request.user.username)})
 
 def profile_edit(request):
     return render(request, 'app/profile_edit.html',)
@@ -184,8 +191,21 @@ def edit(request):
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
-    return render(request, 'app/edit.html', {'user_form': user_form, 'profile_form': profile_form})
-    return render(request, 'app/personal_information_edit.html', {'user_form': user_form, 'profile_form': profile_form})
+    return render(request, 'app/edit.html', {'users': User.objects.exclude(username=request.user.username),'user_form': user_form, 'profile_form': profile_form})
+
+
+@login_required
+def edit_personal(request):
+    if request.method == 'POST':
+
+        profile_settings_form = ProfileOptionsForm(instance=request.user.profile, data=request.POST, files=request.FILES)
+
+        if profile_settings_form.is_valid():
+            profile_settings_form.save()
+    else:
+        profile_settings_form = ProfileOptionsForm(instance=request.user.profile)
+    return render(request, 'app/personal_information_edit.html', {'profile_settings_form': profile_settings_form, 'users': User.objects.exclude(username=request.user.username)})
+
 
 def chat_view(request):
     if not request.user.is_authenticated:
@@ -202,29 +222,13 @@ def przedmiot_view(request):
                       {'users': User.objects.exclude(username=request.user.username)})
 
 def edit_view(request):
+    if request.method == "GET":
+        return render(request, 'app/edit.html',{'users': User.objects.exclude(username=request.user.username)})  
     if not request.user.is_authenticated:
         return redirect('index')
-    if request.method == "GET":
-        return render(request, 'app/edit.html',
-                      {'users': User.objects.exclude(username=request.user.username)})    
+      
 
 
 def showlist(request):
     displaynames=User.objects.all()
     return render(request, 'account_list.html',{"displayusername":displaynames})
-
-def edit_personal(request):
-    if request.method == 'POST':
-
-        user_form = UserEditForm(instance=request.user, data=request.POST)
-        profile_form = ProfileEditForm(instance=request.user.profile, data=request.POST, files=request.FILES)
-
-        if user_form.is_valid() and profile_form.is_valid():
-            user_form.save()
-            profile_form.save()
-    else:
-        user_form = UserEditForm(instance=request.user)
-        profile_form = ProfileEditForm(instance=request.user.profile)
-    return render(request, 'app/personal_information_edit.html', {'user_form': user_form, 'profile_form': profile_form})
-
-

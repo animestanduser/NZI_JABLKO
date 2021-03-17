@@ -6,7 +6,7 @@ from django.contrib.auth.models import AbstractUser
 from PIL import Image
 
 
-
+#model post
 class Post(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
@@ -23,6 +23,7 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+#model profilu
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
@@ -41,6 +42,7 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
         return f'{self.user.przedmiot} Profile'
         return f'{self.user.opis} Profile'
+        return f'{self.user.miejscowosc} Profile'
 
 
     def save(self, *args, **kwargs):
@@ -53,10 +55,11 @@ class Profile(models.Model):
             img.thumbnail(output_size)
             img.save(self.image.path)
 
+#model wyświetlania użytkowników
 class displayusername(models.Model):
     username=models.CharField(max_length=30)
 
-
+#model wiadomości
 class Message(models.Model):
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sender')
     receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='receiver')

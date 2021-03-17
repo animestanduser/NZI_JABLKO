@@ -49,7 +49,9 @@ urlpatterns = [
 
     path('random_teacher/', views.random_teacher, name='random_teacher'),
 
-    path('personal_information_edit/', views.personal_information_edit, name='personal_information_edit'),
+    path('personal_information_edit/', views.edit_personal, name='edit_personal'),
+
+    path('personal_information_edit/', views.personal_information_edit_link, name='personal_information_edit_link'),
 
     path('edit/', views.edit, name='edit'),
 
@@ -61,9 +63,8 @@ urlpatterns = [
 
     path('edit/', views.edit_view, name='edit_view'),
 
-    path('personal_information_edit/', views.edit_personal, name='edit_personal'),
-
-    path('panel_podglad/', views.przedmiot_view, name='przedmioty'),
+    
+    
     path('chat/<int:sender>/<int:receiver>/', views.message_view, name='chat'),
     path('api/messages/<int:sender>/<int:receiver>/', views.message_list, name='message-detail'),
     path('api/messages/', views.message_list, name='message-list'),

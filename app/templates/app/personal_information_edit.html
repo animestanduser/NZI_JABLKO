@@ -12,29 +12,26 @@
 
     <form method="POST" enctype="multipart/form-data">
 
-        <legend class="border-bottom mb-4">Dane wyszukiwania</legend>
+        <legend class="border-bottom mb-4">Informacje o profilu</legend>
         
         <form method="post" enctype="multipart/form-data">
-        <ul class="list-group list-group-flush" style="height: 400px; overflow-x:hidden; float:left">
-            <li class="list-group-item">
-                <div class="textbox">
-                    Przedmiot:
-                    {{ profile_form.przedmiot }}
-                </div>
-                <div class="textbox">
-                    Miejscowość:
-                    {{ profile_form.miejscowosc }}
-                </div>
-                <div class="textbox">
-                    Uczeń/nauczyciel:
-                    {{ profile_form.affinity }}
-                </div>
-                
-            {% csrf_token %}
-        
-            <p><input type="submit" value="Zapisz zmiany"></p>
-        </li>
-        </ul>
-        </form>
+            <ul class="list-group list-group-flush" style="height: 400px; overflow-x:hidden; float:left">
+                <li class="list-group-item">
+                    <div class="textbox">
+                        Przedmiot:
+                        {{ profile_settings_form.przedmiot }}
+                    </div>
+                    <div class="textbox">
+                        Miejscowość:
+                        {{ profile_settings_form.miejscowosc }}
+                    </div>
+                {% csrf_token %}
+            
+                <p><input type="submit" value="Zapisz zmiany"></p>
+            </li>
+            </ul>
+            </form>
+
+    </form>
 </div>
 {% endblock %}
