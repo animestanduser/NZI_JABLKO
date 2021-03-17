@@ -1,0 +1,70 @@
+{% extends 'app/start_tlo.html' %} 
+
+{% block content %}
+
+
+<center><p>
+
+<form method="post">
+    {% csrf_token %}
+
+
+      <div class="login-box" style="margin-top:-30px ;">
+        <h1>Login</h1>
+        <div class="textbox">
+             <i class="fas fa-user"></i>
+             {{ form.username }}
+         </div>
+
+         <br>
+
+
+         <h1>Imię</h1>
+        <div class="textbox">
+             <i class="fas fa-user"></i>
+             {{ form.first_name }}
+         </div>
+
+         <br>
+
+         <h1>E-Mail</h1>
+        <div class="textbox">
+             <i class="fas fa-at"></i>
+             {{ form.email }}
+         </div>
+
+         <br>
+
+
+         <h1>Hasło</h1>
+         <div class="textbox">
+             <i class="fas fa-key"></i>
+             {{ form.password1 }}
+          </div>
+
+          <br>
+
+
+          <h1>Powtórz hasło</h1>
+         <div class="textbox">
+             <i class="fas fa-key"></i>
+             {{ form.password2 }}
+          </div>
+          <br>
+
+          <h1>Nayczuciel/Uczeń</h1>
+             {{ form.affinity }}
+             
+          <br>
+
+    <button style="margin-top: 20px;" class="btn btn-success" type="submit">Zarejestruj się</button>
+    <br>
+    <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-danger btn-sm" style="width: 130px;"><i class="fab fa-google"></i></a>
+    <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-primary btn-sm" style="width: 130px;"><i class="fab fa-facebook"></i></a>
+  </form>
+
+</p></center>
+
+{% endblock %}
+
+    

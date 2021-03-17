@@ -1,0 +1,90 @@
+{% extends 'app/start_tlo.html' %}
+
+
+
+{% block title %}Log In{% endblock title %}
+
+{% block content %}
+
+
+
+{% if form.errors %}
+<p>Błędny login lub hasło. Spróbuj jeszcze raz</p>
+{% endif %}
+
+
+
+
+
+
+<center><p>
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+
+
+
+
+    <div class="login-box">
+      <h1>Login</h1>
+      <div class="textbox">
+          <i class="fas fa-user"></i>
+          {{ form.username }}
+      </div>
+
+      <br>
+
+      <h1>Hasło</h1>
+      <div class="textbox">
+          <i class="fas fa-key"></i>
+          {{ form.password }}
+      </div>
+
+
+
+      <input style="margin-top: 20px;" class="btn btn-success" type="submit" value="Zaloguj się" /><br><br><br>
+
+      <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-danger btn-sm" style="width: 130px;"><i class="fab fa-google"></i></a>
+      <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-primary btn-sm" style="width: 130px;"><i class="fab fa-facebook"></i></a>
+
+      <br><br>
+
+      <a href="{% url 'password_reset' %}" class="btn btn-secondary btn-sm">Zapomniałeś hasła?</a>  
+    </div>
+
+
+
+
+
+
+<input style="text-align: center" type="hidden" name="next" value="{{ next }}" />
+</form>
+</p></center>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
