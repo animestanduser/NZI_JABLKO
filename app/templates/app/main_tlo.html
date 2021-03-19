@@ -70,18 +70,18 @@
                                         <h2 class="mb-0">
                                                 <button class="btn btn-block text-left" 
                                                 type="button" data-toggle="collapse" data-target="#lTwo" aria-expanded="true" aria-controls="lTwo">
-                                                <a href="{% url 'panel_podglad' %}"><span class="media-body">Panel użytkownika</span></a>
+                                                <a href="{% url 'profil' %}"><span class="media-body">Panel użytkownika</span></a>
                                                 <i class="fas fa-caret-down" style="color: rgb(44, 168, 44);"></i></button>
                                             
                                             <div id="lTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#headingTwo" style="font-size: 14px;">
                                                 <div class="card-body">
-                                                    <a href="{% url 'panel_podglad' %}"><span class="media-body">Podgląd profilu</span></a>
+                                                    <a href="{% url 'profil' %}"><span class="media-body">Podgląd profilu</span></a>
                                                 </div>
                                                 <div class="card-body">
-                                                    <a href="{% url 'edit_view' %}"><span class="media-body">Edytuj profil</span></a>
+                                                    <a href="{% url 'edit' %}"><span class="media-body">Edytuj profil</span></a>
                                                 </div>
                                                 <div class="card-body">
-                                                    <a href="{% url 'personal_information_edit_link' %}"><span class="media-body">Edytuj ustawienia wyszukiwania</span></a>
+                                                    <a href="{% url 'edit_personal' %}"><span class="media-body">Edytuj ustawienia wyszukiwania</span></a>
                                                 </div>
                                             </div>
                                         </h2>   
@@ -101,21 +101,21 @@
                     </div>
                     {% if user.profile.korepetytor == False %}
                     <a class="nav-item" style="margin-left: 10px;">
-                        <a class="nav-link" href="{% url 'random_teacher' %}">
+                        <a class="nav-link" href="{% url 'random' %}">
                             <i class="fas fa-dice" style="color: rgb(44, 168, 44);"></i>
                             <span class="media-body">Chybił-trafił</span>
                         </a>
                     </a>
                     
                     <a class="nav-item">
-                        <a class="nav-link active" href="{% url 'find_page' %}" style="margin-left: 5px;">
+                        <a class="nav-link active" href="{% url 'search' %}" style="margin-left: 5px;">
                             <i class="fas fa-clipboard-list" style="color: rgb(44, 168, 44);"></i>
                             <span class="media-body" style="margin-left: 4px;">Szukaj korepetytorów</span>
                         </a>
                     </a>
                     
                     <a class="nav-item">
-                        <a class="nav-link" href="{% url 'teachers_list' %}" style="margin-left: 2px;">
+                        <a class="nav-link" href="{% url 'list' %}" style="margin-left: 2px;">
                             <i class="fas fa-user-friends" style="color: rgb(44, 168, 44);"></i>
                             <span class="media-body">Lista korepetytorów</span>
                         </a>
@@ -124,7 +124,7 @@
                     {% else %}
 
                     <a class="nav-item">
-                        <a class="nav-link" href="{% url 'teachers_list' %}" style="margin-left: 2px;">
+                        <a class="nav-link" href="{% url 'list' %}" style="margin-left: 2px;">
                             <i class="fas fa-user-friends" style="color: rgb(44, 168, 44);"></i>
                             <span class="media-body">Lista uczniów</span>
                         </a>

@@ -8,12 +8,11 @@ from django.conf import settings
 
 urlpatterns = [
 
-    #strona rejestracji
+    #strona główna(muszą być oba bo inaczej error)
     path('', views.start, name='home'),
-
     path('', views.start, name='index'),
 
-
+    #rejestracja i przypominanie hasła
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
@@ -35,28 +34,26 @@ urlpatterns = [
 
   
 
+    #Podgląd profilu
+    path('profil/', views.profil, name='profil'),
 
-    path('panel_podglad/', views.panel_podglad, name='panel_podglad'),
+    #Szukaj korepetytorów
+    path('search/', views.search, name='search'),
 
+    #Lista korepetytorów
+    path('list/', views.list, name='list'),
 
-    path('find_page/', views.find_page, name='find_page'),
+    #Chybił trafił
+    path('random/', views.random, name='random'),
 
-    path('teachers_list/', views.teachers_list, name='teachers_list'),
+    #Edycja przedmiotów oraz miejscowości
+    path('edit_personal/', views.edit_personal, name='edit_personal'),
 
-    path('random_teacher/', views.random_teacher, name='random_teacher'),
-
-    path('personal_information_edit/', views.edit_personal, name='edit_personal'),
-
-    path('personal_information_edit/', views.personal_information_edit_link, name='personal_information_edit_link'),
-
+    #Edycja danych osobowych
     path('edit/', views.edit, name='edit'),
     
   
 
-    path('edit/', views.edit_view, name='edit_view'),
-
-    
-    
     path('chat/<int:sender>/<int:receiver>/', views.message_view, name='chat'),
     path('api/messages/<int:sender>/<int:receiver>/', views.message_list, name='message-detail'),
     path('api/messages/', views.message_list, name='message-list'),

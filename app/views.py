@@ -33,12 +33,6 @@ from .models import Message
 from .serializers import MessageSerializer, UserSerializer
 
 
-def get_profiles(request):
-    allProfiles=Profile.objects.all()
-    context = {
-        'allProfiles':allProfiles
-    }
-    return render(request, 'app/find_page.html', context=context)
 
 
 
@@ -46,8 +40,6 @@ def get_profiles(request):
 
 
 
-
-    
 
 def start(request):
     if request.user.is_authenticated:
@@ -57,30 +49,6 @@ def start(request):
 
 
 
-def personal_information_edit_link(request):
-    if request.method == "GET":
-            return render(request, 'app/personal_information_edit.html', {'users': User.objects.exclude(username=request.user.username)})
-    
-
-
-def find_page(request):
-    return render(request, 'app/find_page.html', {'users': User.objects.exclude(username=request.user.username)})
-
-def teachers_list(request):
-    if request.method == "GET":
-            return render(request, 'app/teachers_list.html', {'users': User.objects.exclude(username=request.user.username)})
-
-def random_teacher(request):
-    if request.method == "GET":
-            return render(request, 'app/random_teacher.html', {'users': User.objects.exclude(username=request.user.username)})
-
-def panel_podglad(request):
-    if request.method == "GET":
-            return render(request, 'app/panel_podglad.html', {'users': User.objects.exclude(username=request.user.username)})
-
-
-def edit(request):
-    return render(request, 'app/edit.html')
 
 
 def signup(request):
@@ -112,7 +80,6 @@ def signup(request):
     return render(request, 'registration/signup.html', {'form': form})
 
 
-
 def activate(request, uidb64, token, backend='django.contrib.auth.backends.ModelBackend'):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
@@ -126,6 +93,7 @@ def activate(request, uidb64, token, backend='django.contrib.auth.backends.Model
         return HttpResponse('Aktywacja przebiegła pomyślnie')
     else:
         return HttpResponse('Aktywacja jest błędna!')
+
 
 
 
@@ -143,6 +111,74 @@ def change_password(request):
     return render(request, 'registration/change_password.html', {
         'form': form
     })
+
+
+
+def profil(request):
+    if request.method == "GET":
+            return render(request, 'app/profil.html', {'users': User.objects.exclude(username=request.user.username)})
+
+
+
+
+def search(request):
+    return render(request, 'app/search.html', {'users': User.objects.exclude(username=request.user.username)})
+
+
+
+
+def list(request):
+    if request.method == "GET":
+            return render(request, 'app/list.html', {'users': User.objects.exclude(username=request.user.username)})
+
+def random(request):
+    if request.method == "GET":
+            return render(request, 'app/random.html', {'users': User.objects.exclude(username=request.user.username)})
+
+
+
+
+@login_required
+def edit_personal(request):
+    if request.method == 'POST':
+
+        profile_settings_form = ProfileOptionsForm(instance=request.user.profile, data=request.POST, files=request.FILES)
+
+        if profile_settings_form.is_valid():
+            profile_settings_form.save()
+    else:
+        profile_settings_form = ProfileOptionsForm(instance=request.user.profile)
+    return render(request, 'app/edit_personal.html', {'profile_settings_form': profile_settings_form, 'users': User.objects.exclude(username=request.user.username)})
+
+@login_required
+def edit(request):
+    if request.method == 'POST':
+
+        user_form = UserEditForm(instance=request.user, data=request.POST)
+        profile_form = ProfileEditForm(instance=request.user.profile, data=request.POST, files=request.FILES)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+    else:
+        user_form = UserEditForm(instance=request.user)
+        profile_form = ProfileEditForm(instance=request.user.profile)
+    return render(request, 'app/edit.html', {'users': User.objects.exclude(username=request.user.username),'user_form': user_form, 'profile_form': profile_form})
+
+      
+def message_view(request, sender, receiver):
+    if not request.user.is_authenticated:
+        return redirect('index')
+    if request.method == "GET":
+        return render(request, "app/messages.html",
+                      {'users': User.objects.exclude(username=request.user.username),
+                       'receiver': User.objects.get(id=receiver),
+                       'messages': Message.objects.filter(sender_id=sender, receiver_id=receiver) |
+                                   Message.objects.filter(sender_id=receiver, receiver_id=sender)})
+
+
+
+
 
 
 @csrf_exempt
@@ -167,67 +203,5 @@ def message_list(request, sender=None, receiver=None):
 
 
 
-def message_view(request, sender, receiver):
-    if not request.user.is_authenticated:
-        return redirect('index')
-    if request.method == "GET":
-        return render(request, "app/messages.html",
-                      {'users': User.objects.exclude(username=request.user.username),
-                       'receiver': User.objects.get(id=receiver),
-                       'messages': Message.objects.filter(sender_id=sender, receiver_id=receiver) |
-                                   Message.objects.filter(sender_id=receiver, receiver_id=sender)})
-
-@login_required
-def edit(request):
-    if request.method == 'POST':
-
-        user_form = UserEditForm(instance=request.user, data=request.POST)
-        profile_form = ProfileEditForm(instance=request.user.profile, data=request.POST, files=request.FILES)
-
-        if user_form.is_valid() and profile_form.is_valid():
-            user_form.save()
-            profile_form.save()
-    else:
-        user_form = UserEditForm(instance=request.user)
-        profile_form = ProfileEditForm(instance=request.user.profile)
-    return render(request, 'app/edit.html', {'users': User.objects.exclude(username=request.user.username),'user_form': user_form, 'profile_form': profile_form})
 
 
-@login_required
-def edit_personal(request):
-    if request.method == 'POST':
-
-        profile_settings_form = ProfileOptionsForm(instance=request.user.profile, data=request.POST, files=request.FILES)
-
-        if profile_settings_form.is_valid():
-            profile_settings_form.save()
-    else:
-        profile_settings_form = ProfileOptionsForm(instance=request.user.profile)
-    return render(request, 'app/personal_information_edit.html', {'profile_settings_form': profile_settings_form, 'users': User.objects.exclude(username=request.user.username)})
-
-
-def chat_view(request):
-    if not request.user.is_authenticated:
-        return redirect('index')
-    if request.method == "GET":
-        return render(request, 'app/chat.html',
-                      {'users': User.objects.exclude(username=request.user.username)})
-
-def przedmiot_view(request):
-    if not request.user.is_authenticated:
-        return redirect('index')
-    if request.method == "GET":
-        return render(request, 'app/panel_podglad.html',
-                      {'users': User.objects.exclude(username=request.user.username)})
-
-def edit_view(request):
-    if request.method == "GET":
-        return render(request, 'app/edit.html',{'users': User.objects.exclude(username=request.user.username)})  
-    if not request.user.is_authenticated:
-        return redirect('index')
-      
-
-
-def showlist(request):
-    displaynames=User.objects.all()
-    return render(request, 'account_list.html',{"displayusername":displaynames})
