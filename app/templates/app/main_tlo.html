@@ -89,10 +89,10 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <a href="{% url 'panel' %}"><span class="media-body">Ustawienia</span></a>
+                                <a href="{% url 'index' %}"><span class="media-body">Ustawienia</span></a>
                             </div>
                             <div class="card-body">
-                                <a href="{% url 'panel' %}"><span class="media-body">Kontakt</span></a>
+                                <a href="{% url 'index' %}"><span class="media-body">Kontakt</span></a>
                             </div>
                             <div class="card-body">
                                 <a href="{% url 'logout' %}"><span class="media-body">Logout</span></a>
@@ -130,6 +130,15 @@
                         </a>
                     </a>
 
+                    {% endif %}
+
+                    {% if request.user.is_superuser %}
+                    <a class="nav-item">
+                        <a class="nav-link" href="{% url 'admin:index' %}" style="margin-left: 2px;">
+                            <i class="fas fa-tools" style="color: rgb(44, 168, 44);"></i>
+                            <span class="media-body">Panel administracyjny</span>
+                        </a>
+                    </a>
                     {% endif %}
                     
                 </div>

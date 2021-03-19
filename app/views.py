@@ -45,31 +45,23 @@ def get_profiles(request):
 
 
 
-def main_tlo(request):
-        return render(request, 'app/main_tlo.html',
-                      {'users': User.objects.exclude(username=request.user.username)})
-
 
 
     
 
 def start(request):
-    return render(request, 'app/start.html',)
+    if request.user.is_authenticated:
+        return render(request, 'app/index.html', {'users': User.objects.exclude(username=request.user.username)})
+    else:
+        return render(request, 'app/start.html',)
 
-def panel(request):
-    return render(request, 'app/panel.html',)
+
 
 def personal_information_edit_link(request):
     if request.method == "GET":
             return render(request, 'app/personal_information_edit.html', {'users': User.objects.exclude(username=request.user.username)})
     
 
-def base(request):
-    return redirect('base',)
-
-def index(request):
-        if request.method == "GET":
-            return render(request, 'app/index.html', {'users': User.objects.exclude(username=request.user.username)})
 
 def find_page(request):
     return render(request, 'app/find_page.html', {'users': User.objects.exclude(username=request.user.username)})
@@ -86,14 +78,10 @@ def panel_podglad(request):
     if request.method == "GET":
             return render(request, 'app/panel_podglad.html', {'users': User.objects.exclude(username=request.user.username)})
 
-def profile_edit(request):
-    return render(request, 'app/profile_edit.html',)
 
-def pokazpanel(request):
+def edit(request):
     return render(request, 'app/edit.html')
 
-def pokazliste(request):
-    return render(request, 'app/account_list.html')
 
 def signup(request):
     if request.method == 'POST':

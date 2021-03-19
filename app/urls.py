@@ -9,12 +9,11 @@ from django.conf import settings
 urlpatterns = [
 
     #strona rejestracji
-    path('', views.start, name='start'),
+    path('', views.start, name='home'),
+
+    path('', views.start, name='index'),
 
 
-
-    path('', views.base, name='base'),
-    url(r'^$', views.base, name='home'),
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
@@ -32,16 +31,13 @@ urlpatterns = [
 
  
     path('reset/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(template_name = "registration/password_reset_form.html"), name ='password_reset_confirm'),
-    
-    
-    path('panel/', views.panel, name='panel'),
+ 
 
-    path('main_tlo/', views.main_tlo, name='main_tlo'),
+  
 
 
     path('panel_podglad/', views.panel_podglad, name='panel_podglad'),
 
-    path('profile_edit/', views.profile_edit, name='profile_edit'),
 
     path('find_page/', views.find_page, name='find_page'),
 
@@ -54,12 +50,8 @@ urlpatterns = [
     path('personal_information_edit/', views.personal_information_edit_link, name='personal_information_edit_link'),
 
     path('edit/', views.edit, name='edit'),
-
-    path('account_list/', views.showlist),
-
-    path('index/', views.index, name='index'),
     
-    path('main_tlo/', views.main_tlo, name='chats'),
+  
 
     path('edit/', views.edit_view, name='edit_view'),
 
