@@ -1,36 +1,22 @@
-from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
+from django import forms
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, update_session_auth_hash
-from django.shortcuts import redirect
-from django.shortcuts import render, get_object_or_404
-from django.utils import timezone
-from django.http import HttpResponse
 from django.contrib.sites.shortcuts import get_current_site
+from django.contrib import messages
+from django.shortcuts import render, redirect
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
-from .tokens import account_activation_token
-from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
-from django.contrib.auth.decorators import user_passes_test
-from django.contrib import messages
-from django import forms
-from .forms import SignupForm 
-from django.views import generic
-from django.contrib.auth.forms import UserChangeForm
-from django.http import HttpResponseRedirect
-from .models import Profile
-from .forms import UserEditForm, ProfileEditForm, ProfileOptionsForm
-from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
-from django.utils.decorators import method_decorator
-from django.views.generic import TemplateView
-from django.shortcuts import render
-from .models import displayusername
 from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
-from .models import Message
 from .serializers import MessageSerializer, UserSerializer
+from .tokens import account_activation_token
+from .forms import SignupForm, UserEditForm, ProfileEditForm, ProfileOptionsForm
+from .models import Profile, Message
 
 
 
