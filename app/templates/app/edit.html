@@ -1,0 +1,38 @@
+{% extends 'app/main_tlo.html' %} 
+
+
+{% block content %}
+
+<div>
+
+    <div class="media">
+        <img class="rounder-circle account-img" src="{{user.profile.image.url}}" height="130px" width="130px">
+    </div>
+
+
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <legend class="border-bottom mb-4">Informacje o profilu</legend>
+        
+        <form method="post" enctype="multipart/form-data">
+            <ul class="list-group list-group-flush" style="height: 400px; overflow-x:hidden; float:left">
+                <li class="list-group-item">
+                    <div class="textbox">
+                        {{ user_form.as_p }}
+                    </div>
+                    <div class="textbox">
+                        {{ profile_form.as_p }}
+                    </div>
+                {% csrf_token %}
+                    
+                <p><input type="submit" value="Zapisz zmiany"></p>
+            </li>
+            </ul>
+            </form>
+
+    </form>
+</div>
+
+{% endblock %}
+

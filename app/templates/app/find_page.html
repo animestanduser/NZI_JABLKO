@@ -1,0 +1,41 @@
+{% extends 'app/main_tlo.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h1>Lista dostępnych korepetytorów</h1>
+
+
+<table style="width: 100%;" border=1px border-collapse="collapse">
+    <tr>
+
+        <th>Zdjecie</th>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Przedmiot</th>
+        <th>Opis</th>
+        <th>Miejscowosc</th>
+
+    </tr>
+    {% for user in users %}
+    {% if user.first_name != "" and user.profile.opis != "empty" %}
+    <tr>
+
+        <th>
+            <a href="{% url 'chat' request.user.id user.id %}" id="user{{ user.id }}">
+                <img class="mr-3" src="{{user.profile.image.url}}" width="40" height="40" alt="avatar">
+            </a>
+        </th>
+        <th>{{user.first_name}} </th>
+        <th>{{user.last_name}} </th>
+        <th>{{user.profile.przedmiot}}</th>
+        <th>{{user.profile.opis}}</th>
+        <th>{{user.profile.miejscowosc}}</th>
+
+    </tr>
+    {% endif %}
+    {% endfor %}
+</table>
+
+{% endblock %}

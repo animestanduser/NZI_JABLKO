@@ -1,0 +1,42 @@
+{% extends 'app/main_tlo.html' %} 
+
+{% block content %}
+
+<div>
+
+    <div class="media">
+        <img class="rounder-circle account-img" src="{{user.profile.image.url}}" height="130px" width="130px">
+        <div class="media-body" style="margin-left: 10px;">
+            <br>
+            <br>
+            <br>
+            
+        </div>
+    </div>
+    <h2 class="account-heading">{{user.first_name}} {{user.last_name}}</h2>
+    {% if user.profile.korepetytor == True %}
+    <h5>Korepetytor</h3>
+{% else %}
+    <h5>Uczeń</h3>   
+{% endif %}
+
+    <br>
+    <legend class="border-bottom mb-4">Opis</legend>
+    <ul class="list-group list-group-flush" style="height: 300px; overflow-x:hidden;">
+        <li class="list-group-item">
+
+                <div class="uzytkownik_opis" id="opis_panel" style="float:left;">
+                {{user.profile.opis}}
+                </div>
+
+        </li>
+    </ul>
+    <br>
+    <legend class="border-bottom mb-4">Przedmioty</legend>
+    {% for user.przedmiot in user.przedmiots%}
+    <div class="jezyk_box" style="padding: 5px; display: inline-block; border-radius: 5px; height: 2em; border: 2px solid rgb(35, 151, 40); outline: none; text-align: center;"><p>{{user.profile.przedmiot}}</p></div>
+    <div class="jezyk_box" style="padding: 5px; display: inline-block; border-radius: 5px; height: 2em; border: 2px solid rgb(35, 151, 40); outline: none; text-align: center;"><p>{{user.profile.przedmiot}}</p></div>
+    <div class="jezyk_box" style="padding: 5px; display: inline-block; border-radius: 5px; height: 2em; border: 2px solid rgb(35, 151, 40); outline: none; text-align: center;"><p>{{user.profile.przedmiot}}</p></div>
+    {% endfor %}
+</div>
+{% endblock %}
