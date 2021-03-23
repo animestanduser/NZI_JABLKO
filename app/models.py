@@ -52,6 +52,12 @@ class Profile(models.Model):
             img.save(self.image.path)
 
 
+#Model zgłoszeń użytkowników
+class Report(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    message = models.TextField()
+
+
 #Model wiadomości
 class Message(models.Model):
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sender')

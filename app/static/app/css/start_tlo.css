@@ -100,6 +100,19 @@ body{
 }
 
 
+.mail-box{
+
+    margin-left: 400px;
+}
+
+
+.mail-box h1{
+
+    font-size: 25px;
+    color: #bdbdbd;
+}
+
+
 .card h1{
     
     color: #bdbdbd;

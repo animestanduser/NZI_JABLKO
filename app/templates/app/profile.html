@@ -15,10 +15,15 @@
     </div>
     <h2 class="account-heading">{{user.first_name}} {{user.last_name}}</h2>
     {% if user.profile.korepetytor == True %}
-    <h5>Korepetytor</h3>
-{% else %}
-    <h5>Uczeń</h3>   
-{% endif %}
+        <h5>Korepetytor</h3>
+    {% else %}
+        <h5>Uczeń</h3>   
+    {% endif %}
+
+    
+    {% if request.user.id != user.id %}
+    <button type="button" class="btn btn-danger">Zgłoś</button>
+    {% endif %}
 
     <br>
     <legend class="border-bottom mb-4">Opis</legend>
