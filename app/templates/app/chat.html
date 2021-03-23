@@ -20,46 +20,38 @@
 
     
 
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="card shadow-lg" style="height: 70vh; border-radius: 25px ">
+                <div class="stopka" style="height: 50px; width: 928px; background: rgb(9,105,0); background: linear-gradient(90deg, rgba(9,105,0,1) 0%, rgba(150,219,126,1) 48%, rgba(166,237,139,1) 70%, rgba(219,255,180,1) 100%); border-radius: 25px 25px 0px 0px;"></div>
+                <div id="board" class="section white lighten-3" style="height: 58vh;width: 928px; padding: 15px; overflow-y: scroll;">
+                    {% block messages %}
 
-
-<div class="col-8 col-md-6 col-sm-2 mx-auto">
-
-    <div class="card shadow-lg p-5 mb-5" style="height: 70vh; border-radius: 25px ">
-        <div class="card-body">
-            <div class="stopka" style="height: 50px; width: 909px; background: rgb(9,105,0); background: linear-gradient(90deg, rgba(9,105,0,1) 0%, rgba(150,219,126,1) 48%, rgba(166,237,139,1) 70%, rgba(219,255,180,1) 100%); border-radius: 25px 25px 0px 0px; margin-left: -64px; margin-top: -63px;"></div>
-            <div id="board" class="section white lighten-3" style="height: 58vh;width: 909px; padding: 15px; overflow-y: scroll; margin-left: -64px;">
-                {% block messages %}
-
-                {% endblock %}
-            </div>
-
-
-
-
-            
-
-
-            <form id="chat-box" class="form-group {% block hide %}hide{% endblock %}" method="post" style="width: 1200px;">
-                {% csrf_token %}
-                <div class="stopka" style="width: 909px;height: 3px; background: rgb(9,105,0); background: linear-gradient(90deg, rgba(9,105,0,1) 0%, rgba(150,219,126,1) 48%, rgba(166,237,139,1) 70%, rgba(219,255,180,1) 100%); margin-left: -64px;"></div>
-                <div class="row" style="margin-top: -10px;">
-                    
-                    <div class="input-field" style="width: 750px;">
-                        <input id="id_message" name="message" type="text" placeholder="Napisz wiadomość..">
-                    </div>
-                    
-                    <div style="line-height: 80px; margin-left: 30px;">
-                        <button class="btn btn-floating green lighten-1 waves-effect waves-light"><i class="material-icons">send</i></button>
-                    </div>
-                    
+                    {% endblock %}
                 </div>
-            </form>
-        
-        
-        
+
+
+                <form id="chat-box" class="form-group {% block hide %}hide{% endblock %}" method="post" style="width: 928px;">
+                    {% csrf_token %}
+                    <div class="stopka" style="width: 928px;height: 3px; background: rgb(9,105,0); background: linear-gradient(90deg, rgba(9,105,0,1) 0%, rgba(150,219,126,1) 48%, rgba(166,237,139,1) 70%, rgba(219,255,180,1) 100%);"></div>
+                    <div class="row" style="margin-bottom: -20px;">
+                        <div class="col-11">
+                            <div class="input-field">
+                                <input id="id_message" name="message" type="text" placeholder="Napisz wiadomość..">
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <div >
+                             <button class="btn btn-floating green lighten-1 waves-effect waves-light" style="margin-bottom: -50px;"><i class="material-icons">send</i></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
+        <div class="col-3"></div>
     </div>
-</div>
 
 
 

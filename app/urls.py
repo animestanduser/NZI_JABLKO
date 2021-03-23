@@ -35,7 +35,8 @@ urlpatterns = [
   
 
     #Podgląd profilu
-    path('profil/', views.profil, name='profil'),
+    path('profile/<int:user>/', views.profile, name='profile'),
+    
 
     #Szukaj korepetytorów
     path('search/', views.search, name='search'),
@@ -53,8 +54,8 @@ urlpatterns = [
     path('edit/', views.edit, name='edit'),
     
   
-
     path('chat/<int:sender>/<int:receiver>/', views.message_view, name='chat'),
+
     path('api/messages/<int:sender>/<int:receiver>/', views.message_list, name='message-detail'),
     path('api/messages/', views.message_list, name='message-list'),
 ]

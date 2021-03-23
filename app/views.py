@@ -100,9 +100,11 @@ def change_password(request):
 
 
 
-def profil(request):
+def profile(request, user):
     if request.method == "GET":
-            return render(request, 'app/profil.html', {'users': User.objects.exclude(username=request.user.username)})
+            return render(request, 'app/profile.html',
+             {'users': User.objects.exclude(username=request.user.username),
+                       'user': User.objects.get(id=user)})
 
 
 

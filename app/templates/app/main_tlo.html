@@ -56,9 +56,12 @@
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h2 class="mb-0">
-                                <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#lOne" aria-expanded="true" aria-controls="lOne">
-                                    <img class="mr-3" src="{{user.profile.image.url}}" width="40" height="40" alt="avatar">
-                                    {{user.first_name}} {{user.last_name}} 
+                                <button  class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#lOne" aria-expanded="true" aria-controls="lOne">
+                                    
+                                    <img class="mr-3" src="{{request.user.profile.image.url}}" width="40" height="40" alt="avatar">
+                                    {{request.user.first_name}} {{request.user.last_name}} 
+                                   
+
                                 </button>
                             </h2>
                         </div>
@@ -70,12 +73,12 @@
                                         <h2 class="mb-0">
                                                 <button class="btn btn-block text-left" 
                                                 type="button" data-toggle="collapse" data-target="#lTwo" aria-expanded="true" aria-controls="lTwo">
-                                                <a href="{% url 'profil' %}"><span class="media-body">Panel użytkownika</span></a>
+                                                <a href="{% url 'profile' request.user.id %}"><span class="media-body">Panel użytkownika</span></a>
                                                 <i class="fas fa-caret-down" style="color: rgb(44, 168, 44);"></i></button>
-                                            
+
                                             <div id="lTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#headingTwo" style="font-size: 14px;">
                                                 <div class="card-body">
-                                                    <a href="{% url 'profil' %}"><span class="media-body">Podgląd profilu</span></a>
+                                                    <a href="{% url 'profile' request.user.id %}"><span class="media-body">Podgląd profilu</span></a>
                                                 </div>
                                                 <div class="card-body">
                                                     <a href="{% url 'edit' %}"><span class="media-body">Edytuj profil</span></a>
@@ -99,7 +102,7 @@
                             </div>
                         </div>
                     </div>
-                    {% if user.profile.korepetytor == False %}
+                    {% if request.user.profile.korepetytor == False %}
                     <a class="nav-item" style="margin-left: 10px;">
                         <a class="nav-link" href="{% url 'random' %}">
                             <i class="fas fa-dice" style="color: rgb(44, 168, 44);"></i>
@@ -174,8 +177,13 @@
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h2 class="mb-0">
+
+                                <a href="{% url 'profile' user.id %}">
                                 
                                     <img class="mr-3" src="{{user.profile.image.url}}" width="40" height="40" alt="avatar">
+
+                                </a>
+                                    
                                     <span class="title" style="font-size: 15;">{{user.first_name}} {{user.last_name}}<!--{{ user.username }}--> </span>
 
                                     
