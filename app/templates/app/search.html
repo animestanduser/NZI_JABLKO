@@ -4,38 +4,26 @@
 
 {% block content %}
 
-<h1>Lista dostępnych korepetytorów</h1>
 
 
-<table style="width: 100%;" border=1px border-collapse="collapse">
-    <tr>
-
-        <th>Zdjecie</th>
-        <th>Imię</th>
-        <th>Nazwisko</th>
-        <th>Przedmiot</th>
-        <th>Opis</th>
-        <th>Miejscowosc</th>
-
-    </tr>
+<ul class="list-group list-group-flush" style="height: 600px; overflow-x:hidden;">
+    <li class="list-group-item" style="background-color: rgb(255, 255, 255); border-radius: 5px 5px 5px 5px;">
+<div class="row">
     {% for user in users %}
     {% if user.first_name != "" and user.profile.opis != "empty" %}
-    <tr>
-
-        <th>
-            <a href="{% url 'chat' request.user.id user.id %}" id="user{{ user.id }}">
-                <img class="mr-3" src="{{user.profile.image.url}}" width="40" height="40" alt="avatar">
+    <div class="col-4">
+        <div class="user_card" style="height: 250px; width: 180px; background-image: linear-gradient(rgb(80, 219, 177),rgb(111, 240, 122)); float: left; margin: 30px; border-radius: 5px 5px 5px 5px; box-shadow: 0px 4px 5px 1px #cccccc;" >
+            <img class="rounder-circle account-img" src="{{user.profile.image.url}}" height="130px" width="130px"><br>
+            {{user.first_name}} {{user.last_name}}<br><br><br>
+            <a href="{% url 'profile' user.id %}">
+            <button type="button" class="btn btn-light">Zobacz profil</button>
             </a>
-        </th>
-        <th>{{user.first_name}} </th>
-        <th>{{user.last_name}} </th>
-        <th>{{user.profile.przedmiot}}</th>
-        <th>{{user.profile.opis}}</th>
-        <th>{{user.profile.miejscowosc}}</th>
-
-    </tr>
+        </div> 
+    </div>
     {% endif %}
     {% endfor %}
-</table>
+</div>
+</li>
+</ul>
 
 {% endblock %}
