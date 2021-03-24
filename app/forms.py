@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.files.images import get_image_dimensions
 from .models import Profile
 from .models import Post
+from .models import Report
 
 
 
@@ -47,4 +48,13 @@ class ProfileOptionsForm(forms.ModelForm):
     widget = {
             'przedmiot': forms.RadioSelect(attrs={'class':'form-control'}),
             'miejscowosc': forms.RadioSelect(attrs={'class':'form-control'}),
+    }
+
+class ReportForm(forms.ModelForm):
+    class Meta:
+        model = Report
+        fields = ('message',)
+
+    widget = {
+            'message': forms.Textarea(attrs={'class':'form-control'}),
     }

@@ -22,7 +22,9 @@
 
     
     {% if request.user.id != user.id %}
-    <button type="button" class="btn btn-danger">Zgłoś</button>
+    <a href="{% url 'report' user.id %}">
+        <button type="button" class="btn btn-danger">Zgłoś</button>
+    </a>
     {% endif %}
 
     <br>

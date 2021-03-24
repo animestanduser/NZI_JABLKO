@@ -35,10 +35,8 @@ class Profile(models.Model):
     args = {'users':users,}
 
     def __str__(self):
-        return f'{self.user.username} Profile'
-        return f'{self.user.przedmiot} Profile'
-        return f'{self.user.opis} Profile'
-        return f'{self.user.miejscowosc} Profile'
+        return f'{self.user.username} - Profil'
+        
 
 
     def save(self, *args, **kwargs):
@@ -54,8 +52,16 @@ class Profile(models.Model):
 
 #Model zgłoszeń użytkowników
 class Report(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user_author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_author')
+    user_reported = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_reported')
     message = models.TextField()
+
+    def __str__(self):
+        return f'{self.user_author.username} ->  {self.user_reported.username}'
+
+    
+
+    
 
 
 #Model wiadomości

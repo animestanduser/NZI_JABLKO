@@ -52,6 +52,9 @@ urlpatterns = [
 
     #Edycja danych osobowych
     path('edit/', views.edit, name='edit'),
+
+    #Report profilu
+    path('report/<int:user>/', views.report, name='report'),
     
   
     path('chat/<int:sender>/<int:receiver>/', views.message_view, name='chat'),

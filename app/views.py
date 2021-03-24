@@ -15,7 +15,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from .serializers import MessageSerializer, UserSerializer
 from .tokens import account_activation_token
-from .forms import SignupForm, UserEditForm, ProfileEditForm, ProfileOptionsForm
+from .forms import SignupForm, UserEditForm, ProfileEditForm, ProfileOptionsForm, ReportForm
 from .models import Profile, Message
 
 
@@ -106,6 +106,30 @@ def profile(request, user):
              {'users': User.objects.exclude(username=request.user.username),
                        'user': User.objects.get(id=user)})
 
+
+
+def report(request, user):
+    report_form = ReportForm(instance=request.user, data=request.POST)
+    if request.method == "GET":
+        return render(request, 'app/report.html',
+            {'users': User.objects.exclude(username=request.user.username),
+            'user': User.objects.get(id=user),
+            'report_form': report_form})
+    if request.method == "POST":
+        report_form = ReportForm(request.POST)
+        if report_form.is_valid():
+            report = report_form.save(commit=False)
+            report.user_author = request.user
+            report.user_reported = User.objects.get(pk=user)
+            report.save()
+            return render(request, 'app/index.html',
+                {'users': User.objects.exclude(username=request.user.username),
+                'user': User.objects.get(id=user),
+                'report_form': report_form})
+
+        
+    
+     
 
 
 
