@@ -25,30 +25,24 @@ class UserEditForm(forms.ModelForm):
         model = User
         fields = ('first_name', 'last_name')
 
-    widget = {
-        'first_name': forms.TextInput(attrs={'class':'form-control'}),
-        'last_name': forms.TextInput(attrs={'class':'form-control'}),
-    }
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
+        }
 
 class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('opis', 'image','korepetytor')
 
-    widget = {
-        'opis': forms.Textarea(attrs={'class':'form-control'}),
-        'korepetytor': forms.BooleanField()
-    }
+        widgets = {
+            'opis': forms.Textarea(attrs={'class': 'form-control'}),
+        }
 
 class ProfileOptionsForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('miejscowosc', 'przedmiot')
-
-    widget = {
-            'przedmiot': forms.RadioSelect(attrs={'class':'form-control'}),
-            'miejscowosc': forms.RadioSelect(attrs={'class':'form-control'}),
-    }
+        fields = ('miejscowosc', 'przedmiot', 'cena')
 
 class ReportForm(forms.ModelForm):
     class Meta:

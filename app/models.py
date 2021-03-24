@@ -26,10 +26,31 @@ class Post(models.Model):
 #Model profilu
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
-    przedmiot = models.TextField(max_length="30")
+    image = models.ImageField(default='none.jpg', upload_to='profile_pics')
+
+    PRZEDMIOTY_CHOICES = [
+    ('brak', 'Brak'),
+    ('historia', 'Historia'),
+    ('angielski', 'Angielski'),
+    ('informatyka', 'Informatyka'),
+    ('matematyka', 'Matematyka'),
+    ('polski', 'Polski'),
+    ]
+
+    MIEJSCOWOSC_CHOICES = [
+    ('brak', 'Brak'),
+    ('warszawa', 'Warszawa'),
+    ('gdynia', 'Gdynia'),
+    ('kraków', 'Kraków'),
+    ('poznań', 'Poznań'),
+    ('wrocław', 'Wrocław'),
+    ('ciechanów', 'Ciechanów'),
+    ]
+
+    przedmiot = models.CharField(max_length=30, choices=PRZEDMIOTY_CHOICES, default='brak')
+    miejscowosc = models.CharField(max_length=30, choices=MIEJSCOWOSC_CHOICES, default='brak')
+    cena = models.CharField(max_length=400)
     opis = models.TextField(max_length="500")
-    miejscowosc = models.TextField(max_length="30")
     korepetytor = models.BooleanField(default=False)
     users = User.objects.all()
     args = {'users':users,}
@@ -48,6 +69,16 @@ class Profile(models.Model):
             output_size = (300,300)
             img.thumbnail(output_size)
             img.save(self.image.path)
+
+
+
+    
+    cena = models.CharField(max_length=400)
+
+
+    opis = models.TextField(max_length="500")
+
+    
 
 
 #Model zgłoszeń użytkowników
