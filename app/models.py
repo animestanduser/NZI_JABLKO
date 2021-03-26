@@ -38,13 +38,13 @@ class Profile(models.Model):
     ]
 
     MIEJSCOWOSC_CHOICES = [
-    ('brak', 'Brak'),
-    ('warszawa', 'Warszawa'),
-    ('gdynia', 'Gdynia'),
-    ('kraków', 'Kraków'),
-    ('poznań', 'Poznań'),
-    ('wrocław', 'Wrocław'),
-    ('ciechanów', 'Ciechanów'),
+    ('', 'Brak'),
+    ('Warszawa', 'Warszawa'),
+    ('Gdynia', 'Gdynia'),
+    ('Kraków', 'Kraków'),
+    ('Poznań', 'Poznań'),
+    ('Wrocław', 'Wrocław'),
+    ('Ciechanów', 'Ciechanów'),
     ]
 
     przedmiot = models.CharField(max_length=30, choices=PRZEDMIOTY_CHOICES, default='brak')
@@ -108,3 +108,6 @@ class Message(models.Model):
 
     class Meta:
         ordering = ('timestamp',)
+
+
+

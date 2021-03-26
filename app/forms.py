@@ -33,7 +33,7 @@ class UserEditForm(forms.ModelForm):
 class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('opis', 'image','korepetytor')
+        fields = ('opis', 'image','korepetytor', 'miejscowosc')
 
         widgets = {
             'opis': forms.Textarea(attrs={'class': 'form-control'}),
