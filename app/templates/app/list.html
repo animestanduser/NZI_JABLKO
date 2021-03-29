@@ -1,0 +1,25 @@
+{% extends 'app/main_tlo.html' %} 
+
+{% block content %}
+
+<ul class="list-group list-group-flush" style="height: 600px; overflow-x:hidden;">
+    <li class="list-group-item" style="background-color: rgb(255, 255, 255); border-radius: 5px 5px 5px 5px;">
+<div class="row">
+    {% for user in users %}
+    {% if user.first_name != "" and user.profile.opis != "empty" %}
+    <div class="col-4">
+        <div class="user_card" style="height: 250px; width: 180px; background-image: linear-gradient(rgb(80, 219, 177),rgb(111, 240, 122)); float: left; margin: 30px; border-radius: 5px 5px 5px 5px; box-shadow: 0px 4px 5px 1px #cccccc;" >
+            <img class="rounder-circle account-img" src="{{user.profile.image.url}}" height="130px" width="130px"><br>
+            {{user.first_name}} {{user.last_name}}<br><br><br>
+            <a href="{% url 'profile' user.id %}">
+            <button type="button" class="btn btn-light">Zobacz profil</button>
+            </a>
+        </div> 
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+</li>
+</ul>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'app/main_tlo.html' %} 
+
+
+{% block content %}
+
+<div>
+
+    <div class="media">
+        <img class="rounder-circle account-img" src="{{user.profile.image.url}}" height="130px" width="130px" style="border-radius: 5px; border-width: 2px; border-style: solid; border-color: rgb(125, 196, 160);">
+        <div class="media-body" style="margin-left: 10px;">
+            <br>
+            <br>
+            {% if user.profile.korepetytor == True %}
+            <h5>Korepetytor</h3>
+        {% else %}
+            <h5 style="color:rgb(47, 184, 54)">Uczeń</h3>   
+        {% endif %}
+            <h2 class="account-heading" style="color: rgb(33, 63, 34);">{{user.first_name}} {{user.last_name}}</h2>
+        </div>
+    </div>
+
+
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <legend class="border-bottom mb-4">Edytuj profil</legend>
+        <div class="field edit">
+        <form method="post" enctype="multipart/form-data">
+            <ul class="list-group list-group-flush border-bottom mb-4" style="height: 400px; width: 100%; overflow-x:hidden; float: left;">
+                <li class="list-group-item" style="background-color: rgb(228, 228, 228); ">
+                    <div class="textbox" style="width: 50%; font-size: large;">
+                        <label style="float: left;">Imię:</label>
+                        {{ user_form.first_name }}
+                    </div>
+                    <div class="textbox" style="width: 50%; font-size: large;">
+                        <label style="float: left;">Nazwisko:</label>
+                        {{ user_form.last_name }}
+                    </div>
+                    <div class="textbox" style="width: 50%; font-size: large;">
+                        <label style="float: left;">Opis:</label>
+                        {{ profile_form.opis }}
+                    </div>
+                    <div class="textbox" style="width: 50%;">
+                        <label style="float: left; font-size: large;">Avatar:</label><br>
+                        {{ profile_form.image }}
+                    </div>
+
+                    <div class="textbox" style="width: 50%;">
+                        <label style="float: left; font-size: large;">Korepetytor</label><br>
+                        {{ profile_form.korepetytor }}
+                    </div>
+
+
+                    
+                {% csrf_token %}
+                
+            </li>
+            
+            </ul>
+            <div class="textbox" style="width: 50%; padding-top: 420px; padding-bottom: 10px;">
+                <p><input type="submit" class="btn btn-secondary" value="Zapisz zmiany"></p>
+            </div>
+            </form>
+            
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,47 @@
+{% extends 'app/main_tlo.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<form action = "" method = "get">
+    <label for="your_name">Podaj imie szukanego nauczyciela: </label>
+    <input id="your_name" type="text" name="your_name" value="">
+        <br>
+    <label for="subject">Podaj szukany przedmiot: </label>
+    <input id="subject" type="text" name="subject" value="">
+    <label for="price">Podaj cene: </label>
+    <input id="price" type="number" name="price" value="">
+    <br><input type="submit" value="OK">
+</form>
+
+
+<ul class="list-group list-group-flush" style="height: 600px; overflow-x:hidden;">
+    <li class="list-group-item" style="background-color: rgb(255, 255, 255); border-radius: 5px 5px 5px 5px;">
+<div class="row">
+
+    {% for user in users %}
+    {% if user.profile.korepetytor %}   <!-- sprawdza czy profil do wyswietlenia jest nauczycielem -->
+    {% if user.first_name == names or user.profile.przedmiot == subject %}  <!-- sprawdza czy profil spelnia wymagania filtrow -->
+    <div class="col-4">
+        <div class="user_card" style="height: 250px; width: 180px; background-image: linear-gradient(rgb(80, 219, 177),rgb(111, 240, 122)); float: left; margin: 30px; border-radius: 5px 5px 5px 5px; box-shadow: 0px 4px 5px 1px #cccccc;" >
+            <img class="rounder-circle account-img" src="{{user.profile.image.url}}" height="130px" width="130px"><br>
+            <div id="name">{{user.first_name}} {{user.last_name}}</div><br><br><br>
+            <a href="{% url 'profile' user.id %}">
+            <button type="button" class="btn btn-light">Zobacz profil</button>
+            </a>
+        </div> 
+    </div>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+</div>
+</li>
+</ul>
+
+
+<script>
+
+    
+</script>
+{% endblock %}
