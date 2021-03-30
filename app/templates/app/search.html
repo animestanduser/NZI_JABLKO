@@ -1,18 +1,22 @@
 {% extends 'app/main_tlo.html' %}
 
-{% load static %}
 
 {% block content %}
 
 <form action = "" method = "get">
-    <label for="your_name">Podaj imie szukanego nauczyciela: </label>
-    <input id="your_name" type="text" name="your_name" value="">
+    {% csrf_token %}
+    <!-- <label for="your_name">Podaj imie szukanego nauczyciela: </label> -->
+    <input class="inputData" id="your_name" type="text" name="your_name" value="" placeholder="Nauczyciel">
         <br>
-    <label for="subject">Podaj szukany przedmiot: </label>
-    <input id="subject" type="text" name="subject" value="">
-    <label for="price">Podaj cene: </label>
-    <input id="price" type="number" name="price" value="">
-    <br><input type="submit" value="OK">
+    <!-- <label for="subject">Podaj szukany przedmiot: </label> -->
+    <input class="inputData" id="subject" type="text" name="subject" value="" placeholder="Przedmiot">
+        <br>
+    <!-- <label for="price">Podaj cene: </label> --> 
+    <input class="inputData" id="priceHigh" type="number" name="priceHigh" value="" placeholder="Cena Maksymalna">
+        <br>
+    <input class="inputData" id="city" type="text" name="city" value="" placeholder="Miejscowosc">
+        <br>
+    <br><input type="submit" value="Filtruj">
 </form>
 
 
@@ -22,7 +26,7 @@
 
     {% for user in users %}
     {% if user.profile.korepetytor %}   <!-- sprawdza czy profil do wyswietlenia jest nauczycielem -->
-    {% if user.first_name == names or user.profile.przedmiot == subject %}  <!-- sprawdza czy profil spelnia wymagania filtrow -->
+    {% if user.first_name == names or user.profile.przedmiot == subject  or user.profile.cena <= priceHigh or user.profile.miejscowosc == city%}  <!-- sprawdza czy profil spelnia wymagania filtrow -->
     <div class="col-4">
         <div class="user_card" style="height: 250px; width: 180px; background-image: linear-gradient(rgb(80, 219, 177),rgb(111, 240, 122)); float: left; margin: 30px; border-radius: 5px 5px 5px 5px; box-shadow: 0px 4px 5px 1px #cccccc;" >
             <img class="rounder-circle account-img" src="{{user.profile.image.url}}" height="130px" width="130px"><br>
