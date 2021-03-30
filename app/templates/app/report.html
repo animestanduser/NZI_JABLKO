@@ -1,0 +1,31 @@
+{% extends 'app/main_tlo.html' %} 
+
+
+{% block content %}
+
+<div>
+
+    
+    <form method="POST" enctype="multipart/form-data">
+
+        <legend class="border-bottom mb-4">Informacje o profilu</legend>
+        
+        <form method="post" enctype="multipart/form-data">
+            <ul class="list-group list-group-flush" style="height: 400px; overflow-x:hidden; float:left">
+                <li class="list-group-item">
+                    <div class="textbox">
+                        {{ report_form.message }}
+                    </div>
+                    
+                {% csrf_token %}
+                    
+                <p><input type="submit" value="Wyślij report"></p>
+            </li>
+            </ul>
+            </form>
+
+    </form>
+</div>
+
+{% endblock %}
+

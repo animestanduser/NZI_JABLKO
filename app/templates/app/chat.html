@@ -1,0 +1,80 @@
+{% extends 'app/chat_tlo.html' %}
+{% block body %}
+{% load static %}
+
+
+
+
+
+
+
+
+    <div class="col-3 mx-auto" style="height: 230px;">
+        
+        <div class="spinner">
+            <a href="{% url 'index' %}">
+            <img src="{% static '/app/css/images/korepder_logo.png' %}" id="logo" style="height: 40vh; width: 40vh; margin-top: -70px;"  >
+        </a>
+        </div>
+    </div>
+
+    
+
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="card shadow-lg" style="height: 70vh; border-radius: 25px ">
+                <div class="stopka" style="height: 50px; width: 928px; background: rgb(9,105,0); background: linear-gradient(90deg, rgba(9,105,0,1) 0%, rgba(150,219,126,1) 48%, rgba(166,237,139,1) 70%, rgba(219,255,180,1) 100%); border-radius: 25px 25px 0px 0px;"></div>
+                <div id="board" class="section white lighten-3" style="height: 58vh;width: 928px; padding: 15px; overflow-y: scroll;">
+                    {% block messages %}
+
+                    {% endblock %}
+                </div>
+
+
+                <form id="chat-box" class="form-group {% block hide %}hide{% endblock %}" method="post" style="width: 928px;">
+                    {% csrf_token %}
+                    <div class="stopka" style="width: 928px;height: 3px; background: rgb(9,105,0); background: linear-gradient(90deg, rgba(9,105,0,1) 0%, rgba(150,219,126,1) 48%, rgba(166,237,139,1) 70%, rgba(219,255,180,1) 100%);"></div>
+                    <div class="row" style="margin-bottom: -20px;">
+                        <div class="col-11">
+                            <div class="input-field">
+                                <input id="id_message" name="message" type="text" placeholder="Napisz wiadomość..">
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <div >
+                             <button class="btn btn-floating green lighten-1 waves-effect waves-light" style="margin-bottom: -50px;"><i class="material-icons">send</i></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+
+
+
+
+
+
+    
+    {% load staticfiles %}
+    <script src="{% static 'js/chat.js' %}"></script>
+    <script>
+        // For receiving
+        sender_id = "{{ receiver.id }}";
+        receiver_id = "{{ request.user.id }}";
+
+        //For sending
+        $(function () {
+            scrolltoend();
+            $('#chat-box').on('submit', function (event) {
+                event.preventDefault();
+                var message = $('#id_message');
+                send('{{ request.user.username }}', '{{ receiver.username }}', message.val());
+                message.val('');
+            })
+        })
+    </script>
+{% endblock %}
