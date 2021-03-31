@@ -132,11 +132,21 @@ def report(request, user):
 
 
 def search(request):
+    
     subject = request.GET.get('subject')
-    price = request.GET.get('price')
+    priceLow = request.GET.get('priceLow')
+    priceHigh = request.GET.get('priceHigh')
+
+    if priceLow:
+        priceLow=int(priceLow)
+
+    if priceHigh:
+        priceHigh=int(priceHigh) 
+    
     city = request.GET.get('city')
-    print(request.GET)
-    return render(request, 'app/search.html', {'users': User.objects.exclude(username=request.user.username), 'lesson': subject, 'price': price, 'city': city})
+    # print(request.GET) wyswietla wartosc GET w konsoli, przydatne do sprawdzenia wczytywania
+    return render(request, 'app/search.html', {'users': User.objects.exclude(username=request.user.username), 'lesson': subject, 'priceLow': priceLow, 'priceHigh': priceHigh, 'city': city})
+    return render(request, 'app/list.html', {'users': User.objects.exclude(username=request.user.username), 'lesson': subject, 'priceLow': priceLow, 'priceHigh': priceHigh, 'city': city})
 
 
 

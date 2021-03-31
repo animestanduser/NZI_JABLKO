@@ -50,15 +50,13 @@ class Profile(models.Model):
 
     przedmiot = MultiSelectField(choices=PRZEDMIOTY_CHOICES, default='brak')
     miejscowosc = models.CharField(max_length=30, choices=MIEJSCOWOSC_CHOICES, default='brak')
-    cena = models.CharField(max_length=400)
-    opis = models.TextField(max_length="500")
     korepetytor = models.BooleanField(default=False)
     users = User.objects.all()
     args = {'users':users,}
-
+    
     def __str__(self):
         return f'{self.user.username} - Profil'
-        
+
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
@@ -69,7 +67,7 @@ class Profile(models.Model):
             img.thumbnail(output_size)
             img.save(self.image.path)
     
-    cena = models.CharField(max_length=400)
+    cena = models.PositiveIntegerField()
     opis = models.TextField(max_length="500")
 
     

@@ -8,18 +8,19 @@
     
     <form method="POST" enctype="multipart/form-data">
 
-        <legend class="border-bottom mb-4">Informacje o profilu</legend>
+        <legend class="border-bottom mb-4">Wyślij zgłoszenie</legend>
         
         <form method="post" enctype="multipart/form-data">
-            <ul class="list-group list-group-flush" style="height: 400px; overflow-x:hidden; float:left">
+            <ul class="list-group list-group-flush" style="height: 400px; overflow-x:hidden; float: left; ">
                 <li class="list-group-item">
                     <div class="textbox">
+                        <p style="float: left; font-size: 18px;">Opis zgłoszenia:</p><br>
                         {{ report_form.message }}
                     </div>
                     
                 {% csrf_token %}
-                    
-                <p><input type="submit" value="Wyślij report"></p>
+                <br>
+            <input type="submit" class="btn btn-secondary " value="Reportuj" style="background-color: rgb(255, 255, 255); color: black; border-color: rgb(150, 235, 166); border-width: 2px;">
             </li>
             </ul>
             </form>

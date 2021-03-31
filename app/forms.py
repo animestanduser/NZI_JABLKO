@@ -12,6 +12,7 @@ from .models import Report
 
 class SignupForm(UserCreationForm):
     email = forms.EmailField(max_length=200, help_text='Required')
+    first_name = forms.CharField(max_length=20, required=True)
 
     class Meta:
         model = User
