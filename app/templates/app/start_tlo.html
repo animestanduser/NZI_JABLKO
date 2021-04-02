@@ -19,29 +19,24 @@
 
   
 
-    <div class="main">
-        <div class="container">
+    
 
 
-            <div class="row">
-                <div class="col-12">
-                    <a href="{% url 'index' %}"><img src="{% static '/app/css/images/korepder_logo.png' %}" style="height: 320px; margin-left: 400px;"></a>
-                </div>
-            </div>
+        <div class="row justify-content-center d-md-table mx-auto" style="padding-top: 50px; padding-bottom: 50px;">
+            <a href="{% url 'index' %}"><img src="{% static '/app/css/images/korepder_logo.png' %}" style="height: 160px; padding: 30px"></a>
+        </div>
 
 
             
-            <div class="row">
-                <div class="col-10" style="margin-left: -100px;">
+        <div class="row justify-content-center d-md-table mx-auto">
 
                     
                     {% block content %}
                     {% endblock content %}
                     
-                </div>
-            </div>
+                
         </div>
-    </div>
+        
 
 
     

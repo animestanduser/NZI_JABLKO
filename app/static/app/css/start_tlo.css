@@ -6,18 +6,20 @@
 
 
 html{
-
-    font-size: 10px;
+  font-size: 10px;
 }
 
+.main{
 
+    position: relative;
+}
 body{
-    margin: 0;
-    padding: 0;
-    background: url("./images/korepder-tlo.png") no-repeat;
+    background: url("./images/korepder-tlo.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
 }
-
 
 
 
@@ -36,8 +38,6 @@ body{
 
 
 .card{
-    position: absolute;
-    margin-left:490px;
     animation: showCard 1s;
     background-color: #262626;
 
@@ -80,17 +80,12 @@ body{
 
 
 .btn.btn-secondary{
-    width: 30%;
     border: 2px solid #252525;
     font-size: 12px;
 
 }
 
 
-.login-box{
-
-    margin-left: 400px;
-}
 
 
 .login-box h1{
@@ -101,8 +96,7 @@ body{
 
 
 .mail-box{
-
-    margin-left: 400px;
+    padding: 10px;
 }
 
 
@@ -135,13 +129,10 @@ body{
 
 
 .textbox{
-
-    width: 50%;
     overflow: hidden;
     font-size: 20px;
-    padding: 8px 0;
-    margin: 10px 0;
     border-bottom: 1px solid #4caf50;
+    padding: 6px;
 }
 
 .textbox i{

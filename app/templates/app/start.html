@@ -20,7 +20,7 @@
 
     <div class="preload">
         <div class="spinner">
-            <img src="static/app/css/images/korepder_logo.png" id="logo">
+            <img src="static/app/css/images/korepder_logo_small.png" id="logo">
             <div class="spinner-in"></div>
         </div>
     </div>
@@ -29,36 +29,18 @@
 
     
     
-    <div class="main" style="margin-left: -20px;">
-
-        
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <img src="static/app/css/images/korepder_logo.png" id="logo-panel" >
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col-12">
-                    <a href="{% url 'login' %}"><button type="button" class="btn btn-success" style="margin-left: 285px;">Zaloguj się</button></a>
-                    
-
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col-12">
-                    <a href="{% url 'signup' %}"><button type="button"  class="btn btn-success" style="margin-left: 285px; ">Zarejestruj się</button></a>
-
-                </div>
-            </div>
-
-
-        </div>
+    <div class="row justify-content-center d-md-table mx-auto">
+        <a><img src="{% static '/app/css/images/korepder_logo_small.png' %}" style="height: 500px"></a>
     </div>
+
+
+    
+    <a href="{% url 'login' %}" type="button"  class="btn btn-success d-flex justify-content-center d-md-table mx-auto" style="width: 30%;">Zaloguj się</a>
+    <a href="{% url 'signup' %}" type="button"  class="btn btn-success d-flex justify-content-center d-md-table mx-auto" style="width: 30%;">Zarejestruj się</a>
+
+                
+
+
     
     
 

@@ -76,9 +76,9 @@ def activate(request, uidb64, token, backend='django.contrib.auth.backends.Model
         user.is_active = True
         user.save()
         login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-        return HttpResponse('Aktywacja przebiegła pomyślnie')
+        return render(request, 'registration/activation_succes.html')
     else:
-        return HttpResponse('Aktywacja jest błędna!')
+        return render(request, 'registration/activation_failed.html')
 
 
 
@@ -97,6 +97,10 @@ def change_password(request):
     return render(request, 'registration/change_password.html', {
         'form': form
     })
+
+
+
+
 
 
 

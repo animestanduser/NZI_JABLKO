@@ -3,34 +3,34 @@
 {% block content %}
 
 
-<center><p>
+
 
 <form method="post">
     {% csrf_token %}
 
 
-      <div class="login-box" style="margin-top:-30px ;">
+      <div class="login-box text-center">
         <h1>Login</h1>
         <div class="textbox">
              <i class="fas fa-user"></i>
              {{ form.username }}
          </div>
 
-         <br>
+        <br>
 
 
-         <h1>Imię</h1>
+        <h1>Imię</h1>
         <div class="textbox">
-             <i class="fas fa-user"></i>
-             {{ form.first_name }}
-         </div>
+            <i class="fas fa-user"></i>
+            {{ form.first_name }}
+        </div>
 
-         <br>
+        <br>
 
-         <h1>E-Mail</h1>
+        <h1>E-Mail</h1>
         <div class="textbox">
-             <i class="fas fa-at"></i>
-             {{ form.email }}
+            <i class="fas fa-at"></i>
+            {{ form.email }}
          </div>
 
          <br>
@@ -57,11 +57,22 @@
 
     <button style="margin-top: 20px;" class="btn btn-success" type="submit">Zarejestruj się</button>
     <br>
-    <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-danger btn-sm" style="width: 130px;"><i class="fab fa-google"></i></a>
-    <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-primary btn-sm" style="width: 130px;"><i class="fab fa-facebook"></i></a>
+    {% if form.errors %}
+        <div class="card shadow-lg" style="width: 263px;">
+
+            <div class="text-center" style="width: 80%; margin: 0 auto">
+
+              {% for key,value in form.errors.items %} 
+                <h5 style="color:#b10a0a;">{{ value|escape }}</h1>
+              {% endfor %}
+               
+            </div>
+        </div>
+      {% endif %}
+  </div>
   </form>
 
-</p></center>
+
 
 {% endblock %}
 

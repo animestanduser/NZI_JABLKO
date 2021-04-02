@@ -14,10 +14,11 @@ from .models import Report
 
 class SignupForm(UserCreationForm):
     email = forms.EmailField(max_length=200, help_text='Required')
+    first_name = forms.CharField(max_length=30, required=True)
 
     class Meta:
         model = User
-        fields = ('username','first_name',  'email', 'password1', 'password2')
+        fields = ('username','first_name', 'email', 'password1', 'password2')
 
 
 class UserEditForm(forms.ModelForm):
