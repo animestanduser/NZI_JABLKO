@@ -15,144 +15,1956 @@
 </head>
 
 
-<body style="background-color: #F0F0F0;">
+<body style="background-image: linear-gradient(55deg,rgb(0, 0, 0),rgb(54, 54, 54)); overflow: hidden;">
+    
 
     <header>
         <div class="row">
-        <div class="col-3">
-        <a href="{% url 'index' %}">
-            <img src="{% static '/app/css/images/korepder_logo.png' %}" height="10%px"  style="display: inline-block; margin: 5px; margin-left: -7px;" >
-        </a>
-        </div>
-        <div class="col-9">
-            <nav style="float: right;">
-                 <div class="top_menu" >
-                    <ol id="menu">
-                        <li><i class="fas fa-globe-europe" style="font-size: 35px; margin-top: 8px; opacity: 0%;"></i></li>
-                        <li><i class="fas fa-cog" style="font-size: 35px; margin-top: 8px; opacity: 0%;"></i></li>
-                
-                        <li><i class="fas fa-globe-europe" style="font-size: 35px; margin-top: 8px;"></i>
-                            <ul>
-                                <li><a href="#">Trwają prace nad tą funkcją</a></li>
-                                
-                                <li></li>
-                            </ul>
-                        </li>
-                    </ol>
-                 </div>
-            </nav>
+
+            <div class="col-1" style="height: 80px;">
+                <a href="{% url 'index' %}">
+                    <img src="{% static '/app/css/images/korepder_logo.png' %}" height="60px" style="margin-top: 12px; margin-left: 12px;" >
+                </a>
+            </div>
+
+            <div class="col-11" style="height: 80px;">
+                <nav style="float: right;">
+                    <div class="top_menu" >
+                        <ol id="menu">
+                            <li><i class="fas fa-globe-europe" style="font-size: 35px; margin-top: 8px; opacity: 0%;"></i></li>
+                            <li><i class="fas fa-cog" style="font-size: 35px; margin-top: 8px; opacity: 0%;"></i></li>
+                    
+                            <li><i class="fas fa-globe-europe" style="font-size: 35px; margin-top: 8px;"></i>
+                                <ul>
+                                    <li><a href="#">Trwają prace nad tą funkcją</a></li>
+                                    
+                                    <li></li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                </nav>
+            </div>
         </div>
     </header>
+
+
+
 
     <div class="row">
         <!-- Lewa stopka-->
         
-        <div class="pull-left" style="width: 250px; height: 100vh;">
+        <div class="lewaStrona" style="width: 250px; height: 100vh;">
 
-            <div class="card shadow-lg" style="height: 100vh;">
+            
                 
-                <div class="accordion" id="lewaCzesc">
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h2 class="mb-0">
-                                <button  class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#lOne" aria-expanded="true" aria-controls="lOne">
-                                    
-                                    <img class="mr-3" src="{{request.user.profile.image.url}}" width="40" height="40" alt="avatar">
-                                    {{request.user.first_name}} {{request.user.last_name}} 
-                                   
+            <div class="accordion" id="lewaCzesc">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button  class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#lOne" aria-expanded="true" aria-controls="lOne">
+                                
+                                <img class="mr-3" src="{{request.user.profile.image.url}}" width="40" height="40" alt="avatar">
+                                {{request.user.first_name}} {{request.user.last_name}} 
+                                
 
-                                </button>
-                            </h2>
-                        </div>
-                        
-                        <div id="lOne" class="collapse" aria-labelledby="headingOne" data-parent="#lewaCzesc">
-                            <div class="card">
-                                <div class="card" id="headingTwo">
-                                    <div class="card-body">
-                                        <h2 class="mb-0">
-                                                <button class="btn btn-block text-left" 
-                                                type="button" data-toggle="collapse" data-target="#lTwo" aria-expanded="true" aria-controls="lTwo">
-                                                <a href="{% url 'profile' request.user.id %}"><span class="media-body">Panel użytkownika</span></a>
-                                                <i class="fas fa-caret-down" style="color: rgb(44, 168, 44);"></i></button>
+                            </button>
+                        </h2>
+                    </div>
+                    
+                    <div id="lOne" class="collapse" aria-labelledby="headingOne" data-parent="#lewaCzesc">
+                        <div class="card">
+                            <div class="card" id="headingTwo">
+                                <div class="card-body">
+                                    <h2 class="mb-0">
+                                            <button class="btn btn-block text-left" 
+                                            type="button" data-toggle="collapse" data-target="#lTwo" aria-expanded="true" aria-controls="lTwo">
+                                            <a href="{% url 'profile' request.user.id %}"><span class="media-body">Panel użytkownika</span></a>
+                                            <i class="fas fa-caret-down" style="color: rgb(44, 168, 44);"></i></button>
 
-                                            <div id="lTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#headingTwo" style="font-size: 14px;">
-                                                <div class="card-body">
-                                                    <a href="{% url 'profile' request.user.id %}"><span class="media-body">Podgląd profilu</span></a>
-                                                </div>
-                                                <div class="card-body">
-                                                    <a href="{% url 'edit' %}"><span class="media-body">Edytuj profil</span></a>
-                                                </div>
-                                                <div class="card-body">
-                                                    <a href="{% url 'edit_personal' %}"><span class="media-body">Edytuj ustawienia wyszukiwania</span></a>
-                                                </div>
+                                        <div id="lTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#headingTwo" style="font-size: 14px;">
+                                            <div class="card-body">
+                                                <a href="{% url 'profile' request.user.id %}"><span class="media-body">Podgląd profilu</span></a>
                                             </div>
-                                        </h2>   
-                                    </div>
+                                            <div class="card-body">
+                                                <a href="{% url 'edit' %}"><span class="media-body">Edytuj profil</span></a>
+                                            </div>
+                                            <div class="card-body">
+                                                <a href="{% url 'edit_personal' %}"><span class="media-body">Edytuj ustawienia wyszukiwania</span></a>
+                                            </div>
+                                        </div>
+                                    </h2>   
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <a href="{% url 'index' %}"><span class="media-body">Ustawienia</span></a>
-                            </div>
-                            <div class="card-body">
-                                <a href="{% url 'index' %}"><span class="media-body">Kontakt</span></a>
-                            </div>
-                            <div class="card-body">
-                                <a href="{% url 'logout' %}"><span class="media-body">Logout</span></a>
-                            </div>
+                        </div>
+                        <div class="card-body">
+                            <a href="{% url 'index' %}"><span class="media-body">Ustawienia</span></a>
+                        </div>
+                        <div class="card-body">
+                            <a href="{% url 'index' %}"><span class="media-body">Kontakt</span></a>
+                        </div>
+                        <div class="card-body">
+                            <a href="{% url 'logout' %}"><span class="media-body">Logout</span></a>
                         </div>
                     </div>
-                    {% if request.user.profile.korepetytor == False %}
-                    <a class="nav-item" style="margin-left: 10px;">
-                        <a class="nav-link" href="{% url 'random' %}">
-                            <i class="fas fa-dice" style="color: rgb(44, 168, 44);"></i>
-                            <span class="media-body">Chybił-trafił</span>
-                        </a>
-                    </a>
-                    
-                    <a class="nav-item">
-                        <a class="nav-link active" href="{% url 'search' %}" style="margin-left: 5px;">
-                            <i class="fas fa-clipboard-list" style="color: rgb(44, 168, 44);"></i>
-                            <span class="media-body" style="margin-left: 4px;">Szukaj korepetytorów</span>
-                        </a>
-                    </a>
-                    
-                    <a class="nav-item">
-                        <a class="nav-link" href="{% url 'list' %}" style="margin-left: 2px;">
-                            <i class="fas fa-user-friends" style="color: rgb(44, 168, 44);"></i>
-                            <span class="media-body">Lista korepetytorów</span>
-                        </a>
-                    </a>
-
-                    {% else %}
-
-                    <a class="nav-item">
-                        <a class="nav-link" href="{% url 'list' %}" style="margin-left: 2px;">
-                            <i class="fas fa-user-friends" style="color: rgb(44, 168, 44);"></i>
-                            <span class="media-body">Lista uczniów</span>
-                        </a>
-                    </a>
-
-                    {% endif %}
-
-                    {% if request.user.is_superuser %}
-                    <a class="nav-item">
-                        <a class="nav-link" href="{% url 'admin:index' %}" style="margin-left: 2px;">
-                            <i class="fas fa-tools" style="color: rgb(44, 168, 44);"></i>
-                            <span class="media-body">Panel administracyjny</span>
-                        </a>
-                    </a>
-                    {% endif %}
-                    
                 </div>
+                {% if request.user.profile.korepetytor == False %}
+                <a class="nav-item" style="margin-left: 10px;">
+                    <a class="nav-link" href="{% url 'random' %}">
+                        <i class="fas fa-dice" style="color: rgb(44, 168, 44);"></i>
+                        <span class="media-body">Chybił-trafił</span>
+                    </a>
+                </a>
+                
+                <a class="nav-item">
+                    <a class="nav-link active" href="{% url 'search' %}" style="margin-left: 5px;">
+                        <i class="fas fa-clipboard-list" style="color: rgb(44, 168, 44);"></i>
+                        <span class="media-body" style="margin-left: 4px;">Szukaj korepetytorów</span>
+                    </a>
+                </a>
+                
+                <a class="nav-item">
+                    <a class="nav-link" href="{% url 'list' %}" style="margin-left: 2px;">
+                        <i class="fas fa-user-friends" style="color: rgb(44, 168, 44);"></i>
+                        <span class="media-body">Lista korepetytorów</span>
+                    </a>
+                </a>
+
+                {% else %}
+
+                <a class="nav-item">
+                    <a class="nav-link" href="{% url 'list' %}" style="margin-left: 2px;">
+                        <i class="fas fa-user-friends" style="color: rgb(44, 168, 44);"></i>
+                        <span class="media-body">Lista uczniów</span>
+                    </a>
+                </a>
+
+                {% endif %}
+
+                {% if request.user.is_superuser %}
+                <a class="nav-item">
+                    <a class="nav-link" href="{% url 'admin:index' %}" style="margin-left: 2px;">
+                        <i class="fas fa-tools" style="color: rgb(44, 168, 44);"></i>
+                        <span class="media-body">Panel administracyjny</span>
+                    </a>
+                </a>
+                {% endif %}
+                
             </div>
+            
         </div>
 
 
 
         <!-- Central content-->
-        <div class="col-8 col-md-6 col-sm-2 mx-auto">
+        <div style="margin: 0 auto; z-index: 1;">
+            <div style="margin-right: -270px;">
+                <div class="col-12" style="margin-top: -480px;">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="margin: auto; padding: 8px 0;">
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-superscript"></i>
+                        <i class="fas fa-globe-europe"></i>
+                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <i class="fas fa-dice-d20"></i>
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-square-root-alt"></i>
+                        <i class="fas fa-book"></i>
+                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+        <div class="col-8 col-md-6 col-sm-2 mx-auto" style="position: absolute; z-index: 10; right: 480px; top:130px">
 
-            <div class="card shadow-lg p-5 mb-5" style="margin-top: 80px; height: 80vh;">
+            <div class="card p-5 mb-5" style="height: 80vh;">
                 <div class="card-body">
 
                     {% block content %}
@@ -164,48 +1976,52 @@
         </div>
 
         <!-- Prawa stopka-->
-        <div class="pull-right" style="width: 250px; height: 100vh;">
-            <div class="card shadow-lg" style="height: 100vh;">
+        
+        <div class="prawaStrona" style="width: 250px;height: 100vh;">
+
+            {% for user in users %}
+            <div class="profil_user" style="height: 80px;width: 250px;">
                 
+                            
 
-                {% for user in users %}
+                <a href="{% url 'profile' user.id %}" style="text-decoration: none">
                 
-                <div class="accordion" id="prawaCzesc">
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h2 class="mb-0">
+                    <img class="rounded-circle" src="{{user.profile.image.url}}" style="margin-top: 20px; margin-left: 20px;" width="40" height="40" alt="avatar">
 
-                                <a href="{% url 'profile' user.id %}">
-                                
-                                    <img class="mr-3" src="{{user.profile.image.url}}" width="40" height="40" alt="avatar">
+                </a>
+                    
+                <span class="title" style="font-size: 14;">{{user.first_name}} {{user.last_name}} <!--{{ user.username }}--> </span>
 
-                                </a>
-                                    
-                                    <span class="title" style="font-size: 15;">{{user.first_name}} {{user.last_name}}<!--{{ user.username }}--> </span>
-
-                                    
-                                    <a href="{% url 'chat' request.user.id user.id %}" id="user{{ user.id }}">
-                                    
-                                        <i class="fab fa-facebook-messenger" style="color: rgb(44, 168, 44);font-size: 20px;"></i>
-                                    </a>
-
-                            </h2>
-                        </div>
-                    </div>
+                <div style="height: 22; width: 22;float: right; margin-right: 30px; margin-top: 30px;">
+                    <a href="{% url 'chat' request.user.id user.id %}" id="user{{ user.id }}">
+                    
+                        <i class="fab fa-facebook-messenger" style="color: rgb(47, 182, 47);font-size: 20px;"></i>
+                    </a>
                 </div>
-                {% endfor %}
 
-                
-                
-                
-                
-
-
-
-
-
+                            
+            
             </div>
+            {% endfor %}
+            
+            <div class="circle" id="circle1"  ></div>
+            <div class="circle" id="circle2"  ></div>
+            
+
+        
+                
         </div>
+        
+
+
+
+
+
+
+
+
+
+
     </div>
     <script>
 

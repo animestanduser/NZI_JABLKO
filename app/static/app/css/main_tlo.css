@@ -1,8 +1,55 @@
+
 header{
-    height: 100px;
-    background-image: linear-gradient(rgb(80, 219, 177),rgb(111, 240, 122));
-    box-shadow: 0px 0px 30px 5px #888888;
+    height: 80px;
+    background-image: linear-gradient(45deg,rgb(0, 31, 2),rgb(1, 66, 5),rgb(0, 102, 7),rgb(2, 107, 9),rgb(22, 68, 26));
+    background-size: 400% 400%;
+    animation: change 10s ease-in-out infinite;
+    position: relative;
+    z-index: 10;
 }
+
+@keyframes change{
+  0%{
+    background-position: 0 50%;
+  }
+  50%{
+    background-position: 100% 50%;
+  }
+  100%{
+    background-position: 0 50%;
+  }
+}
+
+.col-12{
+
+  width: 2000px;
+  white-space: nowrap;
+  font-size: 24px;
+  transform: rotate(-30deg);
+  position:relative;
+}
+
+
+
+
+
+i{
+  color: rgba(0, 0, 0, 0.5);
+  transition: 0.5s;
+  padding: 0 5px;
+  user-select: none;
+  cursor: default;
+}
+i:hover{
+  transition: 0s;
+  color: rgb(11, 155, 11);
+  text-shadow: 0 0 120px rgb(11, 155, 11);
+  z-index: 1;
+
+}
+
+
+
 
 .uploadcare--jcrop-holder>div>div, #preview {
   border-radius: 50%;
@@ -24,6 +71,76 @@ header{
     width: 50%;
     display: flex;
 }
+.prawaStrona{
+  flex-direction: column;
+  background-image: linear-gradient(55deg,rgb(0, 0, 0),rgb(17, 17, 17),rgb(22, 22, 22),rgb(22, 22, 22),rgb(31, 31, 31));
+  position: fixed;
+  right: 0px;
+  z-index: 10;
+  color:rgb(175, 175, 175);
+}
+.lewaStrona{
+  position: fixed;
+  left: 0px;
+  z-index: 10;
+  background-color: rgb(14, 14, 14);
+  
+
+}
+
+.profil_user{
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  background-size: 300%;
+  transition: 0.8s;
+}
+.profil_user:hover{
+  background-position: right;
+  box-shadow: inset 0 0 30px 40px #2b2b2b;
+  color:white;
+}
+
+.circle{
+  border-radius:50%;
+  position:fixed;
+  animation-fill-mode:both;
+  transition:transform 3s;
+  background: linear-gradient(rgba(3, 3, 3, 0.75), rgba(17, 17, 17, 0.9));
+  z-index: -1;
+}
+.circle:active  {
+  transform:scale(2);
+}
+
+#circle1 {
+    height:50px; width:50px;
+    right:110px; top:70vh;
+          animation:amimation1 10s ease-in-out -3s infinite both;
+}
+#circle2 {
+    height:190px; width:190px;
+    right:-30px; bottom:-70px;
+    animation:amimation1 5s ease-in-out -1s infinite both;
+}
+@keyframes amimation1{
+  0%{
+    transform:translateX(0px) translateY(0px);
+  }
+  25%{
+    transform:translateX(-10px) translateY(5px);
+  }
+  50%{
+    transform:translateX(0px) translateY(-10px);
+  }
+  75%{
+    transform:translateX(10px) translateY(5px);
+  }
+  100%{
+    transform:translateX(0px) translateY(0px);
+  }
+
+}
+
 
 footer{
     background-color: rgb(0, 0, 0);
@@ -61,7 +178,7 @@ footer{
   }
 
   .media-body{
-      color: black;
+      color:rgb(175, 175, 175);
   }
 
   /* naprawa wysokości elementu - ol */
@@ -208,11 +325,7 @@ footer{
     color: #f1f1f1;
   }
   
-  /* Style the main content */
-  .main {
-    margin-left: 160px; /* Same as the width of the sidenav */
-    padding: 0px 10px;
-  }
+  
   
   /* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
   @media screen and (max-height: 450px) {
