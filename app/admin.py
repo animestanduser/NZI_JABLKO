@@ -7,7 +7,24 @@ admin.site.register(Post)
 
 admin.site.register(Profile)
 
-admin.site.register(Report)
 
-class ProfileAdmin(admin.ModelAdmin):
- list_display = ['user', 'opis', 'image', 'first_name', 'last_name', 'miejsowosc', 'przedmiot']
+
+
+class ReportAdmin(admin.ModelAdmin):
+    fields= ['user_author', 'user_reported', 'message',]
+    readonly_fields = ['user_author', 'user_reported', 'message',]
+
+    class Meta:
+        model= Report
+
+
+
+admin.site.register(Report, ReportAdmin)
+
+
+
+
+
+ 
+
+

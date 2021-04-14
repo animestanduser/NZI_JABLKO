@@ -90,6 +90,9 @@ class Report(models.Model):
     def __str__(self):
         return f'{self.user_author.username} ->  {self.user_reported.username}'
 
+
+    
+
     
 
     
@@ -108,6 +111,8 @@ class Message(models.Model):
 
     class Meta:
         ordering = ('timestamp',)
+
+
 
 
 

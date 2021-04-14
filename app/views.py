@@ -17,6 +17,7 @@ from .serializers import MessageSerializer, UserSerializer
 from .tokens import account_activation_token
 from .forms import SignupForm, UserEditForm, ProfileEditForm, ProfileOptionsForm, ReportForm
 from .models import Profile, Message
+from django.db import IntegrityError
 
 
 
@@ -120,16 +121,29 @@ def report(request, user):
             'user': User.objects.get(id=user),
             'report_form': report_form})
     if request.method == "POST":
-        report_form = ReportForm(request.POST)
-        if report_form.is_valid():
-            report = report_form.save(commit=False)
-            report.user_author = request.user
-            report.user_reported = User.objects.get(pk=user)
-            report.save()
-            return render(request, 'app/index.html',
-                {'users': User.objects.exclude(username=request.user.username),
-                'user': User.objects.get(id=user),
-                'report_form': report_form})
+        try:
+            report_form = ReportForm(request.POST)
+            if report_form.is_valid():
+                report = report_form.save(commit=False)
+                report.user_author = request.user
+                report.user_reported = User.objects.get(pk=user)
+                report.save()
+                return render(request, 'app/report_succes.html',
+                    {'users': User.objects.exclude(username=request.user.username),
+                    'user': User.objects.get(id=user),
+                    'report_form': report_form})
+        except IntegrityError as e:
+            return render(request, 'app/report_error.html',
+                    {'users': User.objects.exclude(username=request.user.username),
+                    'user': User.objects.get(id=user),
+                    'report_form': report_form})
+
+
+
+
+        
+
+
 
         
     
