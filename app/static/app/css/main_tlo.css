@@ -1,0 +1,361 @@
+
+header{
+    height: 80px;
+    background-image: linear-gradient(45deg,rgb(0, 31, 2),rgb(1, 66, 5),rgb(0, 102, 7),rgb(2, 107, 9),rgb(22, 68, 26));
+    background-size: 400% 400%;
+    animation: change 10s ease-in-out infinite;
+    position: relative;
+    z-index: 10;
+}
+
+@keyframes change{
+  0%{
+    background-position: 0 50%;
+  }
+  50%{
+    background-position: 100% 50%;
+  }
+  100%{
+    background-position: 0 50%;
+  }
+}
+
+.col-12{
+
+  width: 2000px;
+  white-space: nowrap;
+  font-size: 24px;
+  transform: rotate(-30deg);
+  position:relative;
+}
+
+@keyframes showCard{
+
+  0%{
+      transform: scale(0) rotate(0);
+  }
+  
+  100%{
+      transform: scale(1) rotate(0);
+  }
+}
+
+
+.card.shadow-lg{
+  animation: showCard 1s;
+  background-color: #262626;
+
+  
+}
+
+
+
+
+
+i{
+  color: rgba(0, 0, 0, 0.5);
+  transition: 0.5s;
+  padding: 0 5px;
+  user-select: none;
+  cursor: default;
+}
+i:hover{
+  transition: 0s;
+  color: rgb(11, 155, 11);
+  text-shadow: 0 0 120px rgb(11, 155, 11);
+  z-index: 1;
+
+}
+
+
+.inputData{
+  width: 157px;
+}
+
+.uploadcare--jcrop-holder>div>div, #preview {
+  border-radius: 50%;
+}
+
+.jezyk_box{
+  display: inline-block;
+  border-radius: 5px; 
+  border: 2px solid rgb(14, 151, 20); 
+  padding: 20px;  
+  width: 170px; 
+  height: 10px; 
+  outline: none; 
+  text-align: center;
+}
+
+.app{
+    background-color: green;
+    width: 50%;
+    display: flex;
+}
+.prawaStrona{
+  flex-direction: column;
+  background-image: linear-gradient(55deg,rgb(0, 0, 0),rgb(17, 17, 17),rgb(22, 22, 22),rgb(22, 22, 22),rgb(31, 31, 31));
+  position: fixed;
+  right: 0px;
+  z-index: 10;
+  color:rgb(175, 175, 175);
+}
+.lewaStrona{
+  position: fixed;
+  left: 0px;
+  z-index: 10;
+  background-color: rgb(14, 14, 14);
+  
+
+}
+
+.bg-custom-1 {
+  position: relative;
+  z-index:10 !important;
+  background-color: rgba(8, 8, 8, 0.75);
+}
+
+.profil_user{
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  background-size: 300%;
+  transition: 0.8s;
+}
+.profil_user:hover{
+  background-position: right;
+  box-shadow: inset 0 0 30px 40px #2b2b2b;
+  color:white;
+}
+
+.circle{
+  border-radius:50%;
+  position:fixed;
+  animation-fill-mode:both;
+  transition:transform 3s;
+  background: linear-gradient(rgba(3, 3, 3, 0.75), rgba(17, 17, 17, 0.9));
+  z-index: -1;
+}
+.circle:active  {
+  transform:scale(2);
+}
+
+#circle1 {
+    height:50px; width:50px;
+    right:110px; top:70vh;
+          animation:amimation1 10s ease-in-out -3s infinite both;
+}
+#circle2 {
+    height:190px; width:190px;
+    right:-30px; bottom:-70px;
+    animation:amimation1 5s ease-in-out -1s infinite both;
+}
+@keyframes amimation1{
+  0%{
+    transform:translateX(0px) translateY(0px);
+  }
+  25%{
+    transform:translateX(-10px) translateY(5px);
+  }
+  50%{
+    transform:translateX(0px) translateY(-10px);
+  }
+  75%{
+    transform:translateX(10px) translateY(5px);
+  }
+  100%{
+    transform:translateX(0px) translateY(0px);
+  }
+
+}
+
+
+footer{
+    background-color: rgb(0, 0, 0);
+    height: 30px;
+    text-align: center;
+    color: white;
+}
+
+.top_menu{
+    float: right;
+    margin:25px;
+}
+
+.side_menu{
+    width:250px;
+    height:100%;
+    background-color: transparent;
+}
+
+  #menu {
+    width:400px;
+    margin:0 auto;
+    padding:0;
+    list-style-type:none;
+    background-color: transparent;
+  }
+
+  li{
+      font-size:15px;
+      text-align: center;
+      color: black;
+  }
+  li.nav-item{
+      text-align: right;
+  }
+
+  .media-body{
+      color:rgb(175, 175, 175);
+  }
+
+  /* naprawa wysokości elementu - ol */
+  #menu:after {
+    content:'';
+    display:block;
+    clear:both;
+  }
+
+  /* wygląd elementów - li */
+  #menu > li {
+    float:left;
+  }
+
+  /* pierwszy element - li - elementu o identyfikatorze menu */
+  #menu > li:first-child {
+    background-color: transparent;
+    width:30%;
+  }
+
+  /* drugi element - li - elementu o identyfikatorze menu */
+  #menu > li:first-child + li {
+    background-color: transparent;
+    width:40%;
+  }
+
+  /* trzeci element - li - elementu o identyfikatorze menu */
+  #menu > li:first-child + li + li {
+    background-color: transparent;
+    width:30%;
+  }
+
+  /* wygląd elementów - a */
+  #menu > li > a {
+    display:block;
+    padding:15px;
+    text-decoration:none;
+    text-align:center;
+    color:#000;
+    background-color:#DDD;
+    box-shadow:0 0 0 1px #FFF inset;
+    background-image:linear-gradient(#FFF 0%, #EEE 30%, #DDD 70%, #FFF 100%);
+  }
+
+  /* wygląd elementów - a - po najechaniu kursorem myszki na element - li */
+  #menu > li:hover > a {
+    color:#00F;
+    background-color:#FFF;
+    background-image:none;
+  }
+
+  /* -------------------- ROZWIJANA CZĘŚĆ MENU CSS -------------------- */
+  /* wygląd elementów - li - rodzica każdej części rozwijanej menu CSS */
+  #menu > li {
+    position:relative;
+  }
+
+  /* wygląd elementów - ul */
+  #menu > li > ul {
+    width:100%;
+    visibility:hidden;
+    position:absolute;
+    z-index:1;
+    margin:0;
+    padding:0;
+    list-style-type:none;
+    background-color:#FFF;
+  }
+
+  /* wygląd elementów - ul - po najechaniu kursorem myszki na element - li */
+  #menu > li:hover > ul {
+    visibility:visible;
+  }
+
+  /* wygląd elementów - li */
+  #menu > li > ul > li {
+    box-shadow:0 -4px 4px -4px #AAA;
+  }
+
+  /* wygląd pierwszego dziecka elementu typu - li */
+  #menu > li > ul > li:first-child {
+    box-shadow:none;
+  }
+
+  /* wygląd ostatniego dziecka elementu typu - li */
+  #menu > li > ul > li:last-child {
+    box-shadow:0 -4px 4px -4px #AAA, 0 4px 4px -4px #AAA;
+  }
+
+  /* wygląd elementów - a */
+  #menu > li > ul > li > a {
+    display:block;
+    text-decoration:none;
+    padding:15px;
+    color:#000;
+  }
+
+  /* wygląd elementów - a - po najechaniu kursorem myszki na element - li */
+  #menu > li > ul > li:hover > a {
+    color:#00F; 
+    background-color:#F0F0F0;
+    background-image:linear-gradient(#FFF, #EEE, #FFF);
+  }
+
+  /* --------------- ANIMOWANIE ROZWIJANEJ CZĘŚCI MENU CSS --------------- */
+  /* wygląd elementów - ul */
+  #menu > li > ul {
+    transform:scaleY(0);
+    -webkit-transform:scaleY(0);
+    transform-origin:50% 0;
+    -webkit-transform-origin:50% 0;
+    transition:300ms;
+  }
+
+  /* wygląd elementów - ul - po najechaniu kursorem myszki na element - li */
+  #menu > li:hover > ul {
+    transform:scaleY(1);
+    -webkit-transform:scaleY(1);
+  }
+
+  /* Style the sidebar - fixed full height */
+.sidebar {
+    height: 100%;
+    width: 160px;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    overflow-x: hidden;
+    padding-top: 16px;
+  }
+  
+  /* Style sidebar links */
+  .sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+  }
+  
+  /* Style links on mouse-over */
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+  
+  
+  
+  /* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+  }

@@ -1,0 +1,53 @@
+{% extends 'app/main_tlo.html' %}
+
+
+{% block content %}
+
+<legend class="border-bottom mb-4">Szukaj korepetytorów</legend>
+
+<form action = "" method = "get">
+    {% csrf_token %}
+     <!-- <label for="subject">Podaj szukany przedmiot: </label> -->
+
+    <input class="inputData" id="subject" type="text" name="subject" value="" placeholder="Przedmiot">
+
+    <!-- <label for="price">Podaj cene: </label> --> 
+    <input class="inputData" id="priceLow" type="number" name="priceLow" value="" placeholder="Cena Minimalna">
+
+    <input class="inputData" id="priceHigh" type="number" name="priceHigh" value="" placeholder="Cena Maksymalna">
+
+    <input class="inputData" id="city" type="text" name="city" value="" placeholder="Miejscowosc">
+
+<input type="submit" class="btn btn-secondary " value="Filtruj" style="margin-left:50px; background-color: rgb(255, 255, 255); color: black; border-color: rgb(150, 235, 166);">
+</form>
+
+
+
+<ul class="list-group list-group-flush" style="overflow-x:hidden; border-radius: 5px 5px 5px 5px; max-height: 5000px; height: 530px; " >
+    <li class="list-group-item" style="background:transparent; border-radius: 5px 5px 5px 5px;">
+    <div class="row">
+        {% for user in users %}
+        {% if user.profile.korepetytor %}   <!-- sprawdza czy profil do wyswietlenia jest nauczycielem -->
+        {% if user.profile.cena <= priceHigh and user.profile.cena >= priceLow and user.profile.miejscowosc == city or lesson|lower in user.profile.przedmiot %}   <!-- sprawdza czy profil spelnia wymagania filtrow -->
+        <div class="col-4">
+            <div class="user_card" style="height: 250px; width: 180px; background-image: linear-gradient(rgb(80, 219, 177),rgb(111, 240, 122)); float: left; margin: 30px; border-radius: 5px 5px 5px 5px; box-shadow: 0px 4px 5px 1px #1b1b1b;" >
+                <img class="rounder-circle account-img" src="{{user.profile.image.url}}" height="130px" width="130px" style="margin-top: 10px; border-radius: 50px 50px 50px 50px;"><br>
+                <div id="name">{{user.first_name}} {{user.last_name}}</div><br>
+                <a href="{% url 'profile' user.id %}">
+                <button type="button" class="btn btn-light" style="position:absolute; bottom:40px; right:58px;">Zobacz profil</button>
+                </a>
+            </div> 
+        </div>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+    </div>
+</li>
+</ul>
+
+
+<script>
+
+    
+</script>
+{% endblock %}
