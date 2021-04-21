@@ -1,75 +1,20 @@
 {% extends 'app/main_tlo.html' %} 
 
+
 {% block content %}
 
-<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" style="background-color: rgb(66, 66, 66);">
+<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" style="background-color: rgb(66, 66, 66); padding: 5px; max-height: 660px;">
     <div>
         <div class="media">
-            <img class="rounder-circle" src="{{user.profile.image.url}}" height="130px" width="130px" style="border-radius: 5px; border-width: 2px; border-style: solid; border-color: rgb(125, 196, 160);">
-            <div class="media-body account-img" style="margin-left: 10px;  border-right-width: 5px; border-color: seagreen;">
-                <br>
-                {% if user.profile.korepetytor == True %}
-                <h5 style="color:rgb(47, 184, 54)">Korepetytor</h3>  
-            {% else %}
-                <h5 style="color:rgb(47, 184, 54)">Uczeń</h3>   
-            {% endif %}
-            <h4 style="color:rgb(77, 167, 82)">{{user.profile.miejscowosc}}</h4> 
-                <h2 class="account-heading" style="color: rgb(119, 189, 122);">{{user.first_name}} {{user.last_name}}</h2>
-            </div>
-            {% if request.user.id != user.id %}
-        
-        
-    
-            <a href="{% url 'report' user.id %}">
-                <i class="fas fa-comment-slash" style="color: rgb(143, 52, 52);font-size: 20px;"></i>
-            </a>
-            {% endif %}
+            {% include "app/profile_view.html" %}
+            {% url 'profile' user.id %}
         </div>
-        <br>
-    
-        
-        
-    
-        <br>
-        <legend class="border-bottom mb-4">Opis</legend>
-        <ul class="list-group list-group-flush" style=" overflow-x:hidden; max-height: 300px;">
-            <li class="list-group-item" style=" background-color: gray; border-radius: 10px; ">
-    
-                    <div class="uzytkownik_opis" id="opis_panel" style="float:left;">
-                    {{user.profile.opis}}
-                    </div>
-    
-            </li>
-        </ul>
-        <br>
-        <legend class="border-bottom mb-4">Przedmioty</legend>
-        {% for przedmiot in user.profile.przedmiot %}
-            <div class="jezyk_box" style="padding: 5px; display: inline-block; border-radius: 5px; height: 2em; background-color: rgb(58, 58, 58); border: 2px solid rgb(35, 151, 40); outline: none; text-align: center; color: #AAA;">
-                <p>{{przedmiot}}</p></div>
-        {% empty %}
-            <p>Brak przedmiotów</p>
-        {% endfor %}
-    </div>
     <br>
 </div>
-<button type="button" class="btn btn-primary" onclick="showMess()" style="margin-left: 320px;">Usuń</button>
-<button type="button" class="btn btn-primary" onclick="showMess()">Dodaj</button>
+<div style="background-color: transparent;" ></div>
+<button type="button" class="btn" onclick="showMess()" style="margin-left: 320px; position: absolute; bottom: -44px; background-color: rgb(8, 126, 53);">Usuń</button>
+<button type="button" class="btn" onclick="showMess()" style="position: absolute; bottom: -44px; left: 390px; background-color: rgb(8, 126, 53);">Dodaj</button>
+</div>
 
 
-<script>
-    // For receiving
-    sender_id = "{{ receiver.id }}";
-    receiver_id = "{{ request.user.id }}";
-
-    //For sending
-    $(function () {
-        scrolltoend();
-        $('#chat-box').on('submit', function (event) {
-            event.preventDefault();
-            var message = $('#id_message');
-            send('{{ request.user.username }}', '{{ receiver.username }}', message.val());
-            message.val('');
-        })
-    })
-</script>
 {% endblock %}

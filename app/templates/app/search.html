@@ -8,15 +8,27 @@
 <form action = "" method = "get">
     {% csrf_token %}
      <!-- <label for="subject">Podaj szukany przedmiot: </label> -->
-
-    <input class="inputData" id="subject" type="text" name="subject" value="" placeholder="Przedmiot">
+     <select class="listLabel" name="subject">
+        <option value="angielski">Angielski</option>
+        <option value="historia">Historia</option>
+        <option value="polski">Polski</option>
+        <option value="matematyka">Matematyka</option>
+        <option value="informatyka">Informatyka</option>
+    </select>
 
     <!-- <label for="price">Podaj cene: </label> --> 
     <input class="inputData" id="priceLow" type="number" name="priceLow" value="" placeholder="Cena Minimalna">
 
     <input class="inputData" id="priceHigh" type="number" name="priceHigh" value="" placeholder="Cena Maksymalna">
 
-    <input class="inputData" id="city" type="text" name="city" value="" placeholder="Miejscowosc">
+    <select class="inputData" name="city">
+        <option value="Warszawa">Warszawa</option>
+        <option value="Gdynia">Gdynia</option>
+        <option value="Kraków">Kraków</option>
+        <option value="Poznań">Poznań</option>
+        <option value="Wrocław">Wrocław</option>
+        <option value="Ciechanów">Ciechanów</option>
+    </select>
 
 <input type="submit" class="btn btn-secondary " value="Filtruj" style="margin-left:50px; background-color: rgb(255, 255, 255); color: black; border-color: rgb(150, 235, 166);">
 </form>

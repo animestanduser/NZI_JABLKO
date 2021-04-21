@@ -36,6 +36,7 @@ urlpatterns = [
     path('profile/<int:user>/', views.profile, name='profile'),
     
 
+
     #Szukaj korepetytorów
     path('search/', views.search, name='search'),
 

@@ -18,6 +18,7 @@ from .tokens import account_activation_token
 from .forms import SignupForm, UserEditForm, ProfileEditForm, ProfileOptionsForm, ReportForm
 from .models import Profile, Message
 from django.db import IntegrityError
+import random
 
 
 
@@ -112,6 +113,7 @@ def profile(request, user):
 
 
 
+
 def report(request, user):
     report_form = ReportForm(instance=request.user, data=request.POST)
     if request.method == "GET":
@@ -184,8 +186,11 @@ def list(request):
 
 
 def random(request):
-    if request.method == "GET":
-            return render(request, 'app/random.html', {'users': User.objects.exclude(username=request.user.username)})
+    item = list(Profile.objects.filter(nauczyciel=True))
+    random_item = random.choice(item)
+
+    
+    return render(request, 'app/random.html', {'item': item})
 
 
 

@@ -67,9 +67,16 @@ i:hover{
 
 }
 
+.listLabel{
+  width: 157px;
+  height: 30px;
+  color:rgb(95, 95, 95);
+}
 
 .inputData{
   width: 157px;
+  height: 30px;
+  color:rgb(95, 95, 95);
 }
 
 .uploadcare--jcrop-holder>div>div, #preview {
