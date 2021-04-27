@@ -29,7 +29,6 @@ class Post(models.Model):
 #Model profilu
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
     image = models.ImageField(default='none.jpg', upload_to='profile_pics')
 
     PRZEDMIOTY_CHOICES = [
@@ -60,7 +59,6 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} - Profil'
         
-
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

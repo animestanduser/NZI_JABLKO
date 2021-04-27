@@ -5,6 +5,7 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static 
 from django.conf import settings
+from django.views.generic import TemplateView
 
 urlpatterns = [
 
@@ -61,5 +62,8 @@ urlpatterns = [
     path('api/messages/<int:sender>/<int:receiver>/', views.message_list, name='message-detail'),
     path('api/messages/', views.message_list, name='message-list'),
 ]
+url(r'^app/random.html', TemplateView.as_view(template_name="profile_view.html"),
+                   name='random'),
+
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

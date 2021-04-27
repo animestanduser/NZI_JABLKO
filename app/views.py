@@ -83,7 +83,7 @@ def activate(request, uidb64, token, backend='django.contrib.auth.backends.Model
 
 
 
-
+@login_required
 def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
@@ -112,6 +112,10 @@ def profile(request, user):
                        'user': User.objects.get(id=user)})
 
 
+def random(request):
+    if request.method == "GET":
+            return render(request, 'app/random.html',
+             {'users': User.objects.exclude(username=request.user.username)})
 
 
 def report(request, user):
@@ -185,12 +189,6 @@ def list(request):
    
 
 
-def random(request):
-    item = list(Profile.objects.filter(nauczyciel=True))
-    random_item = random.choice(item)
-
-    
-    return render(request, 'app/random.html', {'item': item})
 
 
 
