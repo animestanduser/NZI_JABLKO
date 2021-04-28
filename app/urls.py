@@ -52,10 +52,16 @@ urlpatterns = [
 
     #Report profilu
     path('report/<int:user>/', views.report, name='report'),
+
+    path('friends_invitations/', views.friends_invitations, name='friends_invitations'),
     
     path('random.html', TemplateView.as_view(template_name="profile_view.html")),
 
     path('chat/<int:sender>/<int:receiver>/', views.message_view, name='chat'),
+
+    path('send_friend_request/<int:userID>/', views.send_friend_request, name='send_friend_request'),
+
+    path('accept_friend_request/<int:requestID>/', views.accept_friend_request, name='accept_friend_request'),
 
     path('api/messages/<int:sender>/<int:receiver>/', views.message_list, name='message-detail'),
     path('api/messages/', views.message_list, name='message-list'),

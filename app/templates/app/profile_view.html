@@ -1,4 +1,4 @@
-<div style="background-color: rgb(34, 34, 34); ">
+<div style="background-color: rgb(34, 34, 34); border-radius: 10px 10px 10px 10px;">
 
     <div class="media" style="width: 755px;">
         <img class="rounder-circle" src="{{user.profile.image.url}}" height="130px" width="130px" style="border-radius: 5px; border-width: 2px; border-style: solid; border-color: rgb(125, 196, 160);">
@@ -15,10 +15,8 @@
         {% if request.user.id != user.id %}
     
     
+        
 
-        <a href="{% url 'report' user.id %}">
-            <i class="fas fa-comment-slash" style="color: rgb(143, 52, 52);font-size: 20px;"></i>
-        </a>
         {% endif %}
     </div>
     <br>

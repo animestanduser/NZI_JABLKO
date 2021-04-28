@@ -29,6 +29,7 @@ class Post(models.Model):
 #Model profilu
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    friends = models.ManyToManyField(User, related_name='friends', blank=True)
 
     image = models.ImageField(default='none.jpg', upload_to='profile_pics')
 
@@ -75,7 +76,12 @@ class Profile(models.Model):
     opis = models.TextField(max_length="500")
 
 
-
+class Friend_Request(models.Model):
+    from_user = models.ForeignKey(
+        User, related_name='from_user', on_delete=models.CASCADE)
+    to_user = models.ForeignKey(
+        User, related_name='to_user', on_delete=models.CASCADE)
+    
 
 #Model zgłoszeń użytkowników
 class Report(models.Model):

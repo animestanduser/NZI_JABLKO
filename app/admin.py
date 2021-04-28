@@ -3,10 +3,10 @@ from .models import Post
 from .models import Profile
 from .models import Report
 
+
 admin.site.register(Post)
 
 admin.site.register(Profile)
-
 
 
 
