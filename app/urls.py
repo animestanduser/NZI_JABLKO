@@ -31,13 +31,10 @@ urlpatterns = [
     url(r'accounts/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.PasswordResetConfirmView.as_view(template_name = "accounts/password_reset_confirm.html"), name ='password_reset_confirm'),
     url(r'^accounts/reset/done/$', auth_views.PasswordResetCompleteView.as_view(template_name = "accounts/password_reset_done.html"), name ='password_reset_complete'),
 
-  
 
     #Podgląd profilu
     path('profile/<int:user>/', views.profile, name='profile'),
     
-
-
     #Szukaj korepetytorów
     path('search/', views.search, name='search'),
 
@@ -56,14 +53,13 @@ urlpatterns = [
     #Report profilu
     path('report/<int:user>/', views.report, name='report'),
     
-  
+    path('random.html', TemplateView.as_view(template_name="profile_view.html")),
+
     path('chat/<int:sender>/<int:receiver>/', views.message_view, name='chat'),
 
     path('api/messages/<int:sender>/<int:receiver>/', views.message_list, name='message-detail'),
     path('api/messages/', views.message_list, name='message-list'),
 ]
-url(r'^app/random.html', TemplateView.as_view(template_name="profile_view.html"),
-                   name='random'),
 
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

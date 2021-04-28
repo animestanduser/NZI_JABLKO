@@ -24,8 +24,9 @@ import random
 
 
 
-
-
+def profile_view(request):
+    
+    return render(request, 'app/profile_view.html',)
 
 
 def start(request):
@@ -113,9 +114,12 @@ def profile(request, user):
 
 
 def random(request):
-    if request.method == "GET":
-            return render(request, 'app/random.html',
-             {'users': User.objects.exclude(username=request.user.username)})
+    random_object = User.objects.order_by('?')[0]
+
+    
+    return render(request, 'app/random.html',
+        {'users': User.objects.exclude(username=request.user.username),
+        'user': random_object})
 
 
 def report(request, user):

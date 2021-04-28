@@ -2,12 +2,12 @@
 
 
 {% block content %}
-<!--
-<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" style="background-color: rgb(66, 66, 66); padding: 5px; max-height: 660px;">
+
+{% if user.profile.korepetytor %}
+<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" style="background-color: transparent; padding: 5px; max-height: 660px; ">
     <div>
-        <div class="media">
+        <div class="media" style="width: 700px;">
             {% include "app/profile_view.html" %}
-            {% url 'profile' user.id %}
         </div>
     <br>
 </div>
@@ -15,8 +15,10 @@
 <button type="button" class="btn" onclick="showMess()" style="margin-left: 320px; position: absolute; bottom: -44px; background-color: rgb(8, 126, 53);">Usuń</button>
 <button type="button" class="btn" onclick="showMess()" style="position: absolute; bottom: -44px; left: 390px; background-color: rgb(8, 126, 53);">Dodaj</button>
 </div>
--->
-<iframe id="encoder_iframe" height=100% width="100%" src="{% url 'random' %}">
-</iframe>
+{% else %}
+<p>Natrafiłeś na ucznia, szukaj dalej</p>
+{% endif %}
+
+
 
 {% endblock %}
