@@ -15,8 +15,8 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from .serializers import MessageSerializer, UserSerializer
 from .tokens import account_activation_token
-from .forms import SignupForm, UserEditForm, ProfileEditForm, ProfileOptionsForm, ReportForm
-from .models import Profile, Message
+from .forms import SignupForm, UserEditForm, ProfileEditForm, ProfileOptionsForm, ReportForm, RateForm, RatingForm, AuthForm, AuthProfileForm
+from .models import Profile, Message, Auth
 from django.db import IntegrityError
 
 
@@ -30,7 +30,31 @@ from django.db import IntegrityError
 
 def start(request):
     if request.user.is_authenticated:
-        return render(request, 'app/index.html', {'users': User.objects.exclude(username=request.user.username)})
+        try:
+            auth_profile_form = AuthForm(instance=request.user.profile, data=request.POST, files=request.FILES)
+            if request.method == "GET":
+                return render(request, 'app/index.html', 
+                {'users': User.objects.exclude(username=request.user.username),
+                'auth_profile_form': auth_profile_form})
+            if request.method == 'POST':
+                auth_profile_form = AuthProfileForm(instance=request.user.profile, data=request.POST, files=request.FILES)
+                auth_form = AuthForm(request.POST)
+                if auth_form.is_valid() and auth_profile_form.is_valid():
+                    auth = auth_form.save(commit=False)
+                    auth.user_auth_author = request.user
+                    auth.wzor = auth_profile_form.cleaned_data.get('wzor')
+                    auth.zdjecie = auth_profile_form.cleaned_data.get('zdjecie')
+                    auth.save()
+                    auth_profile_form.save()
+                    return render(request, 'app/auth_succes.html', 
+                    {'users': User.objects.exclude(username=request.user.username),
+                    'auth_form': auth_form,
+                    'auth_profile_form': auth_profile_form})
+        except IntegrityError as e:
+            return render(request, 'app/auth_error.html',
+                    {'users': User.objects.exclude(username=request.user.username),
+                    'auth_form': auth_form,
+                    'auth_profile_form': auth_profile_form})
     else:
         return render(request, 'app/start.html',)
 
@@ -141,13 +165,46 @@ def report(request, user):
 
 
 
+def rate(request, user):
+    if request.method == 'POST':
+        try:
+            rate_form = RateForm(instance=Profile.objects.get(user=User.objects.get(id=user)), data=request.POST)
+            rating_form = RatingForm(request.POST)
+            if rating_form.is_valid():
+                rating = rating_form.save(commit=False)
+                rating.user_rate_author = request.user
+                rating.user_rated = User.objects.get(pk=user)
+                rating.save()
+                if rate_form.is_valid():
+                    rate_form.save()
+                    if request.POST['ocena'] == '+12':
+                        return render(request, 'app/rate_succes_plus.html',
+                        {'users': User.objects.exclude(username=request.user.username),
+                        'user': User.objects.get(id=user),
+                        'rating_form': rating_form,
+                        'rate_form': rate_form})
+                    if request.POST['ocena'] == '-18':
+                        return render(request, 'app/rate_succes_minus.html',
+                        {'users': User.objects.exclude(username=request.user.username),
+                        'user': User.objects.get(id=user),
+                        'rating_form': rating_form,
+                        'rate_form': rate_form})
+        except IntegrityError as e:
+            return render(request, 'app/rate_error.html',
+                    {'users': User.objects.exclude(username=request.user.username),
+                    'user': User.objects.get(id=user),
+                    'rating_form': rating_form,
+                    'rate_form': rate_form})
+    else:
+        rate_form = RateForm(instance=Profile.objects.get(user=User.objects.get(id=user)))
+    return render(request, 'app/rate.html',
+    {'rate_form': rate_form, 
+    'user': User.objects.get(id=user),
+    'users': User.objects.exclude(username=request.user.username)})
         
 
 
 
-        
-    
-     
 
 
 

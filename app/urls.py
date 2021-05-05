@@ -26,7 +26,7 @@ urlpatterns = [
 #działa
     url(r'^accounts/password_reset/done/$', auth_views.PasswordResetDoneView.as_view(template_name = "registration/password_reset_sent.html"), name ='password_reset_done'),
 
-#działa pod warunkiem, że nie folder "registrations" tylko "accounts" (XD)
+#działa pod warunkiem, że nie folder "registrations" tylko "accounts"
     url(r'accounts/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.PasswordResetConfirmView.as_view(template_name = "accounts/password_reset_confirm.html"), name ='password_reset_confirm'),
     url(r'^accounts/reset/done/$', auth_views.PasswordResetCompleteView.as_view(template_name = "accounts/password_reset_done.html"), name ='password_reset_complete'),
 
@@ -53,6 +53,9 @@ urlpatterns = [
 
     #Report profilu
     path('report/<int:user>/', views.report, name='report'),
+
+    #Rating profilu
+    path('rate/<int:user>/', views.rate, name='rate'),
     
   
     path('chat/<int:sender>/<int:receiver>/', views.message_view, name='chat'),

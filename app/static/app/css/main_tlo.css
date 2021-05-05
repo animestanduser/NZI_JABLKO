@@ -20,6 +20,26 @@ header{
   }
 }
 
+
+
+#zoom1{
+animation: puls 3s linear infinite;
+
+}
+
+@keyframes zoom{
+
+    0%{
+        transform: scale(1) rotate(0);
+    }
+    50%{
+        transform: scale(.8) rotate(0);
+    }
+    100%{
+        transform: scale(1) rotate(0);
+    }
+}
+
 .col-12{
 
   width: 2000px;

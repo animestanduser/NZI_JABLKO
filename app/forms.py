@@ -5,6 +5,8 @@ from django.core.files.images import get_image_dimensions
 from .models import Profile
 from .models import Post
 from .models import Report
+from .models import Rate
+from .models import Auth
 
 
 
@@ -53,3 +55,34 @@ class ReportForm(forms.ModelForm):
     widget = {
             'message': forms.Textarea(attrs={'class':'form-control'}),
     }
+
+class RateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('punkty', 'ranga',)
+
+
+class RatingForm(forms.ModelForm):
+    class Meta:
+        model = Rate
+        fields = ('ocena',)
+
+    widget = {
+            'ocena': forms.Textarea(attrs={'class':'form-control'}),
+    }
+
+
+class AuthForm(forms.ModelForm):
+    class Meta:
+        model = Auth
+        fields = ('wzor', 'zdjecie',)
+
+
+class AuthProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('wzor', 'zdjecie',)
+
+
+
+

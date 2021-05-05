@@ -21,6 +21,10 @@ body{
     background-size: cover;
 }
 
+.zoom {
+    transition: width 1s, height 1s;
+}
+
 
 
 

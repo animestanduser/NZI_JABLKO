@@ -5,6 +5,23 @@
 <div>
 
     <div class="media">
+
+        
+        {% if user.profile.ranga == "wood" %}
+            <img class="tetetete" src="/static/app/css/images/wooden_square_template.png" style="position: absolute; margin-left: -2px; margin-top: -2px;" width="135" height="135" alt="avatar">
+        {% endif %}
+        {% if user.profile.ranga == "leaf" %}
+            <img class="tetetete" src="/static/app/css/images/leaf_square_template.png" style="position: absolute; margin-left: -2px; margin-top: -2px;" width="135" height="135" alt="avatar">
+        {% endif %}
+        {% if user.profile.ranga == "gold" %}
+            <img class="tetetete" src="/static/app/css/images/golden_square_template.png" style="position: absolute; margin-left: -2px; margin-top: -2px;" width="135" height="135" alt="avatar">
+        {% endif %}
+        {% if user.profile.ranga == "diamond" %}
+            <img class="tetetete" src="/static/app/css/images/diamond_square_template.png" style="position: absolute; margin-left: -2px; margin-top: -2px;" width="135" height="135" alt="avatar">
+        {% endif %}
+
+        
+
         <img class="rounder-circle" src="{{user.profile.image.url}}" height="130px" width="130px" style="border-radius: 5px; border-width: 2px; border-style: solid; border-color: rgb(125, 196, 160);">
         <div class="media-body account-img" style="margin-left: 10px;  border-right-width: 5px; border-color: seagreen;">
             <br>
@@ -18,11 +35,17 @@
         </div>
         {% if request.user.id != user.id %}
     
+
+        <a href="{% url 'rate' user.id %}">
+            <i class="fas fa-star-half-alt" style="color: rgb(28, 155, 2);font-size: 20px;"></i>
+        </a>
     
 
         <a href="{% url 'report' user.id %}">
             <i class="fas fa-comment-slash" style="color: rgb(143, 52, 52);font-size: 20px;"></i>
         </a>
+
+        
         {% endif %}
     </div>
     <br>

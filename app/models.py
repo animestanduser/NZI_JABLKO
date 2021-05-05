@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractUser
 from PIL import Image
+import random
 
 
 #Model post
@@ -20,13 +21,24 @@ class Post(models.Model):
         self.published_date = timezone.now()
         self.save()
 
+    
     def __str__(self):
         return self.title
 
 #Model profilu
 class Profile(models.Model):
+
+
+    def random_string():
+        return "gest" + str(random.randint(1, 5)) + ".png"
+
+
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='none.jpg', upload_to='profile_pics')
+
+    wzor = models.ImageField(default=random_string, upload_to='profile_auth')
+    zdjecie = models.ImageField(default='none.jpg', upload_to='profile_auth')
 
     PRZEDMIOTY_CHOICES = [
     ('brak', 'Brak'),
@@ -47,9 +59,20 @@ class Profile(models.Model):
     ('Ciechanów', 'Ciechanów'),
     ]
 
+    RANGA_CHOICES = [
+    ('brak', 'Brak (0-1199)'),
+    ('wood', 'Wood (1200-1399)'),
+    ('leaf', 'Leaf (1400-1599)'),
+    ('gold', 'Gold (1600-1799)'),
+    ('diamond', 'Diamond (1800-)'),
+    ]
+
+    zweryfikowany = models.BooleanField(default=False)
     przedmiot = models.CharField(max_length=30, choices=PRZEDMIOTY_CHOICES, default='brak')
     miejscowosc = models.CharField(max_length=30, choices=MIEJSCOWOSC_CHOICES, default='brak')
     cena = models.CharField(max_length=400)
+    punkty = models.CharField(max_length=7, default=1000)
+    ranga = models.CharField(max_length=30, choices=RANGA_CHOICES, default="brak")
     opis = models.TextField(max_length="500")
     korepetytor = models.BooleanField(default=False)
     users = User.objects.all()
@@ -57,9 +80,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} - Profil'
-        
 
 
+   
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
@@ -88,10 +111,38 @@ class Report(models.Model):
     message = models.TextField()
 
     def __str__(self):
-        return f'{self.user_author.username} ->  {self.user_reported.username}'
+        return f'{self.user_author.username} ->  {self.user_reported.username} ({self.message})'
 
 
-    
+
+
+
+#Model ocen użytkowników
+class Rate(models.Model):
+    user_rate_author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_rate_author')
+    user_rated = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_rated')
+    ocena = models.CharField(max_length=7)
+
+    def __str__(self):
+        return f'{self.user_rate_author.username} ->  {self.user_rated.username} ({self.ocena})'
+
+
+def random_string():
+    return "gest" + str(random.randint(1, 5)) + ".png"
+
+
+
+#Model weryfikacji
+class Auth(models.Model):
+    user_auth_author = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_auth_author')
+    wzor = models.ImageField(default=random_string, upload_to='profile_auth')
+    zdjecie = models.ImageField(default='none.jpg', upload_to='profile_auth')
+
+    def __str__(self):
+        return f'{self.user_auth_author.username}'
+
+
+   
 
     
 

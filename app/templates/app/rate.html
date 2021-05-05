@@ -1,0 +1,48 @@
+{% extends 'app/main_tlo.html' %} 
+
+
+
+{% block content %}
+
+<div>
+
+    
+    <form method="POST" enctype="multipart/form-data">
+
+        <legend class="border-bottom mb-4">Ocena profilu</legend>
+        
+            
+        <form method="post" enctype="multipart/form-data">
+            
+            {{ rate_form.punkty }}
+            {{ rate_form.ranga }}
+
+            
+
+                 <div class="row" style="margin-top: 100px;">
+                    <div class="col-1">
+                    </div>  
+                    <div class="col-1">
+                        <img src="/static/app/css/images/good_teacher.jpg" id="zoom2" class="rounded-circle" style="height: 220;">
+                    </div>  
+                    <div class="col-5">
+                        <button type="submit" name="ocena" value="+12" onclick="ocenaPlus()" class="btn btn-success" style="margin-top: 250px; margin-left: 13px;">Plus</button>
+                    </div>  
+                    
+                    <div class="col-3">
+                        <img src="/static/app/css/images/bad_teacher.jpg" id="zoom2" class="rounded-circle" style="height: 220;">
+                        <button type="submit" name="ocena" value="-18" onclick="ocenaMinus()" class="btn btn-danger" style="margin-top: 28px; margin-left: 75px;">Minus</button>
+                    </div>
+
+                 </div>   
+                    
+            {% csrf_token %}
+            
+        </form>
+
+    </form>
+</div>
+
+
+{% endblock %}
+
