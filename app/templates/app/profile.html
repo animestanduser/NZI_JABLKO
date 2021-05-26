@@ -1,0 +1,80 @@
+{% extends 'app/main_tlo.html' %} 
+
+{% block content %}
+
+<div>
+
+    <div class="media">
+
+        
+        {% if user.profile.ranga == "wood" %}
+            <img class="tetetete" src="/static/app/css/images/wooden_square_template.png" style="position: absolute; margin-left: -2px; margin-top: -2px;" width="135" height="135" alt="avatar">
+        {% endif %}
+        {% if user.profile.ranga == "leaf" %}
+            <img class="tetetete" src="/static/app/css/images/leaf_square_template.png" style="position: absolute; margin-left: -2px; margin-top: -2px;" width="135" height="135" alt="avatar">
+        {% endif %}
+        {% if user.profile.ranga == "gold" %}
+            <img class="tetetete" src="/static/app/css/images/golden_square_template.png" style="position: absolute; margin-left: -2px; margin-top: -2px;" width="135" height="135" alt="avatar">
+        {% endif %}
+        {% if user.profile.ranga == "diamond" %}
+            <img class="tetetete" src="/static/app/css/images/diamond_square_template.png" style="position: absolute; margin-left: -2px; margin-top: -2px;" width="135" height="135" alt="avatar">
+        {% endif %}
+
+        
+
+        <img class="rounder-circle" src="{{user.profile.image.url}}" height="130px" width="130px" style="border-radius: 5px; border-width: 2px; border-style: solid; border-color: rgb(125, 196, 160);">
+        <div class="media-body account-img" style="margin-left: 10px;  border-right-width: 5px; border-color: seagreen;">
+            <br>
+            {% if user.profile.korepetytor == True %}
+            <h5>Korepetytor</h3>
+        {% else %}
+            <h5 style="color:rgb(47, 184, 54)">Uczeń</h3>   
+        {% endif %}
+        <h4 style="color:rgb(77, 167, 82)">{{user.profile.miejscowosc}}</h4> 
+            <h2 class="account-heading" style="color: rgb(33, 63, 34);">{{user.first_name}} {{user.last_name}}</h2>
+        </div>
+        {% if request.user.id != user.id %}
+    
+
+        <a href="{% url 'send_friend_request' user.id %}">
+            <i class="fas fa-user-plus" style="color: rgb(27, 141, 27);font-size: 20px;"></i>
+        </a>
+
+        <a href="{% url 'rate' user.id %}">
+            <i class="fas fa-star-half-alt" style="color: rgb(28, 155, 2);font-size: 20px;"></i>
+        </a>
+    
+
+        <a href="{% url 'report' user.id %}">
+            <i class="fas fa-comment-slash" style="color: rgb(143, 52, 52);font-size: 20px;"></i>
+        </a>
+
+        
+        {% endif %}
+    </div>
+    <br>
+
+    
+    
+
+    <br>
+    <legend class="border-bottom mb-4">Opis</legend>
+    <ul class="list-group list-group-flush" style=" overflow-x:hidden; max-height: 300px;">
+        <li class="list-group-item" style=" background-color: rgb(228, 228, 228); border-radius: 10px; ">
+
+                <div class="uzytkownik_opis" id="opis_panel" style="float:left;">
+                {{user.profile.opis}}
+                </div>
+
+        </li>
+    </ul>
+    <br>
+    <legend class="border-bottom mb-4">Przedmioty</legend>
+    {% for przedmiot in user.profile.przedmiot %}
+        <div class="jezyk_box" style="padding: 5px; display: inline-block; border-radius: 5px; height: 2em; background-color: rgb(58, 58, 58); border: 2px solid rgb(35, 151, 40); outline: none; text-align: center; color: #AAA;">
+            <p>{{przedmiot}}</p></div>
+    {% empty %}
+        <p>Brak przedmiotów</p>
+    {% endfor %}
+</div>
+{% endblock %}

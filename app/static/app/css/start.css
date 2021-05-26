@@ -1,0 +1,401 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html{
+    font-size: 10px;
+    
+    
+    
+}
+
+
+
+body{
+  background: url("./images/korepder-tlo.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#after{
+    
+  background: white;
+    /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+@keyframes fadeIn{
+    to{
+        opacity: 1;
+    }
+
+
+}
+
+
+.spinner{
+    opacity: 0;
+    width: 17rem;
+    height: 17rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    animation: fadeIn 1s ease-in forwards;
+
+}
+
+
+#logo{
+    position: absolute;
+    width: 12rem;
+    height: 12rem;
+    margin-left: 25px;
+    margin-top: 25px;
+    animation: puls 3s linear infinite;
+
+}
+
+@keyframes puls{
+
+    0%{
+        transform: scale(1) rotate(0);
+    }
+    50%{
+        transform: scale(.8) rotate(0);
+    }
+    100%{
+        transform: scale(1) rotate(0);
+    }
+}
+
+
+
+
+.spinner-in{
+    width: 100%;
+    height: 100%;
+    border: 1rem solid #111010;
+    border-radius: 50%;
+    border-top-color: #01700f;
+    border-bottom-color: #01700f;
+    border-left-color: #012e07;
+    border-right-color: #012e07;
+    animation: rotate 3s linear infinite;
+    box-shadow: 0 0 10px #01700f,
+                0 0 20px #014d0b,
+                0 0 30px #012e07,
+                0 0 40px #012706;
+
+
+
+}
+
+@keyframes rotate{
+
+    0%{
+        transform: scale(1) rotate(-360deg);
+    }
+    50%{
+        transform: scale(.8) rotate(0);
+    }
+    100%{
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+
+
+.preload{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: #0e0e0e;
+    z-index: 200;
+    }
+.preload.display-none{
+    position: fixed;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: #0e0e0e;
+    z-index: -10;
+    transition: all 0.7s;
+    }
+
+
+
+
+#logo-panel{
+
+    width: 550px;
+    margin-left: 290px;
+
+
+}
+
+.btn{
+    width: 50%;
+    background: none;
+    border: 2px solid #4caf50;
+    color: white;
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 12px 0;
+    outline: none;
+}
+
+
+
+
+ /* Po zalogowaniu */
+
+
+
+header{
+    height: 100px;
+    background-image: linear-gradient(rgb(80, 219, 177),rgb(111, 240, 122));
+    box-shadow: 0px 0px 30px 5px #888888;
+}
+
+.app{
+    background-color: green;
+    width: 50%;
+    display: flex;
+}
+
+footer{
+    background-color: rgb(0, 0, 0);
+    height: 30px;
+    text-align: center;
+    color: white;
+}
+
+.top_menu{
+    float: right;
+    margin:25px;
+}
+
+.side_menu{
+    width:250px;
+    height:100%;
+    background-color: transparent;
+}
+
+  #menu {
+    width:400px;
+    margin:0 auto;
+    padding:0;
+    list-style-type:none;
+    background-color: transparent;
+  }
+
+
+  li{
+      font-size:15px;
+      text-align: center;
+      color: black;
+  }
+  li.nav-item{
+      text-align: left;
+  }
+
+  .media-body{
+      color: black;
+  }
+
+  /* naprawa wysokości elementu - ol */
+  #menu:after {
+    content:'';
+    display:block;
+    clear:both;
+  }
+
+  /* wygląd elementów - li */
+  #menu > li {
+    float:left;
+  }
+
+  /* pierwszy element - li - elementu o identyfikatorze menu */
+  #menu > li:first-child {
+    background-color: transparent;
+    width:30%;
+  }
+
+  /* drugi element - li - elementu o identyfikatorze menu */
+  #menu > li:first-child + li {
+    background-color: transparent;
+    width:40%;
+  }
+
+  /* trzeci element - li - elementu o identyfikatorze menu */
+  #menu > li:first-child + li + li {
+    background-color: transparent;
+    width:30%;
+  }
+
+  /* wygląd elementów - a */
+  #menu > li > a {
+    display:block;
+    padding:15px;
+    text-decoration:none;
+    text-align:center;
+    color:#000;
+    background-color:#DDD;
+    box-shadow:0 0 0 1px #FFF inset;
+    background-image:linear-gradient(#FFF 0%, #EEE 30%, #DDD 70%, #FFF 100%);
+  }
+
+  /* wygląd elementów - a - po najechaniu kursorem myszki na element - li */
+  #menu > li:hover > a {
+    color:#00F;
+    background-color:#FFF;
+    background-image:none;
+  }
+
+  /* -------------------- ROZWIJANA CZĘŚĆ MENU CSS -------------------- */
+  /* wygląd elementów - li - rodzica każdej części rozwijanej menu CSS */
+  #menu > li {
+    position:relative;
+  }
+
+  /* wygląd elementów - ul */
+  #menu > li > ul {
+    width:100%;
+    visibility:hidden;
+    position:absolute;
+    z-index:1;
+    margin:0;
+    padding:0;
+    list-style-type:none;
+    background-color:#FFF;
+  }
+
+  /* wygląd elementów - ul - po najechaniu kursorem myszki na element - li */
+  #menu > li:hover > ul {
+    visibility:visible;
+  }
+
+  /* wygląd elementów - li */
+  #menu > li > ul > li {
+    box-shadow:0 -4px 4px -4px #AAA;
+  }
+
+  /* wygląd pierwszego dziecka elementu typu - li */
+  #menu > li > ul > li:first-child {
+    box-shadow:none;
+  }
+
+  /* wygląd ostatniego dziecka elementu typu - li */
+  #menu > li > ul > li:last-child {
+    box-shadow:0 -4px 4px -4px #AAA, 0 4px 4px -4px #AAA;
+  }
+
+  /* wygląd elementów - a */
+  #menu > li > ul > li > a {
+    display:block;
+    text-decoration:none;
+    padding:15px;
+    color:#000;
+  }
+
+  /* wygląd elementów - a - po najechaniu kursorem myszki na element - li */
+  #menu > li > ul > li:hover > a {
+    color:#00F; 
+    background-color:#F0F0F0;
+    background-image:linear-gradient(#FFF, #EEE, #FFF);
+  }
+
+  /* --------------- ANIMOWANIE ROZWIJANEJ CZĘŚCI MENU CSS --------------- */
+  /* wygląd elementów - ul */
+  #menu > li > ul {
+    transform:scaleY(0);
+    -webkit-transform:scaleY(0);
+    transform-origin:50% 0;
+    -webkit-transform-origin:50% 0;
+    transition:300ms;
+  }
+
+  /* wygląd elementów - ul - po najechaniu kursorem myszki na element - li */
+  #menu > li:hover > ul {
+    transform:scaleY(1);
+    -webkit-transform:scaleY(1);
+  }
+
+  /* Style the sidebar - fixed full height */
+.sidebar {
+    height: 100%;
+    width: 160px;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    overflow-x: hidden;
+    padding-top: 16px;
+  }
+  
+  /* Style sidebar links */
+  .sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+  }
+  
+  /* Style links on mouse-over */
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+  
+ 
+  
+  /* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+  }
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

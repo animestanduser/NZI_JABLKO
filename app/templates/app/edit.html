@@ -1,0 +1,73 @@
+{% extends 'app/main_tlo.html' %} 
+
+
+{% block content %}
+
+<div>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <legend class="border-bottom mb-4">Edytuj profil</legend>
+        <div class="field edit">
+        <form method="post" enctype="multipart/form-data">
+
+            <div class="row">
+                <div class="col-6">
+                    <label style="float: left;">Imię:</label> {{ user_form.first_name }}<br>
+
+                    <label style="float: left;">Miejscowość: {{ profile_form.miejscowosc }}</label>
+                        
+                    <label style="float: left; padding-top: 55px;">Opis: {{ profile_form.opis }}</label>
+                    
+
+                </div>
+                <div class="col-6">
+                    <label style="float: left;">Nazwisko:</label>{{ user_form.last_name }}<br>
+
+                    <label style="float: left; font-size: large;">Korepetytor {{ profile_form.korepetytor }}</label><br><br>
+
+
+                    <div class="row">
+                        <div class="col-6">
+
+                        
+                            
+                            <img id="image" src="{{user.profile.image.url}}" height="220px">
+
+                            <label style="float: left; font-size: large; padding-top: 20px; width: 200px;">Avatar: {{ profile_form.image }}</label><br>
+                           
+                        </div>
+                        <div class="col-6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-7">
+                </div>
+                <div class="col-5">
+                    <br><p><input type="submit" class="btn btn-success" value="Zapisz zmiany" ></p>
+                        
+                   
+                </div>
+
+            </div>
+
+            
+
+
+                    
+                {% csrf_token %}
+                
+            
+        
+            </form>
+            
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,79 @@
+{% extends 'app/start_tlo.html' %} 
+
+{% block content %}
+
+
+
+
+<form method="post">
+    {% csrf_token %}
+
+
+      <div class="login-box text-center">
+        <h1>Login</h1>
+        <div class="textbox">
+             <i class="fas fa-user"></i>
+             {{ form.username }}
+         </div>
+
+        <br>
+
+
+        <h1>Imię</h1>
+        <div class="textbox">
+            <i class="fas fa-user"></i>
+            {{ form.first_name }}
+        </div>
+
+        <br>
+
+        <h1>E-Mail</h1>
+        <div class="textbox">
+            <i class="fas fa-at"></i>
+            {{ form.email }}
+         </div>
+
+         <br>
+
+
+         <h1>Hasło</h1>
+         <div class="textbox">
+             <i class="fas fa-key"></i>
+             {{ form.password1 }}
+          </div>
+
+          <br>
+
+
+          <h1>Powtórz hasło</h1>
+         <div class="textbox">
+             <i class="fas fa-key"></i>
+             {{ form.password2 }}
+          </div>
+          <br>
+
+         
+          
+
+    <button style="margin-top: 20px;" class="btn btn-success" type="submit">Zarejestruj się</button>
+    <br>
+    {% if form.errors %}
+        <div class="card shadow-lg" style="width: 263px;">
+
+            <div class="text-center" style="width: 80%; margin: 0 auto">
+
+              {% for key,value in form.errors.items %} 
+                <h5 style="color:#b10a0a;">{{ value|escape }}</h1>
+              {% endfor %}
+               
+            </div>
+        </div>
+      {% endif %}
+  </div>
+  </form>
+
+
+
+{% endblock %}
+
+    

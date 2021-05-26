@@ -1,0 +1,30 @@
+{% extends 'app/main_tlo.html' %} 
+
+
+{% block content %}
+
+
+{% if user.profile.korepetytor %}
+<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" style="background-color: transparent; padding: 5px; max-height: 660px; ">
+    <div>
+        <div class="media" style="width: 700px;">
+            {% include "app/profile_view.html" %}
+        </div>
+    <br>
+</div>
+<div style="background-color: transparent;" ></div>
+<button type="button" class="btn" onClick="window.location.reload();" style="margin-left: 320px; position: absolute; bottom: -38px; background-color: rgb(230, 42, 42);">Dalej</button>
+<a href="{% url 'send_friend_request' user.id %}">
+<button type="button" class="btn" style="position: absolute; bottom: -38px; left: 390px; background-color: rgb(8, 126, 53);">Dodaj</button>
+</a>
+</div>
+{% else %}
+<p>Natrafiłeś na ucznia, szukaj dalej</p>
+<button type="button" class="btn" onClick="window.location.reload();" style="margin-left: 320px; position: absolute; bottom: 10px; left: 120px; background-color: rgb(230, 42, 42);">Dalej</button>
+{% endif %}
+
+
+
+
+
+{% endblock %}
