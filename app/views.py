@@ -33,9 +33,15 @@ def start(request):
         try:
             auth_profile_form = AuthForm(instance=request.user.profile, data=request.POST, files=request.FILES)
             if request.method == "GET":
-                return render(request, 'app/index.html', 
-                {'users': User.objects.exclude(username=request.user.username),
-                'auth_profile_form': auth_profile_form})
+                try:
+                    print(Auth.objects.get(user_auth_author_id=request.user.id))
+                    return render(request, 'app/index.html', 
+                    {'users': User.objects.exclude(username=request.user.username),
+                    'auth_profile_form': auth_profile_form})
+                except Auth.DoesNotExist:
+                    return render(request, 'app/auth_form.html', 
+                    {'users': User.objects.exclude(username=request.user.username),
+                    'auth_profile_form': auth_profile_form})
             if request.method == 'POST':
                 auth_profile_form = AuthProfileForm(instance=request.user.profile, data=request.POST, files=request.FILES)
                 auth_form = AuthForm(request.POST)

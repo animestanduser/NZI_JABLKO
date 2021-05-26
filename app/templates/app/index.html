@@ -45,58 +45,23 @@
                 </a>
             </div>
             {% else %}
-            <form method="POST" enctype="multipart/form-data">
-
-                <legend class="border-bottom mb-4">Weryfikacja profilu</legend>
+            <div class="row">
+                <div style="margin-left: 40px;">
+                    <p>Twoje zgłoszenie czeka na przeanalizowanie przez naszych administratorów. Prosimy o cierpliwość.</p>
+                </div>
                 
-                <form method="post" enctype="multipart/form-data">
-
-
-
-                    <p>Pozostał Ci ostatni krok, do aktywacji swojego konta. Musimy potwierdzić twoją wiarygodność konta, przez wysłanie nam swojego zdjęcia z gestem, zaprezentowanym na wygenerowanym szablonie. Po dopuszczeniu Cię przez administratora, będziesz mógł cieszyć się pełną funkcjonalnością serwisu.</p>
-                    
-                    <div class="row">
-                        <div class="col-4">
-                        </div>
-                        <div class="col-4">
-                            <img class="mr-3" src="{{request.user.profile.wzor.url}}" width="200" height="200" alt="avatar">
-                        </div>
-                        <div class="col-4">
-                        </div>
-                        
-                    </div>
-                    
-                    
-                    
-                    
-                    <div class="row">
-                        <div class="col-3">
-                        </div>
-                        <div class="col-5">
-                            <label style="float: left; font-size: large; padding-top: 20px; width: 600px;">{{ auth_profile_form.zdjecie }}</label><br>
-                        </div>
-                        <div class="col-4">
-                        </div>
-                    </div>
-
+            
+                <div class="col-11" style="text-align: center">
+                    <p>Wzór</p>
+                    <img src="{{request.user.profile.wzor.url}}" width="200" height="200" alt="avatar">
+                </div>
                 
-                            
-                    {% csrf_token %}
-                    <div class="row" style="padding-top: 40px;">
-                        <div class="col-4">
-                        </div>
-                        <div class="col-4">
-                            <p><input type="submit" class="btn btn-success" value="Wyślij weryfikacje" style="margin-left: 30px;" ></p>
-                        </div>
-                        <div class="col-4">
-                        </div>
-                    </div>    
-                    
-                    
-
-                </form>
-        
-            </form>
+                <div class="col-11" style="text-align: center; margin-top: 30px;">
+                    <p>Twoje zdjęcie</p>
+                    <img src="{{request.user.profile.zdjecie.url}}" width="200" height="200" alt="avatar2">
+                </div>
+                
+            </div>
             {% endif %}
 
 

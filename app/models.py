@@ -138,6 +138,7 @@ class Auth(models.Model):
     wzor = models.ImageField(default=random_string, upload_to='profile_auth')
     zdjecie = models.ImageField(default='none.jpg', upload_to='profile_auth')
 
+
     def __str__(self):
         return f'{self.user_auth_author.username}'
 
