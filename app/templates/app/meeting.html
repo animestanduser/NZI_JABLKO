@@ -1,0 +1,35 @@
+{% extends 'app/main_tlo.html' %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+
+    <legend class="border-bottom mb-4">Dodaj spotkanie</legend>
+    <div class="field edit">
+    <form method="post" enctype="multipart/form-data">
+
+        <div class="row">
+            <div class="col-3">
+                <label class="inputData" style="float: left; height: 30px;">Tytuł spotkania:</label> {{ meeting_form.meeting_title }}<br><br>
+
+                <label class="inputData" style="float: left;">Opis spotkania:</label>{{ meeting_form.meeting_description }} <br><br>
+                    
+                <label class="inputData" type="datetime-local" style="float: left;" placeholder="dd.mm.rrrr">Data spotkania(dd.mm.rrrr): {{ meeting_form.planned_date }}</input><br><br><br><br>
+
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-2">
+                <br><p><input type="submit" class="btn btn-success" value="Dodaj spotkanie" ></p>  
+            </div>
+        </div>  
+            {% csrf_token %}
+        </form>
+        
+    </div>
+</form>
+
+
+
+{% endblock %}

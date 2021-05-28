@@ -43,6 +43,9 @@ urlpatterns = [
     #Lista korepetytorów
     path('list/', views.list, name='list'),
 
+     #Lista uczniów
+    path('councils_list/', views.councils_list, name='councils_list'),
+
     #Chybił trafił
     path('random/', views.random, name='random'),
 
@@ -63,11 +66,7 @@ urlpatterns = [
     
     path('comment/<int:user>/', views.comment, name='comment'),
 
-    path('send_friend_request/<int:userID>/', views.send_friend_request, name='send_friend_request'),
-
-    path('accept_friend_request/<int:requestID>/', views.accept_friend_request, name='accept_friend_request'),
-
-    path('friends_invitations/', views.friends_invitations, name='friends_invitations'),
+    path('meeting/<int:user>/', views.meet, name='meet'),
 
     path('chat/<int:sender>/<int:receiver>/', views.message_view, name='chat'),
 
@@ -75,8 +74,17 @@ urlpatterns = [
 
     path('comments/<int:user>/', views.comment_view, name='comments'),
 
+    path('meetings/<int:user>/', views.meeting_view, name='meetings'),
+
     path('api/messages/<int:sender>/<int:receiver>/', views.message_list, name='message-detail'),
+
     path('api/messages/', views.message_list, name='message-list'),
+
+    path('contact/', views.contact, name='contact'),
+
+#    path('friend_invite_sent/', views.invite_friend, name='friend_invite_sent')
+
+
 ]
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

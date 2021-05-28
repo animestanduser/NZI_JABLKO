@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'app.apps.AppConfig',
     'rest_framework',
     'widget_tweaks',
-
+    'friendship'
 ]
 
 MIDDLEWARE = [

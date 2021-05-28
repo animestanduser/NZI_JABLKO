@@ -37,10 +37,14 @@
         <a href="{% url 'comments' user.id %}">
             <i class="fas fa-comment" style="color: rgb(28, 155, 2);font-size: 20px;"></i>
         </a>
+
+        <a href="{% url 'meetings' user.id %}">
+            <i class="fas fa-handshake" style="color: rgb(28, 155, 2);font-size: 20px;"></i>
+        </a>
         {% if request.user.id != user.id %}
     
 
-        <a href="{% url 'send_friend_request' user.id %}">
+        <a href="{#}">
             <i class="fas fa-user-plus" style="color: rgb(27, 141, 27);font-size: 20px;"></i>
         </a>
 

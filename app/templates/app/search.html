@@ -8,7 +8,7 @@
 <form action = "" method = "get">
     {% csrf_token %}
      <!-- <label for="subject">Podaj szukany przedmiot: </label> -->
-     <select class="listLabel" name="subject">
+     <select class="listLabel" name="subject" style="height: 30px;">
         <option value="angielski">Angielski</option>
         <option value="historia">Historia</option>
         <option value="polski">Polski</option>
@@ -21,7 +21,7 @@
 
     <input class="inputData" id="priceHigh" type="number" name="priceHigh" value="" placeholder="Cena Maksymalna">
 
-    <select class="inputData" name="city">
+    <select class="inputData" name="city" style="height: 30px;">
         <option value="Warszawa">Warszawa</option>
         <option value="Gdynia">Gdynia</option>
         <option value="Kraków">Kraków</option>
@@ -46,6 +46,7 @@
                 <img class="rounder-circle account-img" src="{{user.profile.image.url}}" height="130px" width="130px" style="margin-top: 10px; border-radius: 50px 50px 50px 50px;"><br>
                 <div id="name">{{user.first_name}} {{user.last_name}}</div><br>
                 <a href="{% url 'profile' user.id %}">
+                    {{user.profile.cena}}
                 <button type="button" class="btn btn-light" style="position:absolute; bottom:40px; right:58px;">Zobacz profil</button>
                 </a>
             </div> 

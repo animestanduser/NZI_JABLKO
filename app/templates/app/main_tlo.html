@@ -106,6 +106,12 @@
                     </a>
                 </a>
 
+                <a class="nav-item">
+                    <a class="nav-link" href="{% url 'ranking' %}" style="margin-left: 2px;">
+                        <span class="media-body">Ranking</span>
+                    </a>
+                </a>
+
                 <hr style="background-color: rgb(43, 43, 43)">
                 
                 {% if request.user.profile.korepetytor == False %}
@@ -128,27 +134,23 @@
                 </a>
 
 
-                <a class="nav-item">
-                    <a class="nav-link" href="{% url 'ranking' %}" style="margin-left: 2px;">
-                        <span class="media-body">Ranking</span>
-                    </a>
-                </a>
                 
                 <hr style="background-color: rgb(43, 43, 43)">
                 {% else %}
+                <a class="nav-item">
+                    <a class="nav-link" href="{#}" style="margin-left: 2px;">
+                        <span class="media-body">Zaproszenia do znajomych</span>
+                    </a>
+                </a>
 
                 <a class="nav-item">
-                    <a class="nav-link" href="{% url 'list' %}" style="margin-left: 2px;">
+                    <a class="nav-link" href="{% url 'councils_list' %}" style="margin-left: 2px;">
                         <span class="media-body">Lista uczniów</span>
                     </a>
                 </a>
                 <hr style="background-color: rgb(43, 43, 43)">
 
-                <a class="nav-item">
-                    <a class="nav-link" href="{% url 'friends_invitations' %}" style="margin-left: 2px;">
-                        <span class="media-body">Zaproszenia do znajomych</span>
-                    </a>
-                </a>
+
 
                 <hr style="background-color: rgb(43, 43, 43)">
                 {% endif %}
@@ -165,11 +167,6 @@
                 {% endif %}
 
 
-                <a class="nav-item">
-                    <a class="nav-link" href="{% url 'index' %}" style="margin-left: 2px;">
-                        <span class="media-body">Ustawienia</span>
-                    </a>
-                </a>
 
                 <a class="nav-item">
                     <a class="nav-link" href="{% url 'change_password' %}" style="margin-left: 2px;">
@@ -178,7 +175,7 @@
                 </a>
 
                 <a class="nav-item">
-                    <a class="nav-link" href="{% url 'index' %}" style="margin-left: 2px;">
+                    <a class="nav-link" href="{% url 'contact' %}" style="margin-left: 2px;">
                         <span class="media-body">Kontakt</span>
                     </a>
                 </a>

@@ -15,46 +15,34 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from .serializers import MessageSerializer, UserSerializer
 from .tokens import account_activation_token
-from .forms import CommentForm, SignupForm, UserEditForm, ProfileEditForm, ProfileOptionsForm, ReportForm, RateForm, RatingForm, AuthForm, AuthProfileForm
-from .models import Profile, Message, Auth, Friend_Request, Post
+from .forms import CommentForm, SignupForm, UserEditForm, ProfileEditForm, ProfileOptionsForm, ReportForm, RateForm, RatingForm, AuthForm, AuthProfileForm, MeetingForm
+from .models import Profile, Message, Auth, Post, Meeting
 from django.db import IntegrityError
 import random
 from django.utils import timezone
+from friendship.models import Friend, Follow, Block
+from friendship.models import FriendshipRequest
+
 
 
 
 
 @login_required
-def friends_invitations(request):
+def contact(request):
     if request.method == "GET":
-        return render(request, 'app/friends_invitations.html',
-            {'users': User.objects.exclude(username=request.user.username),
-            'all_friend_requests': Friend_Request.objects.all()})
+        return render(request, 'app/contact.html',
+            {'users': User.objects.exclude(username=request.user.username)})
 
-@login_required
-def send_friend_request(request, userID):
-    from_user = request.user
-    to_user = User.objects.get(id=userID)
-    friend_request, created = Friend_Request.objects.get_or_create(from_user=from_user, to_user=to_user)
-    if created:
-        return render(request, 'app/send_friend_request.html',
-        {'users': User.objects.exclude(username=request.user.username)})
-    else:
-        return render(request, 'app/send_friend_request_fail.html',
-        {'users': User.objects.exclude(username=request.user.username)})
-
-@login_required
-def accept_friend_request(request, requestID):
-    friend_request = Friend_Request.objects.get(id=requestID)
-    if friend_request.to_user == request.user:
-        friend_request.to_user.friends.add(friend_request.from_user)
-        friend_request.from_user.friends.add(friend_request.to_user)
-        friend_request.delete()
-        return render(request, 'app/accept_friend_request.html',
-        {'users': User.objects.exclude(username=request.user.username)})
-    else:
-        return render(request, 'app/accept_friend_request_fail.html',
-        {'users': User.objects.exclude(username=request.user.username)})
+#@login_required
+#def invite_friend(request, user):
+  #  if request.method == "GET":
+     #   other_user = User.objects.get(user.id)
+     #   friend_invite = Friend.objects.add_friend(
+        #            request.user,                               # The sender
+     #               other_user)                                 # The recipient
+     #   return render(request, 'app/friend_invite_sent.html',
+      #      {'user': User.objects.get(id=user),
+       #     'friend_invite': friend_invite})
 
 
 def start(request):
@@ -62,9 +50,15 @@ def start(request):
         try:
             auth_profile_form = AuthForm(instance=request.user.profile, data=request.POST, files=request.FILES)
             if request.method == "GET":
-                return render(request, 'app/index.html', 
-                {'users': User.objects.exclude(username=request.user.username),
-                'auth_profile_form': auth_profile_form})
+                try:
+                    print(Auth.objects.get(user_auth_author_id=request.user.id))
+                    return render(request, 'app/index.html', 
+                    {'users': User.objects.exclude(username=request.user.username),
+                    'auth_profile_form': auth_profile_form})
+                except Auth.DoesNotExist:
+                    return render(request, 'app/auth_form.html', 
+                    {'users': User.objects.exclude(username=request.user.username),
+                    'auth_profile_form': auth_profile_form})
             if request.method == 'POST':
                 auth_profile_form = AuthProfileForm(instance=request.user.profile, data=request.POST, files=request.FILES)
                 auth_form = AuthForm(request.POST)
@@ -143,6 +137,24 @@ def list(request):
     city = request.GET.get('city')
     # print(request.GET) wyswietla wartosc GET w konsoli, przydatne do sprawdzenia wczytywania
     return render(request, 'app/list.html', {'users': User.objects.exclude(username=request.user.username), 'lesson': subject, 'priceLow': priceLow, 'priceHigh': priceHigh, 'city': city})
+
+
+@login_required
+def councils_list(request):
+    
+    subject = request.GET.get('subject')
+    priceLow = request.GET.get('priceLow')
+    priceHigh = request.GET.get('priceHigh')
+
+    if priceLow:
+        priceLow=int(priceLow)
+
+    if priceHigh:
+        priceHigh=int(priceHigh) 
+    
+    city = request.GET.get('city')
+    # print(request.GET) wyswietla wartosc GET w konsoli, przydatne do sprawdzenia wczytywania
+    return render(request, 'app/councils_list.html', {'users': User.objects.exclude(username=request.user.username), 'lesson': subject, 'priceLow': priceLow, 'priceHigh': priceHigh, 'city': city})
 
 
 def signup(request):
@@ -368,3 +380,31 @@ def comment(request, user):
                 'user': User.objects.get(id=user),
                 'comment_form': comment_form})
 
+@login_required
+def meet(request, user):
+    meeting_form = MeetingForm(instance=request.user, data=request.POST)
+    if request.method == "GET":
+        return render(request, 'app/meeting.html',
+        {'users': User.objects.exclude(username=request.user.username),
+        'user': User.objects.get(id=user),
+        'meeting_form': meeting_form})
+    if request.method == "POST":
+        meeting_form = MeetingForm(request.POST)
+        if meeting_form.is_valid():
+            comment = meeting_form.save(commit=False)
+            comment.tutor = request.user
+            comment.council = User.objects.get(pk=user)
+            comment.save()
+            return render(request, 'app/profile.html',
+                {'users': User.objects.exclude(username=request.user.username),
+                'user': User.objects.get(id=user),
+                'meeting_form': meeting_form})
+
+@login_required
+def meeting_view(request, user):
+    if request.method == "GET":
+        meetings = Meeting.objects.filter(council=user)
+        return render(request, 'app/meetings.html',
+             {'users': User.objects.exclude(username=request.user.username),
+             'user': User.objects.get(id=user),
+             'meetings':meetings})

@@ -21,9 +21,24 @@ class Post(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    
     def __str__(self):
         return f'{self.author.username} ->  {self.user_commented.username} ({self.text})'
+
+
+class Meeting(models.Model):
+    tutor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tutor')
+    council = models.ForeignKey(User, on_delete=models.CASCADE, related_name='council')
+    meeting_title = models.CharField(max_length=30)
+    meeting_description = models.TextField()
+    planned_date = models.DateTimeField(
+            blank=True, null=True)
+
+    def publish(self):
+        self.save()
+
+    
+    def __str__(self):
+        return f'{self.tutor.username} ->  {self.council.username} ({self.meeting_title},{self.meeting_description})'
 
 #Model profilu
 class Profile(models.Model):
@@ -32,7 +47,6 @@ class Profile(models.Model):
     def random_string():
         return "gest" + str(random.randint(1, 5)) + ".png"
 
-    friends = models.ManyToManyField(User, related_name='friends', blank=True)
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='none.jpg', upload_to='profile_pics')
@@ -50,7 +64,7 @@ class Profile(models.Model):
     ]
 
     MIEJSCOWOSC_CHOICES = [
-    ('', 'Brak'),
+    ('brak', 'Brak'),
     ('Warszawa', 'Warszawa'),
     ('Gdynia', 'Gdynia'),
     ('Kraków', 'Kraków'),
@@ -73,7 +87,7 @@ class Profile(models.Model):
     cena = models.PositiveIntegerField(default='0')
     punkty = models.CharField(max_length=7, default=1000)
     ranga = models.CharField(max_length=30, choices=RANGA_CHOICES, default="brak")
-    opis = models.TextField(max_length="500")
+    opis = models.TextField(max_length="500", default='Uzupełnij opis aby Twój profil cieszył się większą popularnością.')
     korepetytor = models.BooleanField(default=False)
     users = User.objects.all()
     args = {'users':users,}
@@ -94,15 +108,6 @@ class Profile(models.Model):
             img.save(self.image.path)
 
 
-    
-class Friend_Request(models.Model):
-    from_user = models.ForeignKey(
-        User, related_name='from_user', on_delete=models.CASCADE)
-    to_user = models.ForeignKey(
-        User, related_name='to_user', on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f'{self.from_user} ->  {self.to_user}'
 
 #Model zgłoszeń użytkowników
 class Report(models.Model):

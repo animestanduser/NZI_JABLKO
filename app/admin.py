@@ -4,20 +4,38 @@ from .models import Profile
 from .models import Report
 from .models import Rate
 from .models import Auth
-from .models import Friend_Request
+from .models import Meeting
+from django.utils.safestring import mark_safe
 
 admin.site.register(Post)
 
-admin.site.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    fields= ['user', 'image', 'image_image', 'wzor', 'zdjecie', 'zweryfikowany', 'przedmiot', 'miejscowosc', 'cena', 'punkty', 'ranga', 'opis', 'korepetytor',]
+    readonly_fields = ['image_image',]
+    search_fields = ['user__username',]
 
-class FriendsAdmin(admin.ModelAdmin):
-    fields= ['from_user', 'to_user',]
+    def image_image(self, obj):
+        return mark_safe('<img src="{url}" width="{width}" height={height} />'.format(
+            url = obj.image.url,
+            width=200,
+            height=200,
+            )
+    )
+
+    class Meta:
+        model= Profile
+
+admin.site.register(Profile, ProfileAdmin)
+
+
+class MeetingAdmin(admin.ModelAdmin):
+    fields= ['tutor', 'council','meeting_title', 'planned_date']
 
 
     class Meta:
-        model= Friend_Request
+        model= Meeting
 
-admin.site.register(Friend_Request, FriendsAdmin)
+admin.site.register(Meeting, MeetingAdmin)
 
 class ReportAdmin(admin.ModelAdmin):
     fields= ['user_author', 'user_reported', 'message',]
@@ -43,9 +61,24 @@ admin.site.register(Rate, RateAdmin)
 
 
 class AuthAdmin(admin.ModelAdmin):
-    fields= ['user_auth_author', 'wzor', 'zdjecie',]
-    readonly_fields = ['user_auth_author', 'wzor', 'zdjecie',]
+    fields= ['user_auth_author', 'wzor', 'zdjecie', 'wzor_image', 'zdjecie_image',]
+    readonly_fields = ['user_auth_author', 'wzor', 'zdjecie', 'wzor_image', 'zdjecie_image',]
 
+    def zdjecie_image(self, obj):
+        return mark_safe('<img src="{url}" width="{width}" height={height} />'.format(
+            url = obj.zdjecie.url,
+            width=200,
+            height=200,
+            )
+    )
+
+    def wzor_image(self, obj):
+        return mark_safe('<img src="{url}" width="{width}" height={height} />'.format(
+            url = obj.wzor.url,
+            width=200,
+            height=200,
+            )
+    )
     class Meta:
         model= Rate
 

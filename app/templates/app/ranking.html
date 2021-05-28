@@ -7,30 +7,30 @@
 <ul style="max-height: 620px; overflow:hidden; overflow-y:scroll;">
 {% for user in ranking_sort %}
 
-    {% if user.ranga == "wood" %}
+        {% if user.ranga == "wood" %}
 
-    <img class="tetetete" src="{% static '/app/css/images/wooden_template.png' %}" style="position: absolute;" width="40" height="40" alt="avatar">
-    {% endif %}
+        <img class="tetetete" src="{% static '/app/css/images/wooden_template.png' %}" style="position: absolute;" width="40" height="40" alt="avatar">
+        {% endif %}
 
-    {% if user.ranga == "leaf" %}
-    <img class="tetetete" src="{% static '/app/css/images/leaf_template.png' %}" style="position: absolute;" width="40" height="40" alt="avatar">
-    {% endif %}
+        {% if user.ranga == "leaf" %}
+        <img class="tetetete" src="{% static '/app/css/images/leaf_template.png' %}" style="position: absolute;" width="40" height="40" alt="avatar">
+        {% endif %}
 
-    {% if user.ranga == "gold" %}
-    <img class="tetetete" src="{% static '/app/css/images/golden_template.png' %}" style="position: absolute;" width="40" height="40" alt="avatar">
-    {% endif %}
+        {% if user.ranga == "gold" %}
+        <img class="tetetete" src="{% static '/app/css/images/golden_template.png' %}" style="position: absolute;" width="40" height="40" alt="avatar">
+        {% endif %}
 
 
-    {% if user.ranga == "diamond" %}
-    <img class="tetetete" src="{% static '/app/css/images/diamond_template.png' %}" style="position: absolute;" width="40" height="40" alt="avatar">
-    {% endif %}
+        {% if user.ranga == "diamond" %}
+        <img class="tetetete" src="{% static '/app/css/images/diamond_template.png' %}" style="position: absolute;" width="40" height="40" alt="avatar">
+        {% endif %}
 
-    <img class="rounded-circle mr-3" src="{{user.image.url}}" width="40" height="40" alt="avatar">
+        <img class="rounded-circle mr-3" src="{{user.image.url}}" width="40" height="40" alt="avatar">
 
-    <a href="{% url 'chat' request.user.id user.id %}" id="user{{ user.id }}" style="color: white;">{{user}}</a> <span style="float: right; margin-right: 50px;">{{user.punkty}}</span>
+        <a href="{% url 'profile' user.id %}" style="text-decoration: none; color: white;">{{user}}{{ranking_sort.user.first_name}}{{user.id}}</a><span style="float: right; margin-right: 50px;">{{user.punkty}}</span>
 
-    <br><br>
 
+        <br><br>
 {% endfor %}
 </ul>
 

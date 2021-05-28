@@ -2,7 +2,8 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.files.images import get_image_dimensions
-from .models import Profile
+from django.forms.widgets import Widget
+from .models import Meeting, Profile
 from .models import Post
 from .models import Report
 from .models import Rate
@@ -91,4 +92,15 @@ class CommentForm(forms.ModelForm):
 
     widget = {
             'text': forms.Textarea(attrs={'class':'form-control'}),
+    }
+
+class MeetingForm(forms.ModelForm):
+    class Meta:
+        model = Meeting
+        fields = ('meeting_title', 'meeting_description', 'planned_date')
+
+    widget = {
+            'meeting_title': forms.TextInput(attrs={'class':'form-control'}),
+            'meeting_description': forms.TextInput(attrs={'class':'form-control'}),
+            'planned_date': forms.DateInput(),
     }

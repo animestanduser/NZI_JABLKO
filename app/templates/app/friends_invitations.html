@@ -3,11 +3,6 @@
 {% block content %}
 
 <legend class="border-bottom mb-4">Zaproszenia do znajomych</legend>
-{% for friend_request in all_friend_requests %}
-    <h3>
-        {{friend_request.from_user}}
-        <a href="{% url 'accept_friend_request' friend_request.id %}">Zaakceptuj</a>
-    </h3>
-{% endfor %}
-{{ comments }}
+{% friends request.user %}
+
 {% endblock %}
