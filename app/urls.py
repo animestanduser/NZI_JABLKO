@@ -61,7 +61,8 @@ urlpatterns = [
     #Rating profilu
     path('rate/<int:user>/', views.rate, name='rate'),
     
-    
+    path('comment/<int:user>/', views.comment, name='comment'),
+
     path('send_friend_request/<int:userID>/', views.send_friend_request, name='send_friend_request'),
 
     path('accept_friend_request/<int:requestID>/', views.accept_friend_request, name='accept_friend_request'),
@@ -70,7 +71,10 @@ urlpatterns = [
 
     path('chat/<int:sender>/<int:receiver>/', views.message_view, name='chat'),
 
-    path('friends_invitations/', views.friends_invitations, name='friends_invitations'),
+    path('ranking/', views.ranking, name='ranking'),
+
+    path('comments/<int:user>/', views.comment_view, name='comments'),
+
     path('api/messages/<int:sender>/<int:receiver>/', views.message_list, name='message-detail'),
     path('api/messages/', views.message_list, name='message-list'),
 ]

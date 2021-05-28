@@ -33,6 +33,10 @@
         <h4 style="color:rgb(77, 167, 82)">{{user.profile.miejscowosc}}</h4> 
             <h2 class="account-heading" style="color: rgb(33, 63, 34);">{{user.first_name}} {{user.last_name}}</h2>
         </div>
+        
+        <a href="{% url 'comments' user.id %}">
+            <i class="fas fa-comment" style="color: rgb(28, 155, 2);font-size: 20px;"></i>
+        </a>
         {% if request.user.id != user.id %}
     
 
@@ -43,8 +47,8 @@
         <a href="{% url 'rate' user.id %}">
             <i class="fas fa-star-half-alt" style="color: rgb(28, 155, 2);font-size: 20px;"></i>
         </a>
-    
 
+    
         <a href="{% url 'report' user.id %}">
             <i class="fas fa-comment-slash" style="color: rgb(143, 52, 52);font-size: 20px;"></i>
         </a>
@@ -76,5 +80,9 @@
     {% empty %}
         <p>Brak przedmiotów</p>
     {% endfor %}
+
+
 </div>
+
+
 {% endblock %}

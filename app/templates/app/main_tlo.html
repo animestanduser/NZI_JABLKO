@@ -126,8 +126,15 @@
                         <span class="media-body">Lista korepetytorów</span>
                     </a>
                 </a>
-                <hr style="background-color: rgb(43, 43, 43)">
 
+
+                <a class="nav-item">
+                    <a class="nav-link" href="{% url 'ranking' %}" style="margin-left: 2px;">
+                        <span class="media-body">Ranking</span>
+                    </a>
+                </a>
+                
+                <hr style="background-color: rgb(43, 43, 43)">
                 {% else %}
 
                 <a class="nav-item">
@@ -142,6 +149,7 @@
                         <span class="media-body">Zaproszenia do znajomych</span>
                     </a>
                 </a>
+
                 <hr style="background-color: rgb(43, 43, 43)">
                 {% endif %}
 
@@ -2020,7 +2028,7 @@
 
 
 
-        <div class="col-8 col-md-6 col-sm-2 mx-auto" style="position: absolute;z-index: 10; right: 480px; top:130px;">
+            <div class="col-6" style="position: absolute;z-index: 10; top:130px; transform: translateX(50%);">
 
             <div class="card text-white bg-custom-1 p-5 mb-5" style="height: 80vh;z-index: 10;">
                 <div class="card-body">

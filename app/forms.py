@@ -7,7 +7,7 @@ from .models import Post
 from .models import Report
 from .models import Rate
 from .models import Auth
-
+from .models import Post
 
 
 
@@ -84,5 +84,11 @@ class AuthProfileForm(forms.ModelForm):
         fields = ('wzor', 'zdjecie',)
 
 
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('text',)
 
-
+    widget = {
+            'text': forms.Textarea(attrs={'class':'form-control'}),
+    }

@@ -15,11 +15,11 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from .serializers import MessageSerializer, UserSerializer
 from .tokens import account_activation_token
-from .forms import SignupForm, UserEditForm, ProfileEditForm, ProfileOptionsForm, ReportForm, RateForm, RatingForm, AuthForm, AuthProfileForm
-from .models import Profile, Message, Auth, Friend_Request
+from .forms import CommentForm, SignupForm, UserEditForm, ProfileEditForm, ProfileOptionsForm, ReportForm, RateForm, RatingForm, AuthForm, AuthProfileForm
+from .models import Profile, Message, Auth, Friend_Request, Post
 from django.db import IntegrityError
 import random
-
+from django.utils import timezone
 
 
 
@@ -28,7 +28,8 @@ import random
 def friends_invitations(request):
     if request.method == "GET":
         return render(request, 'app/friends_invitations.html',
-            {'users': User.objects.exclude(username=request.user.username)})
+            {'users': User.objects.exclude(username=request.user.username),
+            'all_friend_requests': Friend_Request.objects.all()})
 
 @login_required
 def send_friend_request(request, userID):
@@ -36,9 +37,11 @@ def send_friend_request(request, userID):
     to_user = User.objects.get(id=userID)
     friend_request, created = Friend_Request.objects.get_or_create(from_user=from_user, to_user=to_user)
     if created:
-        return render(request, 'app/send_friend_request.html')
+        return render(request, 'app/send_friend_request.html',
+        {'users': User.objects.exclude(username=request.user.username)})
     else:
-        return HttpResponse('friend request was already sent')
+        return render(request, 'app/send_friend_request_fail.html',
+        {'users': User.objects.exclude(username=request.user.username)})
 
 @login_required
 def accept_friend_request(request, requestID):
@@ -47,9 +50,11 @@ def accept_friend_request(request, requestID):
         friend_request.to_user.friends.add(friend_request.from_user)
         friend_request.from_user.friends.add(friend_request.to_user)
         friend_request.delete()
-        return HttpResponse('friend request accepted')
+        return render(request, 'app/accept_friend_request.html',
+        {'users': User.objects.exclude(username=request.user.username)})
     else:
-        return HttpResponse('friend request not accepted')
+        return render(request, 'app/accept_friend_request_fail.html',
+        {'users': User.objects.exclude(username=request.user.username)})
 
 
 def start(request):
@@ -81,6 +86,19 @@ def start(request):
                     'auth_profile_form': auth_profile_form})
     else:
         return render(request, 'app/start.html',)
+
+@login_required
+def ranking(request):
+    if request.method == "GET":
+        ranking_values = User.objects.all()
+        ranking_sort = Profile.objects.order_by('-punkty')
+        #ranking_sort = Profile.objects.order_by('-punkty')
+        
+
+        return render(request, 'app/ranking.html',
+                         {'users': User.objects.exclude(username=request.user.username),
+                       'ranking_sort':ranking_sort,
+                       'ranking_values':ranking_values})
 
 @login_required
 def random(request):
@@ -190,15 +208,11 @@ def change_password(request):
 
 
 
-
-
-
-
 def profile(request, user):
     if request.method == "GET":
             return render(request, 'app/profile.html',
              {'users': User.objects.exclude(username=request.user.username),
-                       'user': User.objects.get(id=user)})
+                'user': User.objects.get(id=user)})
 
 
 
@@ -307,11 +321,6 @@ def message_view(request, sender, receiver):
                        'messages': Message.objects.filter(sender_id=sender, receiver_id=receiver) |
                                    Message.objects.filter(sender_id=receiver, receiver_id=sender)})
 
-
-
-
-
-
 @csrf_exempt
 def message_list(request, sender=None, receiver=None):
     if request.method == 'GET':
@@ -330,9 +339,32 @@ def message_list(request, sender=None, receiver=None):
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
 
+@login_required
+def comment_view(request, user):
+    if request.method == "GET":
+        comments = Post.objects.filter(user_commented=user)
+        return render(request, 'app/comments.html',
+             {'users': User.objects.exclude(username=request.user.username),
+             'user': User.objects.get(id=user),
+             'comments':comments})
 
-
-
-
-
+@login_required
+def comment(request, user):
+    comment_form = CommentForm(instance=request.user, data=request.POST)
+    if request.method == "GET":
+        return render(request, 'app/comment.html',
+        {'users': User.objects.exclude(username=request.user.username),
+        'user': User.objects.get(id=user),
+        'comment_form': comment_form})
+    if request.method == "POST":
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.author = request.user
+            comment.user_commented = User.objects.get(pk=user)
+            comment.save()
+            return render(request, 'app/profile.html',
+                {'users': User.objects.exclude(username=request.user.username),
+                'user': User.objects.get(id=user),
+                'comment_form': comment_form})
 

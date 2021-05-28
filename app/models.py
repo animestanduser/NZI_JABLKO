@@ -9,8 +9,8 @@ from multiselectfield import MultiSelectField
 
 #Model post
 class Post(models.Model):
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author')
+    user_commented = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_commented')
     text = models.TextField()
     created_date = models.DateTimeField(
             default=timezone.now)
@@ -23,7 +23,7 @@ class Post(models.Model):
 
     
     def __str__(self):
-        return self.title
+        return f'{self.author.username} ->  {self.user_commented.username} ({self.text})'
 
 #Model profilu
 class Profile(models.Model):
@@ -100,6 +100,9 @@ class Friend_Request(models.Model):
         User, related_name='from_user', on_delete=models.CASCADE)
     to_user = models.ForeignKey(
         User, related_name='to_user', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.from_user} ->  {self.to_user}'
 
 #Model zgłoszeń użytkowników
 class Report(models.Model):

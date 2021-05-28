@@ -1,0 +1,23 @@
+{% extends 'app/main_tlo.html' %}
+{% block content %}
+
+    <legend class="border-bottom mb-4">Komentarze</legend>
+    <ul style="max-height: 600px; overflow:hidden; overflow-y:scroll;">
+    {% for comment in comments %}
+    <div class="card-panel left green lighten-3" style="width: 75%; position: relative; background-color: rgb(88, 88, 88); border-radius: 5px 5px 5px 5px; padding: 5px">
+        <div style="position: absolute; top: 0; left:3px; font-weight: bolder" class="title">{{ comment.author.first_name }} {{ comment.author.last_name}}</div><br>
+        {{ comment.text }}<br>
+        <span style="color: rgb(180, 180, 180);">{{comment.created_date}}</span>
+
+    </div>
+    <br>
+    {% endfor %}
+</ul>
+{% if request.user.id != user.id %}
+    <a class="nav-item">
+        <a class="nav-link" href="{% url 'comment' user.id%}" style="margin-left: 2px; width: 160px; border-radius: 5px 5px 5px 5px; border-color: rgb(23, 209, 47); border-style: solid; position: absolute; bottom: 20px;">
+            <span class="media-body">Dodaj komentarz</span>
+        </a>
+    </a>
+{% endif %}
+{% endblock %}
